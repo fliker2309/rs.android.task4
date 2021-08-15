@@ -14,8 +14,8 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:hint="Name"
-        app:helperText="Required*"
         app:endIconMode="clear_text"
+        app:helperText="Required*"
         app:helperTextTextColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,11 +24,11 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/text_input_name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
 
         </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_input_layout_age"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -38,8 +38,8 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:hint="Age"
-        app:helperText="Required*"
         app:endIconMode="clear_text"
+        app:helperText="Required*"
         app:helperTextTextColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,8 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:maxLength="5"
-            ></com.google.android.material.textfield.TextInputEditText>
+            android:maxLength="5"></com.google.android.material.textfield.TextInputEditText>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -64,8 +63,8 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:hint="Breed"
-        app:helperText="Required*"
         app:endIconMode="clear_text"
+        app:helperText="Required*"
         app:helperTextTextColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,28 +73,39 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/text_input_breed"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            ></com.google.android.material.textfield.TextInputEditText>
+            android:layout_height="wrap_content"></com.google.android.material.textfield.TextInputEditText>
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!--
-        <com.google.android.material.button.MaterialButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="34dp"
-            tools:layout_editor_absoluteY="557dp"
-            tools:text="back">
 
-        </com.google.android.material.button.MaterialButton>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/margin_bottom_guideline"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="32dp">
 
-        <com.google.android.material.button.MaterialButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="254dp"
-            tools:layout_editor_absoluteY="557dp"
-            tools:text="add to table">
+    </androidx.constraintlayout.widget.Guideline>
 
-        </com.google.android.material.button.MaterialButton>-->
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:text="back"
+        app:layout_constraintBottom_toTopOf="@id/margin_bottom_guideline"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </com.google.android.material.button.MaterialButton>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:text="Add to table"
+        app:layout_constraintBottom_toTopOf="@id/margin_bottom_guideline"
+        app:layout_constraintEnd_toEndOf="parent">
+
+    </com.google.android.material.button.MaterialButton>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
