@@ -10,9 +10,9 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginStart="@dimen/main_dimen"
+        android:layout_marginTop="@dimen/main_dimen"
+        android:layout_marginEnd="@dimen/main_dimen"
         android:hint="Name"
         app:endIconMode="clear_text"
         app:helperText="Required*"
@@ -34,9 +34,9 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginStart="@dimen/main_dimen"
+        android:layout_marginTop="@dimen/main_dimen"
+        android:layout_marginEnd="@dimen/main_dimen"
         android:hint="Age"
         app:endIconMode="clear_text"
         app:helperText="Required*"
@@ -59,9 +59,9 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginStart="@dimen/main_dimen"
+        android:layout_marginTop="@dimen/main_dimen"
+        android:layout_marginEnd="@dimen/main_dimen"
         android:hint="Breed"
         app:endIconMode="clear_text"
         app:helperText="Required*"
@@ -83,15 +83,16 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_end="32dp">
+        app:layout_constraintGuide_end="@dimen/main_dimen">
 
     </androidx.constraintlayout.widget.Guideline>
 
     <com.google.android.material.button.MaterialButton
+
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="@dimen/main_dimen"
+        android:layout_marginTop="@dimen/main_dimen"
         android:text="back"
         app:layout_constraintBottom_toTopOf="@id/margin_bottom_guideline"
         app:layout_constraintStart_toStartOf="parent">
@@ -101,7 +102,7 @@
     <com.google.android.material.button.MaterialButton
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="@dimen/main_dimen"
         android:text="Add to table"
         app:layout_constraintBottom_toTopOf="@id/margin_bottom_guideline"
         app:layout_constraintEnd_toEndOf="parent">
