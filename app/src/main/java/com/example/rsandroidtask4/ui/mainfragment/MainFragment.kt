@@ -1,4 +1,7 @@
 package com.example.rsandroidtask4.ui.mainfragment
 
-class MainFragment {
+import androidx.fragment.app.Fragment
+
+class MainFragment :Fragment() {
+
 }
