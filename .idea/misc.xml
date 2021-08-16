@@ -3,10 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Sandbox/rsandroidtask4/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.2564814814814815" />
         <entry key="..\:/Sandbox/rsandroidtask4/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Sandbox/rsandroidtask4/app/src/main/res/layout/fragment_add_new_item.xml" value="0.17300724637681159" />
         <entry key="..\:/Sandbox/rsandroidtask4/app/src/main/res/layout/fragment_filter.xml" value="0.17300724637681159" />
-        <entry key="..\:/Sandbox/rsandroidtask4/app/src/main/res/layout/fragment_main_layout.xml" value="0.1" />
+        <entry key="..\:/Sandbox/rsandroidtask4/app/src/main/res/layout/fragment_main_layout.xml" value="0.264" />
       </map>
     </option>
   </component>

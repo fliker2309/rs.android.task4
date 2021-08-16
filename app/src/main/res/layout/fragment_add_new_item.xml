@@ -24,7 +24,10 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/text_input_name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLength="25"
+            >
 
         </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
@@ -50,7 +53,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:maxLength="5"></com.google.android.material.textfield.TextInputEditText>
+            android:maxLength="5">
+
+        </com.google.android.material.textfield.TextInputEditText>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -73,10 +78,11 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/text_input_breed"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"></com.google.android.material.textfield.TextInputEditText>
+            android:layout_height="wrap_content">
+
+        </com.google.android.material.textfield.TextInputEditText>
 
     </com.google.android.material.textfield.TextInputLayout>
-
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/margin_bottom_guideline"
@@ -88,7 +94,7 @@
     </androidx.constraintlayout.widget.Guideline>
 
     <com.google.android.material.button.MaterialButton
-
+        android:id="@+id/back_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/main_dimen"
@@ -100,6 +106,7 @@
     </com.google.android.material.button.MaterialButton>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/add_to_table_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/main_dimen"
