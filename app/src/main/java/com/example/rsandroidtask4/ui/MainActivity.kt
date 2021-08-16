@@ -7,7 +7,7 @@ import com.example.rsandroidtask4.R
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_main_layout)
+        setContentView(R.layout.activity_main)
 
 
     }
