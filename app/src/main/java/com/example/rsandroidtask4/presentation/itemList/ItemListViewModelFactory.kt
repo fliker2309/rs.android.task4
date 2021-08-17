@@ -1,16 +1,16 @@
-package com.example.rsandroidtask4.presentation.mainfragment
+package com.example.rsandroidtask4.presentation.itemList
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.rsandroidtask4.data.db.repository.ItemRepository
 import kotlinx.coroutines.InternalCoroutinesApi
 
-class MainFragmentViewModelFactory(private val repository: ItemRepository) :
+class ItemListViewModelFactory(private val repository: ItemRepository) :
     ViewModelProvider.Factory {
     @InternalCoroutinesApi
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T = when (modelClass) {
-        MainFragmentViewModel::class.java -> MainFragmentViewModel(repository)
+        ItemListViewModel::class.java -> ItemListViewModel(repository)
         else -> throw IllegalArgumentException("$modelClass is not registered ViewModel")
     } as T
 }

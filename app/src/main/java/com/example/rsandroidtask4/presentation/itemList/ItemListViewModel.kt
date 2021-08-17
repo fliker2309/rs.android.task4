@@ -1,4 +1,4 @@
-package com.example.rsandroidtask4.presentation.mainfragment
+package com.example.rsandroidtask4.presentation.itemList
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -10,7 +10,7 @@ import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.launch
 
 @InternalCoroutinesApi
-class MainFragmentViewModel(private val repository: ItemRepository) : ViewModel() {
+class ItemListViewModel(private val repository: ItemRepository) : ViewModel() {
 
     private var _mutableMainFragmentLiveData: MutableLiveData<List<Item>> =
         MutableLiveData(emptyList())
@@ -23,9 +23,11 @@ class MainFragmentViewModel(private val repository: ItemRepository) : ViewModel(
 
     init {
         viewModelScope.launch {
-            _mutableMainFragmentLiveData.value = repository.
+            _mutableMainFragmentLiveData.value = repository.readItemsFromDb()
         }
     }
+
+
 
 
 }
