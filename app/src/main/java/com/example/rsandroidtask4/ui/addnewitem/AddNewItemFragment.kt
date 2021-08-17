@@ -1,4 +1,6 @@
 package com.example.rsandroidtask4.ui.addnewitem
 
-class AddNewItemFragment {
+import androidx.fragment.app.Fragment
+
+class AddNewItemFragment : Fragment() {
 }

@@ -6,28 +6,28 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.internal.synchronized
-import com.example.rsandroidtask4.data.db.entity.TableItemEntity
+import com.example.rsandroidtask4.data.db.entity.Item
 
-@Database(entities = [TableItemEntity::class], version = 1, exportSchema = false)
+@Database(entities = [Item::class], version = 1, exportSchema = false)
 
-abstract class TableDatabase : RoomDatabase() {
+abstract class ItemDatabase : RoomDatabase() {
 
-    abstract fun tableDao(): TableDao
+    abstract fun itemDao(): ItemDao
 
     companion object {
         @Volatile
-        private var INSTANCE: TableDatabase? = null
+        private var INSTANCE: ItemDatabase? = null
 
         @InternalCoroutinesApi
-        fun getDatabase(context: Context): TableDatabase {
+        fun getDatabase(context: Context): ItemDatabase {
             val tempInstance = INSTANCE
             if (tempInstance != null) return tempInstance
 
             synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
-                    TableDatabase::class.java,
-                    "table_database"
+                    ItemDatabase::class.java,
+                    "item_database"
                 )
                     .fallbackToDestructiveMigration()
                     .build()

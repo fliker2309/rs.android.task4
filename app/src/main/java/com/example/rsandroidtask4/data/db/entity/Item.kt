@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "items")
-data class TableItemEntity(
+data class Item(
     @PrimaryKey
     @ColumnInfo(name = "id")
     val id: Int,
