@@ -10,11 +10,12 @@ class ItemRepository(private val itemDao: ItemDao) {
         itemDao.readItemsFromDb()
     }
 
+    //для редактирования
     suspend fun getItemByIdFromDb(id: Int): Item = withContext(Dispatchers.IO) {
         itemDao.getItemByIdFromDb(id)
     }
 
-    suspend fun insertItemsInDb(items: List<Item>) = withContext(Dispatchers.IO) {
-        itemDao.insertItemsInDb(items)
+    suspend fun insertItemInDb(item: Item) = withContext(Dispatchers.IO) {
+        itemDao.insertItemInDb(item)
     }
 }

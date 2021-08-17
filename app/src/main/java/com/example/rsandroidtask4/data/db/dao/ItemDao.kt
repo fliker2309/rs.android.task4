@@ -9,6 +9,7 @@ interface ItemDao {
     @Query("SELECT * FROM items")
     suspend fun readItemsFromDb(): List<Item>
 
+    // для редактирования можно этим воспользоваться будет
     @Query("SELECT * FROM items WHERE id = :id LIMIT 1")
     suspend fun getItemByIdFromDb(id:Int) : Item
 
@@ -16,5 +17,5 @@ interface ItemDao {
     suspend fun updateItemInDb(item: Item)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertItemsInDb(items: List<Item>)
+    suspend fun insertItemInDb(item: Item)
 }

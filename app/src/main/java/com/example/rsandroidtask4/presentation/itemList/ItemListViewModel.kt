@@ -12,10 +12,10 @@ import kotlinx.coroutines.launch
 @InternalCoroutinesApi
 class ItemListViewModel(private val repository: ItemRepository) : ViewModel() {
 
-    private var _mutableMainFragmentLiveData: MutableLiveData<List<Item>> =
+    private var _mutableItemListLiveData: MutableLiveData<List<Item>> =
         MutableLiveData(emptyList())
-    val mainFragmentLiveData: LiveData<List<Item>>
-        get() = _mutableMainFragmentLiveData
+    val itemListLiveData: LiveData<List<Item>>
+        get() = _mutableItemListLiveData
 
     private var _loadingLiveData: MutableLiveData<Boolean> = MutableLiveData()
     val loadingLiveData: LiveData<Boolean>
@@ -23,7 +23,7 @@ class ItemListViewModel(private val repository: ItemRepository) : ViewModel() {
 
     init {
         viewModelScope.launch {
-            _mutableMainFragmentLiveData.value = repository.readItemsFromDb()
+            _mutableItemListLiveData.value = repository.readItemsFromDb()
         }
     }
 
