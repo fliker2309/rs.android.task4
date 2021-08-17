@@ -1,4 +1,4 @@
-package com.example.rsandroidtask4.data.db
+package com.example.rsandroidtask4.data.db.dao
 
 import androidx.room.*
 import com.example.rsandroidtask4.data.db.entity.Item
