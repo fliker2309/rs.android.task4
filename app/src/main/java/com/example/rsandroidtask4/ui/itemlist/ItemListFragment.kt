@@ -7,6 +7,7 @@ import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rsandroidtask4.R
@@ -16,11 +17,12 @@ import com.example.rsandroidtask4.databinding.ItemListBinding
 import com.example.rsandroidtask4.presentation.itemList.ItemListViewModel
 import com.example.rsandroidtask4.presentation.itemList.ItemListViewModelFactory
 import com.example.rsandroidtask4.ui.itemlist.adapter.ItemAdapter
+import com.example.rsandroidtask4.ui.itemlist.adapter.SwipeGesture
 import com.example.rsandroidtask4.ui.navigationinterface.NavigationInterface
 import kotlinx.coroutines.InternalCoroutinesApi
 
 
-class ItemListFragment : Fragment(){
+class ItemListFragment : Fragment() {
 
     @InternalCoroutinesApi
     private val repository: ItemRepository by lazy {
@@ -118,12 +120,28 @@ class ItemListFragment : Fragment(){
 
     private fun setUpRecycler() {
         itemAdapter = ItemAdapter()
+        val swipeGesture = object : SwipeGesture(requireContext()) {
 
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                when (direction) {
+                    ItemTouchHelper.LEFT -> {
+                        itemAdapter!!.deleteItem(viewHolder.adapterPosition)
+                    }
+                    ItemTouchHelper.RIGHT -> {
+                        itemAdapter!!.deleteItem(viewHolder.adapterPosition)
+                    }
+                }
+            }
+        }
+        val touchHelper = ItemTouchHelper(swipeGesture)
+        touchHelper.attachToRecyclerView(itemRecyclerView)
         binding.recycler.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = itemAdapter
         }
         itemRecyclerView = binding.recycler
+
     }
 
 
@@ -132,7 +150,6 @@ class ItemListFragment : Fragment(){
             addNewItem?.openAddItemFragment()
         }
     }
-
 
     companion object {
         fun newInstance() = ItemListFragment()

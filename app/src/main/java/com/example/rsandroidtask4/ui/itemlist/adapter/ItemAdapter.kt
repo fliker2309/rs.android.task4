@@ -8,7 +8,7 @@ import com.example.rsandroidtask4.databinding.ViewHolderItemBinding
 
 class ItemAdapter() : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
 
-    private var items: List<Item> = listOf()
+    private var items: ArrayList<Item> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         return ItemViewHolder.from(parent)
@@ -20,10 +20,16 @@ class ItemAdapter() : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
 
     override fun getItemCount(): Int = items.size
 
-    fun updateItems(newItems: List<Item>) {
+    fun updateItems(newItems: ArrayList<Item>) {
         items = newItems
         notifyDataSetChanged()
     }
+
+    fun deleteItem(i: Int) {
+        items.removeAt(i)
+        notifyDataSetChanged()
+    }
+
 
     class ItemViewHolder private constructor(private val binding: ViewHolderItemBinding) :
         RecyclerView.ViewHolder(binding.root) {

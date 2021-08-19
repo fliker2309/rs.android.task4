@@ -5,5 +5,3 @@ P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
 |
 Lapp/src/main/java/com/example/rsandroidtask4/ui/edititem/EditItemFragment.kt,4\f\4f19637773d4b6d522937d90a7305ca4292ee50f
-@
-app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
