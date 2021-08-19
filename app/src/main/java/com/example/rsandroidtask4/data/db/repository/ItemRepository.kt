@@ -18,4 +18,8 @@ class ItemRepository(private val itemDao: ItemDao) {
     suspend fun insertItemInDb(item: Item) = withContext(Dispatchers.IO) {
         itemDao.insertItemInDb(item)
     }
+
+    suspend fun deleteItemFromDb(item: Item) = withContext(Dispatchers.IO){
+        itemDao.deleteItemFromDb(item)
+    }
 }

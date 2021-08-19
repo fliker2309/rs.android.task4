@@ -7,11 +7,3 @@ P
 Lapp/src/main/java/com/example/rsandroidtask4/ui/edititem/EditItemFragment.kt,4\f\4f19637773d4b6d522937d90a7305ca4292ee50f
 @
 app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
-s
-Capp/src/main/java/com/example/rsandroidtask4/data/db/entity/Item.kt,6\1\61146098f8508e10f41437e83614467bfe9caba5
-t
-Dapp/src/main/java/com/example/rsandroidtask4/data/model/ItemModel.kt,d\7\d78a444a4125ac7f7d95a627143dbcc0c5e11c36
-}
-Mapp/src/main/java/com/example/rsandroidtask4/data/db/database/ItemDatabase.kt,2\8\28837ee55e035649f6b80f6cef473a09bf1a68f2
-Œ
-\app/src/main/java/com/example/rsandroidtask4/presentation/additem/AddItemViewModelFactory.kt,9\8\981686f4d9e1dfe1de7b5108e960edaab77b8464
