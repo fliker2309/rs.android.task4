@@ -13,7 +13,5 @@ t
 Dapp/src/main/java/com/example/rsandroidtask4/data/model/ItemModel.kt,d\7\d78a444a4125ac7f7d95a627143dbcc0c5e11c36
 }
 Mapp/src/main/java/com/example/rsandroidtask4/data/db/database/ItemDatabase.kt,2\8\28837ee55e035649f6b80f6cef473a09bf1a68f2
-ˆ
-Xapp/src/main/java/com/example/rsandroidtask4/ui/itemlist/adapter/ItemDiffUtilCallback.kt,b\d\bd0b171ca777963cef70e1b36be3624c56ef692c
 Œ
 \app/src/main/java/com/example/rsandroidtask4/presentation/additem/AddItemViewModelFactory.kt,9\8\981686f4d9e1dfe1de7b5108e960edaab77b8464
