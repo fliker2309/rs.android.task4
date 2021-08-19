@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Table for you</string>
     <string name="filter">filter</string>
+    <string name="sort_by">Sort by:</string>
+    <string name="name">Name</string>
+    <string name="age">Age</string>
+    <string name="breed">Breed</string>
+    <string name="add_new_item">add_new_item</string>
 </resources>
