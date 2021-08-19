@@ -2,7 +2,6 @@ package com.example.rsandroidtask4.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.rsandroidtask4.R
 import com.example.rsandroidtask4.databinding.ActivityMainBinding
 import com.example.rsandroidtask4.ui.addnewitem.AddNewItemFragment
 import com.example.rsandroidtask4.ui.itemlist.ItemListFragment
