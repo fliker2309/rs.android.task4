@@ -6,4 +6,7 @@
     <string name="age">Age</string>
     <string name="breed">Breed</string>
     <string name="add_new_item">add_new_item</string>
+    <string name="add_to_table">Add to table</string>
+    <string name="back">Back</string>
+
 </resources>

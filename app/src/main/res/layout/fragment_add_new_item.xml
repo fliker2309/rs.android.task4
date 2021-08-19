@@ -1,10 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:fitsSystemWindows="true"
+            app:navigationContentDescription="Back to the previous question"
+            app:navigationIcon="@drawable/ic_arrow"
+            app:title="Add new item" />
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_input_layout_name"
@@ -14,21 +31,22 @@
         android:layout_marginStart="@dimen/main_dimen"
         android:layout_marginTop="@dimen/main_dimen"
         android:layout_marginEnd="@dimen/main_dimen"
-        android:hint="Name"
+        android:hint="@string/name"
+        app:counterEnabled="true"
+        app:counterMaxLength="25"
         app:endIconMode="clear_text"
         app:helperText="Required*"
         app:helperTextTextColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/text_input_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:maxLength="25"
-            >
+            android:maxLength="25">
 
         </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
@@ -41,9 +59,11 @@
         android:layout_marginStart="@dimen/main_dimen"
         android:layout_marginTop="@dimen/main_dimen"
         android:layout_marginEnd="@dimen/main_dimen"
-        android:hint="Age"
+        android:hint="@string/age"
         app:endIconMode="clear_text"
         app:helperText="Required*"
+        app:counterEnabled="true"
+        app:counterMaxLength="10"
         app:helperTextTextColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,7 +74,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:maxLength="5">
+            android:maxLength="11">
 
         </com.google.android.material.textfield.TextInputEditText>
 
@@ -68,9 +88,11 @@
         android:layout_marginStart="@dimen/main_dimen"
         android:layout_marginTop="@dimen/main_dimen"
         android:layout_marginEnd="@dimen/main_dimen"
-        android:hint="Breed"
+        android:hint="@string/breed"
         app:endIconMode="clear_text"
         app:helperText="Required*"
+        app:counterEnabled="true"
+        app:counterMaxLength="42"
         app:helperTextTextColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -79,7 +101,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/text_input_breed"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLength="42">
 
         </com.google.android.material.textfield.TextInputEditText>
 
@@ -100,7 +124,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/main_dimen"
         android:layout_marginTop="@dimen/main_dimen"
-        android:text="back"
+        android:text="@string/back"
         app:layout_constraintBottom_toTopOf="@id/margin_bottom_guideline"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -111,7 +135,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/main_dimen"
-        android:text="Add to table"
+        android:text="@string/add_to_table"
         app:layout_constraintBottom_toTopOf="@id/margin_bottom_guideline"
         app:layout_constraintEnd_toEndOf="parent">
 
