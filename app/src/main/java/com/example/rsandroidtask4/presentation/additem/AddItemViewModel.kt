@@ -1,3 +1,4 @@
+/*
 package com.example.rsandroidtask4.presentation.additem
 
 import androidx.lifecycle.LiveData
@@ -14,9 +15,11 @@ class AddItemViewModel (private val repository: ItemRepository): ViewModel() {
     val itemLiveData: LiveData<Item> = _mutableItemLiveData
 
 
-   /* fun addItem(item: Item){
+   */
+/* fun addItem(item: Item){
         viewModelScope.launch {
             _mutableItemLiveData.value = repository.insertItemInDb(item)
         }
-    }*/
-}
+    }*//*
+
+}*/

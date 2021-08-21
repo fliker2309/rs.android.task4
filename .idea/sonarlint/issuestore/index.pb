@@ -13,12 +13,6 @@ Zapp/src/main/java/com/example/rsandroidtask4/ui/navigationinterface/NavigationI
 Papp/src/main/java/com/example/rsandroidtask4/ui/addnewitem/AddNewItemFragment.kt,4\e\4ed0c2736f8801d6e89d7c001d742260ff5c7228
 t
 Dapp/src/main/java/com/example/rsandroidtask4/data/model/ItemModel.kt,d\7\d78a444a4125ac7f7d95a627143dbcc0c5e11c36
-Ž
-^app/src/main/java/com/example/rsandroidtask4/presentation/itemList/ItemListViewModelFactory.kt,d\1\d11dfd7ab902e9251f1844032d6bc5f1d038f8be
-…
-Uapp/src/main/java/com/example/rsandroidtask4/presentation/additem/AddItemViewModel.kt,a\c\ac14e7d4cba981fc520e9a38452612e3d4a8f5b0
-Œ
-\app/src/main/java/com/example/rsandroidtask4/presentation/additem/AddItemViewModelFactory.kt,9\8\981686f4d9e1dfe1de7b5108e960edaab77b8464
 @
 app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
 €

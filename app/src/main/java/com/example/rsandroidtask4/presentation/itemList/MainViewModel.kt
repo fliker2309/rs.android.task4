@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.shareIn
 
 @InternalCoroutinesApi
-class ItemListViewModel : ViewModel() {
+class MainViewModel : ViewModel() {
 
     private val repository: ItemRepository by locateLazy()
     val items = repository.readItemsFromDb().asLiveDataFlow()

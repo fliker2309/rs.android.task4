@@ -14,8 +14,8 @@ import com.example.rsandroidtask4.R
 import com.example.rsandroidtask4.data.db.database.ItemDatabase
 import com.example.rsandroidtask4.data.db.repository.ItemRepository
 import com.example.rsandroidtask4.databinding.ItemListBinding
-import com.example.rsandroidtask4.presentation.itemList.ItemListViewModel
-import com.example.rsandroidtask4.presentation.itemList.ItemListViewModelFactory
+import com.example.rsandroidtask4.presentation.itemList.MainViewModel
+import com.example.rsandroidtask4.presentation.itemList.MainViewModelFactory
 import com.example.rsandroidtask4.ui.itemlist.adapter.ItemAdapter
 import com.example.rsandroidtask4.ui.itemlist.adapter.SwipeGesture
 import com.example.rsandroidtask4.ui.navigationinterface.NavigationInterface
@@ -31,8 +31,8 @@ class ItemListFragment : Fragment() {
     }
 
     @InternalCoroutinesApi
-    private val itemListViewModel: ItemListViewModel by viewModels {
-        ItemListViewModelFactory(repository)
+    private val mainViewModel: MainViewModel by viewModels {
+        MainViewModelFactory(repository)
     }
 
     private var _binding: ItemListBinding? = null
@@ -60,7 +60,7 @@ class ItemListFragment : Fragment() {
         setUpRecycler()
 
         //TODO исправить метод updateItems на setItems!!!
-        itemListViewModel.itemListLiveData.observe(viewLifecycleOwner) {
+        mainViewModel.itemListLiveData.observe(viewLifecycleOwner) {
             (binding.recycler.adapter as ItemAdapter).updateItems(it)
         }
 
