@@ -122,7 +122,6 @@ class ItemListFragment : Fragment() {
         itemAdapter = ItemAdapter()
         val swipeGesture = object : SwipeGesture(requireContext()) {
 
-
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 when (direction) {
                     ItemTouchHelper.LEFT -> {
