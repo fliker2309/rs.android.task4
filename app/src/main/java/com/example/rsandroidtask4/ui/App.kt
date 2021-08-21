@@ -10,7 +10,6 @@ import kotlinx.coroutines.InternalCoroutinesApi
 
 class App : Application() {
 
-
     @InternalCoroutinesApi
     override fun onCreate() {
         super.onCreate()

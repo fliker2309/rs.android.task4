@@ -1,33 +1,38 @@
 package com.example.rsandroidtask4.presentation.itemList
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.rsandroidtask4.data.db.entity.Item
 import com.example.rsandroidtask4.data.db.repository.ItemRepository
+import com.example.rsandroidtask4.data.locator.ServiceLocator.locateLazy
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.shareIn
 
 @InternalCoroutinesApi
-class ItemListViewModel(private val repository: ItemRepository) : ViewModel() {
+class ItemListViewModel : ViewModel() {
 
-    private var _mutableItemListLiveData: MutableLiveData<List<Item>> =
-        MutableLiveData(emptyList())
-    val itemListLiveData: LiveData<List<Item>>
-        get() = _mutableItemListLiveData
+    private val repository: ItemRepository by locateLazy()
+    val items = repository.readItemsFromDb().asLiveDataFlow()
 
-    private var _loadingLiveData: MutableLiveData<Boolean> = MutableLiveData()
-    val loadingLiveData: LiveData<Boolean>
-        get() = _loadingLiveData
-
-    init {
-        viewModelScope.launch {
-            _mutableItemListLiveData.value = repository.readItemsFromDb()
-        }
+    fun insertIntoDb(item: Item) {
+        viewModelScope.launch { repository.insertItemInDb(createItem(item)) }
     }
 
+    fun deleteFromDb(item: Item) {
+        viewModelScope.launch { repository.deleteItemFromDb(item) }
+    }
 
+    private fun createItem(item: Item) = Item(
+        id = item.id,
+        name = item.name,
+        age = item.age,
+        breed = item.breed
 
+    )
+    private fun <T> Flow<T>.asLiveDataFlow() =
+        shareIn(viewModelScope, SharingStarted.Eagerly, replay = 1)
 
 }
