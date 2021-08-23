@@ -32,13 +32,16 @@
         app:layout_constraintGuide_end="32dp" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler"
-        android:layout_width="match_parent"
+        android:id="@+id/item_list"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="64dp"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/margin_bottom_guideline_main_page"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appBarLayout" />
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout"
+        tools:listitem="@layout/view_holder_item"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_new_item_floating_button"

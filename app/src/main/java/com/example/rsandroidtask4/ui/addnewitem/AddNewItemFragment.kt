@@ -5,18 +5,26 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import com.example.rsandroidtask4.data.db.entity.Item
 import com.example.rsandroidtask4.databinding.FragmentAddNewItemBinding
+import com.example.rsandroidtask4.databinding.ItemListBinding
+import com.example.rsandroidtask4.presentation.additem.AddItemViewModel
+import com.example.rsandroidtask4.presentation.additem.AddItemViewModelFactory
 import com.example.rsandroidtask4.ui.navigationinterface.NavigationInterface
 
 class AddNewItemFragment : Fragment() {
 
-    private var _binding: FragmentAddNewItemBinding? = null
-    private val binding: FragmentAddNewItemBinding
-        get() = _binding!!
+    private var binding: FragmentAddNewItemBinding? = null
 
     private var backToList: NavigationInterface? = null
+
+    private val viewModel: AddItemViewModel by viewModels {
+        AddItemViewModelFactory()
+    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -28,17 +36,14 @@ class AddNewItemFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentAddNewItemBinding.inflate(inflater, container, false)
+    ): View =
+        FragmentAddNewItemBinding.inflate(inflater, container, false).also { binding = it }.root
 
-        initListeners()
-
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initListeners()
         val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 onBackClickListener()
@@ -55,25 +60,51 @@ class AddNewItemFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        _binding = null
+        binding = null
     }
 
+    private fun <T> views(block: FragmentAddNewItemBinding.() -> T): T? = binding?.block()
 
     private fun initListeners() {
-        binding.apply {
+        views {
             backButton.setOnClickListener {
                 onBackClickListener()
             }
             toolbar.setOnClickListener {
                 onBackClickListener()
             }
+            addToTableButton.setOnClickListener {
+                saveItem()
+            }
+        }
+
+    }
+
+    private fun saveItem(){
+        views {
+
+            val inputAge = textInputAge.text.toString().takeIf { it.isNotBlank() } ?: return@views
+            val inputName = textInputName.text.toString().takeIf { it.isNotBlank() } ?: return@views
+            val inputBreed =
+                textInputBreed.text.toString().takeIf { it.isNotBlank() } ?: return@views
+            val savedItem = Item(id, name = inputName, age = inputAge, breed = inputBreed)
+
+            viewModel.addNewItem(savedItem)
+
+           /* textInputAge.setText("")
+            textInputName.setText("")
+            textInputBreed.setText("")*/
+          /*  backToList?.backToItemList()*/
+            Toast.makeText(context,"Item successful added", Toast.LENGTH_LONG).show()
+
+
+
         }
     }
 
     private fun onBackClickListener() {
         backToList?.backToItemList()
     }
-
 
     companion object {
         fun newInstance() = AddNewItemFragment()

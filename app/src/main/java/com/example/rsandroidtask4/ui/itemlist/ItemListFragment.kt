@@ -7,43 +7,35 @@ import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rsandroidtask4.R
 import com.example.rsandroidtask4.data.db.database.ItemDatabase
+import com.example.rsandroidtask4.data.db.entity.Item
 import com.example.rsandroidtask4.data.db.repository.ItemRepository
 import com.example.rsandroidtask4.databinding.ItemListBinding
-import com.example.rsandroidtask4.presentation.itemList.MainViewModel
-import com.example.rsandroidtask4.presentation.itemList.MainViewModelFactory
+import com.example.rsandroidtask4.databinding.ViewHolderItemBinding
+import com.example.rsandroidtask4.presentation.itemList.ItemListViewModel
+import com.example.rsandroidtask4.presentation.itemList.ItemListViewModelFactory
 import com.example.rsandroidtask4.ui.itemlist.adapter.ItemAdapter
 import com.example.rsandroidtask4.ui.itemlist.adapter.SwipeGesture
 import com.example.rsandroidtask4.ui.navigationinterface.NavigationInterface
 import kotlinx.coroutines.InternalCoroutinesApi
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
 
 class ItemListFragment : Fragment() {
 
     @InternalCoroutinesApi
-    private val repository: ItemRepository by lazy {
-        val db = ItemDatabase.getDatabase(this.requireContext().applicationContext)
-        ItemRepository(db.itemDao())
+    private val viewModel: ItemListViewModel by viewModels {
+        ItemListViewModelFactory()
     }
-
-    @InternalCoroutinesApi
-    private val mainViewModel: MainViewModel by viewModels {
-        MainViewModelFactory(repository)
-    }
-
-
-
-    private var _binding: ItemListBinding? = null
-    private val binding: ItemListBinding
-        get() = _binding!!
-
+    private var binding: ItemListBinding? = null
     private var addNewItem: NavigationInterface? = null
-    private var itemAdapter: ItemAdapter? = null
-    private lateinit var itemRecyclerView: RecyclerView
+    private val adapter: ItemAdapter? get() = views { itemList.adapter as? ItemAdapter }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -56,24 +48,28 @@ class ItemListFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        _binding = ItemListBinding.inflate(inflater, container, false)
+    ): View = ItemListBinding.inflate(inflater).also { binding = it }.root
 
-        setUpRecycler()
 
-        //TODO исправить метод updateItems на setItems!!!
-        mainViewModel.itemListLiveData.observe(viewLifecycleOwner) {
-            (binding.recycler.adapter as ItemAdapter).updateItems(it)
-        }
-
-        return binding.root
-    }
-
+    @InternalCoroutinesApi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        views {
+            itemList.adapter = ItemAdapter()
+            addNewItemFloatingButton.setOnClickListener {
+                addNewItem?.openAddItemFragment()
+            }
+        }
+        viewModel.items.onEach(::renderItems).launchIn(lifecycleScope)
         onFloatingButtonClickListener()
     }
+
+    private fun renderItems(items: List<Item>) {
+        adapter?.submitList(items)
+    }
+
+    private fun <T> views(block: ItemListBinding.() -> T): T? = binding?.block()
 
 
     override fun onDetach() {
@@ -83,7 +79,7 @@ class ItemListFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        _binding = null
+        binding = null
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -120,34 +116,8 @@ class ItemListFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun setUpRecycler() {
-        itemAdapter = ItemAdapter()
-        val swipeGesture = object : SwipeGesture(requireContext()) {
-
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                when (direction) {
-                    ItemTouchHelper.LEFT -> {
-                        itemAdapter!!.deleteItem(viewHolder.adapterPosition)
-                    }
-                    ItemTouchHelper.RIGHT -> {
-                        itemAdapter!!.deleteItem(viewHolder.adapterPosition)
-                    }
-                }
-            }
-        }
-        val touchHelper = ItemTouchHelper(swipeGesture)
-        touchHelper.attachToRecyclerView(itemRecyclerView)
-        binding.recycler.apply {
-            layoutManager = LinearLayoutManager(context)
-            adapter = itemAdapter
-        }
-        itemRecyclerView = binding.recycler
-
-    }
-
-
     private fun onFloatingButtonClickListener() {
-        binding.addNewItemFloatingButton.setOnClickListener {
+        binding?.addNewItemFloatingButton?.setOnClickListener {
             addNewItem?.openAddItemFragment()
         }
     }

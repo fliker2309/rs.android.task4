@@ -3,7 +3,7 @@ package com.example.rsandroidtask4.data.locator
 import kotlin.reflect.KClass
 
 object ServiceLocator {
-    private val instances = mutableMapOf<KClass<*>, Any>()
+    private val instances = mutableMapOf<KClass <*>, Any>()
     inline fun <reified T : Any> register(instance: T) = register(T::class, instance)
     fun <T : Any> register(kClass: KClass<T>, instance: T) {
         instances[kClass] = instance

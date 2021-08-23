@@ -15,7 +15,7 @@ class App : Application() {
         super.onCreate()
 
         ServiceLocator.register<Context>(this)
-        ServiceLocator.register<ItemDatabase>(ItemDatabase.getDatabase(locate()))
+        ServiceLocator.register(ItemDatabase.getDatabase(locate()))
         ServiceLocator.register(ItemRepository(locate()))
     }
 }

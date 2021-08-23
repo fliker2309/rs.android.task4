@@ -13,19 +13,23 @@ class ItemViewHolder(
     var item: Item? = null
         private set
 
+    fun bind(item: Item) {
+        this.item = item
+
+        views {
+            ageTv.text = item.age.toString()
+            nameTv.text = item.name
+            breedTv.text = item.breed
+        }
+    }
+
+    private fun <T> views(block: ViewHolderItemBinding.() -> T): T? = binding.block()
+
     companion object {
         fun create(parent: ViewGroup): ItemViewHolder {
             val inflater = LayoutInflater.from(parent.context)
             val binding = ViewHolderItemBinding.inflate(inflater, parent, false)
             return ItemViewHolder(binding)
-        }
-    }
-
-    fun bind(item: Item) {
-        binding.apply {
-            ageTv.text = item.age.toString()
-            nameTv.text = item.name
-            breedTv.text = item.breed
         }
     }
 }

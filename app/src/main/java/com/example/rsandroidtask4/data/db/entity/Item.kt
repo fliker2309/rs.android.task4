@@ -14,7 +14,7 @@ data class Item(
     val name: String,
 
     @ColumnInfo(name = "age")
-    val age: Int,
+    val age: String,
 
     @ColumnInfo(name = "breed")
     val breed: String
