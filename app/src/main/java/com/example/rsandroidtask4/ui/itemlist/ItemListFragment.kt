@@ -35,7 +35,7 @@ class ItemListFragment : Fragment() {
     }
     private var binding: ItemListBinding? = null
     private var addNewItem: NavigationInterface? = null
-    private val adapter: ItemAdapter? get() = views { itemList.adapter as? ItemAdapter }
+    private val adapter: ItemAdapter? get() = views { itemListRecycler.adapter as? ItemAdapter }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -56,12 +56,14 @@ class ItemListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         views {
-            itemList.adapter = ItemAdapter()
+            itemListRecycler.adapter = ItemAdapter()
+            itemListRecycler.layoutManager = LinearLayoutManager(context)
             addNewItemFloatingButton.setOnClickListener {
                 addNewItem?.openAddItemFragment()
             }
         }
         viewModel.items.onEach(::renderItems).launchIn(lifecycleScope)
+
         onFloatingButtonClickListener()
     }
 
@@ -116,6 +118,9 @@ class ItemListFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
+    private fun setUpRecycler(){
+
+    }
     private fun onFloatingButtonClickListener() {
         binding?.addNewItemFloatingButton?.setOnClickListener {
             addNewItem?.openAddItemFragment()

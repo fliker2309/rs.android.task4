@@ -9,7 +9,7 @@ import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.internal.synchronized
 import com.example.rsandroidtask4.data.db.entity.Item
 
-@Database(entities = [Item::class], version = 1, exportSchema = false)
+@Database(entities = [Item::class], version = 2, exportSchema = false)
 
 abstract class ItemDatabase : RoomDatabase() {
 

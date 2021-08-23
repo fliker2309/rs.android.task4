@@ -17,7 +17,7 @@ class ItemViewHolder(
         this.item = item
 
         views {
-            ageTv.text = item.age.toString()
+            ageTv.text = item.age
             nameTv.text = item.name
             breedTv.text = item.breed
         }

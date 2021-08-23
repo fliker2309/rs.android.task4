@@ -80,25 +80,22 @@ class AddNewItemFragment : Fragment() {
 
     }
 
-    private fun saveItem(){
+    private fun saveItem() {
         views {
 
             val inputAge = textInputAge.text.toString().takeIf { it.isNotBlank() } ?: return@views
             val inputName = textInputName.text.toString().takeIf { it.isNotBlank() } ?: return@views
             val inputBreed =
                 textInputBreed.text.toString().takeIf { it.isNotBlank() } ?: return@views
-            val savedItem = Item(id, name = inputName, age = inputAge, breed = inputBreed)
+            val savedItem = Item(name = inputName, age = inputAge, breed = inputBreed)
 
             viewModel.addNewItem(savedItem)
 
-           /* textInputAge.setText("")
+            textInputAge.setText("")
             textInputName.setText("")
-            textInputBreed.setText("")*/
-          /*  backToList?.backToItemList()*/
-            Toast.makeText(context,"Item successful added", Toast.LENGTH_LONG).show()
-
-
-
+            textInputBreed.setText("")
+            backToList?.backToItemList()
+            Toast.makeText(context, "Item successful added", Toast.LENGTH_LONG).show()
         }
     }
 
