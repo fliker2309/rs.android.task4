@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"  >
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -17,11 +17,12 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:fitsSystemWindows="true"
-            app:navigationContentDescription="Back to the previous question"
+            app:navigationContentDescription="Back to the item list"
             app:navigationIcon="@drawable/ic_arrow"
             app:title="Add new item" />
 
     </com.google.android.material.appbar.AppBarLayout>
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_input_layout_name"
@@ -33,7 +34,7 @@
         android:layout_marginEnd="@dimen/main_dimen"
         android:hint="@string/name"
         app:counterEnabled="true"
-        app:counterMaxLength="25"
+        app:counterMaxLength="10"
         app:endIconMode="clear_text"
         app:helperText="Required*"
         app:helperTextTextColor="@color/red"
@@ -46,7 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:maxLength="25">
+            android:maxLength="10">
 
         </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
@@ -60,10 +61,10 @@
         android:layout_marginTop="@dimen/main_dimen"
         android:layout_marginEnd="@dimen/main_dimen"
         android:hint="@string/age"
+        app:counterEnabled="true"
+        app:counterMaxLength="4"
         app:endIconMode="clear_text"
         app:helperText="Required*"
-        app:counterEnabled="true"
-        app:counterMaxLength="10"
         app:helperTextTextColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,7 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:maxLength="11">
+            android:maxLength="4">
 
         </com.google.android.material.textfield.TextInputEditText>
 
@@ -89,10 +90,10 @@
         android:layout_marginTop="@dimen/main_dimen"
         android:layout_marginEnd="@dimen/main_dimen"
         android:hint="@string/breed"
+        app:counterEnabled="true"
+        app:counterMaxLength="15"
         app:endIconMode="clear_text"
         app:helperText="Required*"
-        app:counterEnabled="true"
-        app:counterMaxLength="42"
         app:helperTextTextColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -103,7 +104,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:maxLength="42">
+            android:maxLength="15">
 
         </com.google.android.material.textfield.TextInputEditText>
 
@@ -114,19 +115,19 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_end="@dimen/main_dimen">
+        app:layout_constraintGuide_end="64dp">
 
     </androidx.constraintlayout.widget.Guideline>
+
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/back_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/main_dimen"
-        android:layout_marginTop="@dimen/main_dimen"
         android:text="@string/back"
-        app:layout_constraintBottom_toTopOf="@id/margin_bottom_guideline"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/margin_bottom_guideline">
 
     </com.google.android.material.button.MaterialButton>
 
@@ -135,10 +136,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/main_dimen"
-        android:text="@string/add_to_table"
-        app:layout_constraintBottom_toTopOf="@id/margin_bottom_guideline"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:text="@string/save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/margin_bottom_guideline">
 
     </com.google.android.material.button.MaterialButton>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
+

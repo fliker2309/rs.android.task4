@@ -19,7 +19,5 @@ Papp/src/main/java/com/example/rsandroidtask4/ui/itemlist/adapter/SwipeGesture.k
 Kapp/src/main/java/com/example/rsandroidtask4/data/locator/ServiceLocator.kt,8\c\8c334437c7aa42190dfa612f16c6284031988642
 f
 6app/src/main/java/com/example/rsandroidtask4/ui/App.kt,3\d\3dc7ed8c959e86136015bdbc7cf68d8a6461f0ea
-P
- app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
 Ž
 ^app/src/main/java/com/example/rsandroidtask4/presentation/itemList/ItemListViewModelFactory.kt,d\1\d11dfd7ab902e9251f1844032d6bc5f1d038f8be
