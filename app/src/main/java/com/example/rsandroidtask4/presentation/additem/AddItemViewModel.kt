@@ -1,4 +1,3 @@
-/*
 package com.example.rsandroidtask4.presentation.additem
 
 import androidx.lifecycle.LiveData
@@ -7,19 +6,22 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.rsandroidtask4.data.db.entity.Item
 import com.example.rsandroidtask4.data.db.repository.ItemRepository
+import com.example.rsandroidtask4.data.locator.ServiceLocator.locateLazy
 import kotlinx.coroutines.launch
 
-class AddItemViewModel (private val repository: ItemRepository): ViewModel() {
+class AddItemViewModel : ViewModel() {
 
-    private var _mutableItemLiveData: MutableLiveData<Item> = MutableLiveData<Item>()
-    val itemLiveData: LiveData<Item> = _mutableItemLiveData
+    private val repository: ItemRepository by locateLazy()
 
+    fun addNewItem(item: Item) {
+        viewModelScope.launch { repository.insertItemInDb(createItem(item)) }
+    }
 
-   */
-/* fun addItem(item: Item){
-        viewModelScope.launch {
-            _mutableItemLiveData.value = repository.insertItemInDb(item)
-        }
-    }*//*
+    private fun createItem(item: Item) = Item(
+        id = item.id,
+        name = item.name,
+        age = item.age,
+        breed = item.breed
 
-}*/
+    )
+}
