@@ -35,6 +35,8 @@ class ItemListFragment : Fragment() {
         MainViewModelFactory(repository)
     }
 
+
+
     private var _binding: ItemListBinding? = null
     private val binding: ItemListBinding
         get() = _binding!!

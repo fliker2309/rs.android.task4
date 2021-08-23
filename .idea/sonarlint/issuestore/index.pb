@@ -11,9 +11,9 @@ Napp/src/main/java/com/example/rsandroidtask4/ui/sortinterface/SortInterface.kt
 Zapp/src/main/java/com/example/rsandroidtask4/ui/navigationinterface/NavigationInterface.kt,f\0\f06aba0eba9a8eebdee0a66f9482a5dff7844045
 €
 Papp/src/main/java/com/example/rsandroidtask4/ui/addnewitem/AddNewItemFragment.kt,4\e\4ed0c2736f8801d6e89d7c001d742260ff5c7228
-t
-Dapp/src/main/java/com/example/rsandroidtask4/data/model/ItemModel.kt,d\7\d78a444a4125ac7f7d95a627143dbcc0c5e11c36
 @
 app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
-€
-Papp/src/main/java/com/example/rsandroidtask4/ui/itemlist/adapter/SwipeGesture.kt,3\1\31b026359cca5ba44500993dcbcd66e6afbc96b6
+{
+Kapp/src/main/java/com/example/rsandroidtask4/data/locator/ServiceLocator.kt,8\c\8c334437c7aa42190dfa612f16c6284031988642
+f
+6app/src/main/java/com/example/rsandroidtask4/ui/App.kt,3\d\3dc7ed8c959e86136015bdbc7cf68d8a6461f0ea
