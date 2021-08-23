@@ -12,26 +12,16 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.shareIn
 
 @InternalCoroutinesApi
-class MainViewModel : ViewModel() {
+class ItemListViewModel : ViewModel() {
 
     private val repository: ItemRepository by locateLazy()
     val items = repository.readItemsFromDb().asLiveDataFlow()
-
-    fun insertIntoDb(item: Item) {
-        viewModelScope.launch { repository.insertItemInDb(createItem(item)) }
-    }
 
     fun deleteFromDb(item: Item) {
         viewModelScope.launch { repository.deleteItemFromDb(item) }
     }
 
-    private fun createItem(item: Item) = Item(
-        id = item.id,
-        name = item.name,
-        age = item.age,
-        breed = item.breed
-
-    )
+    //для отдачи последнего состояния если активити было уничтожено
     private fun <T> Flow<T>.asLiveDataFlow() =
         shareIn(viewModelScope, SharingStarted.Eagerly, replay = 1)
 
