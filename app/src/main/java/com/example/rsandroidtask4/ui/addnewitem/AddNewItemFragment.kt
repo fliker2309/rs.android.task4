@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.rsandroidtask4.data.db.entity.Item
 import com.example.rsandroidtask4.databinding.FragmentAddNewItemBinding
-import com.example.rsandroidtask4.databinding.ItemListBinding
 import com.example.rsandroidtask4.presentation.additem.AddItemViewModel
 import com.example.rsandroidtask4.presentation.additem.AddItemViewModelFactory
 import com.example.rsandroidtask4.ui.navigationinterface.NavigationInterface
@@ -77,23 +76,19 @@ class AddNewItemFragment : Fragment() {
                 saveItem()
             }
         }
-
     }
 
     private fun saveItem() {
         views {
 
             val inputAge = textInputAge.text.toString().takeIf { it.isNotBlank() } ?: return@views
+
             val inputName = textInputName.text.toString().takeIf { it.isNotBlank() } ?: return@views
             val inputBreed =
                 textInputBreed.text.toString().takeIf { it.isNotBlank() } ?: return@views
             val savedItem = Item(name = inputName, age = inputAge, breed = inputBreed)
 
             viewModel.addNewItem(savedItem)
-
-            textInputAge.setText("")
-            textInputName.setText("")
-            textInputBreed.setText("")
             backToList?.backToItemList()
             Toast.makeText(context, "Item successful added", Toast.LENGTH_LONG).show()
         }

@@ -9,5 +9,6 @@
     <string name="add_to_table">Add to table</string>
     <string name="back">Back</string>
     <string name="save">save</string>
+    <string name="clear_table">Clear table</string>
 
 </resources>

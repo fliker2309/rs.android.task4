@@ -32,13 +32,7 @@ P
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
-s
-Capp/src/main/java/com/example/rsandroidtask4/data/db/dao/ItemDao.kt,1\8\18c59e6cd3b35a9f9ff7fcc5e30d22d72f458eb6
-Å
-Qapp/src/main/java/com/example/rsandroidtask4/data/db/repository/ItemRepository.kt,8\5\853b980637707ccdcb98e20901ea16f391a973a8
 à
 Xapp/src/main/java/com/example/rsandroidtask4/ui/itemlist/adapter/ItemDiffUtilCallback.kt,b\d\bd0b171ca777963cef70e1b36be3624c56ef692c
 Ç
 Rapp/src/main/java/com/example/rsandroidtask4/ui/itemlist/adapter/ItemViewHolder.kt,f\6\f6a29838a8175384125dea549dfb7d4d09f92c24
-Ä
-Papp/src/main/java/com/example/rsandroidtask4/ui/addnewitem/AddNewItemFragment.kt,4\e\4ed0c2736f8801d6e89d7c001d742260ff5c7228

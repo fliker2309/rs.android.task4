@@ -16,6 +16,10 @@ interface ItemDao {
     @Delete
     suspend fun deleteItemFromDb(item: Item)
 
+    @Query("DELETE FROM items")
+    suspend fun deleteAllItems()
+
+
     @Query("SELECT * FROM items ORDER BY age")
     fun sortItemsByAge(): Flow<List<Item>>
 

@@ -32,6 +32,9 @@ class ItemListViewModel : ViewModel() {
     fun sortItemsByBreed() {
        /* val breedSortedItems =*/repository.sortItemsByBreed().asLiveDataFlow()
     }
+    fun deleteAllItems(){
+        viewModelScope.launch { repository.deleteAllItems() }
+    }
 
     //для отдачи последнего состояния если активити было уничтожено
     private fun <T> Flow<T>.asLiveDataFlow() =

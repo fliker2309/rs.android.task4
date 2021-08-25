@@ -8,15 +8,15 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.ItemTouchHelper
+
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rsandroidtask4.R
-import com.example.rsandroidtask4.data.db.database.ItemDatabase
+
 import com.example.rsandroidtask4.data.db.entity.Item
-import com.example.rsandroidtask4.data.db.repository.ItemRepository
+
 import com.example.rsandroidtask4.databinding.ItemListBinding
-import com.example.rsandroidtask4.databinding.ViewHolderItemBinding
+
 import com.example.rsandroidtask4.presentation.itemList.ItemListViewModel
 import com.example.rsandroidtask4.presentation.itemList.ItemListViewModelFactory
 import com.example.rsandroidtask4.ui.itemlist.adapter.ItemAdapter
@@ -52,6 +52,7 @@ class ItemListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setHasOptionsMenu(true)
         views {
             itemListRecycler.adapter = ItemAdapter()
             itemListRecycler.layoutManager = LinearLayoutManager(context)
@@ -63,6 +64,7 @@ class ItemListFragment : Fragment() {
         viewModel.items.onEach(::renderItems).launchIn(lifecycleScope)
 
         onFloatingButtonClickListener()
+        onClearTableButtonListener()
     }
 
 
@@ -83,16 +85,21 @@ class ItemListFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.sort_by_name) {
-            Toast.makeText(
-                requireContext(),
-                "You clicked Sort by name",
-                Toast.LENGTH_LONG
-            ).show()
-            sortItemsByName()
+        when (item.itemId) {
+            R.id.sort_by_name -> Log.d(TAG, "name was clicked")
+            R.id.sort_by_breed -> Log.d(TAG, "breed was clicked")
+            R.id.sort_by_age -> Log.d(TAG, "age was clicked")
         }
 
+
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun onClearTableButtonListener() {
+        binding?.clearTableButton?.setOnClickListener {
+            viewModel.deleteAllItems()
+            Log.d(TAG, "delete all was clicked")
+        }
     }
 
     private fun onFloatingButtonClickListener() {
@@ -125,3 +132,4 @@ class ItemListFragment : Fragment() {
     }
 
 }
+

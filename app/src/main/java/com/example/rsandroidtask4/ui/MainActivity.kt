@@ -8,8 +8,6 @@ import com.example.rsandroidtask4.ui.itemlist.ItemListFragment
 import com.example.rsandroidtask4.ui.navigationinterface.NavigationInterface
 import kotlinx.coroutines.InternalCoroutinesApi
 
-private const val TAG = "myLog"
-
 class MainActivity : AppCompatActivity(), NavigationInterface {
 
     private lateinit var binding: ActivityMainBinding
@@ -41,6 +39,5 @@ class MainActivity : AppCompatActivity(), NavigationInterface {
     override fun backToItemList() {
         openItemListFragment()
     }
-
 
 }
