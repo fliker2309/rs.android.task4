@@ -26,10 +26,9 @@ import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
-
+@InternalCoroutinesApi
 class ItemListFragment : Fragment() {
 
-    @InternalCoroutinesApi
     private val viewModel: ItemListViewModel by viewModels {
         ItemListViewModelFactory()
     }
@@ -43,7 +42,6 @@ class ItemListFragment : Fragment() {
             addNewItem = context
     }
 
-    @InternalCoroutinesApi
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -51,7 +49,6 @@ class ItemListFragment : Fragment() {
     ): View = ItemListBinding.inflate(inflater).also { binding = it }.root
 
 
-    @InternalCoroutinesApi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -62,16 +59,11 @@ class ItemListFragment : Fragment() {
                 addNewItem?.openAddItemFragment()
             }
         }
+
         viewModel.items.onEach(::renderItems).launchIn(lifecycleScope)
 
         onFloatingButtonClickListener()
     }
-
-    private fun renderItems(items: List<Item>) {
-        adapter?.submitList(items)
-    }
-
-    private fun <T> views(block: ItemListBinding.() -> T): T? = binding?.block()
 
 
     override fun onDetach() {
@@ -97,34 +89,34 @@ class ItemListFragment : Fragment() {
                 "You clicked Sort by name",
                 Toast.LENGTH_LONG
             ).show()
+            sortItemsByName()
         }
-        /*  when (item.itemId) {
-              R.id.sort_by_name -> Log.d(TAG,"clicked sort by name") *//*Toast.makeText(
-                context,
-                "You clicked Sort by name",
-                Toast.LENGTH_LONG
-            ).show()*//*
-            R.id.sort_by_age -> Toast.makeText(
-                context,
-                "You clicked Sort by age",
-                Toast.LENGTH_LONG
-            ).show()
-            R.id.sort_by_breed -> Toast.makeText(
-                context,
-                "You clicked Sort by breed",
-                Toast.LENGTH_LONG
-            ).show()
-        }*/
+
         return super.onOptionsItemSelected(item)
     }
 
-    private fun setUpRecycler(){
-
-    }
     private fun onFloatingButtonClickListener() {
         binding?.addNewItemFloatingButton?.setOnClickListener {
             addNewItem?.openAddItemFragment()
         }
+    }
+
+    private fun renderItems(items: List<Item>) {
+        adapter?.submitList(items)
+    }
+
+    private fun <T> views(block: ItemListBinding.() -> T): T? = binding?.block()
+
+    private fun sortItemsByAge() {
+        viewModel.sortItemsByAge()
+    }
+
+    private fun sortItemsByName() {
+        viewModel.sortItemsByName()
+    }
+
+    private fun sortItemsByBreed() {
+        viewModel.sortItemsByBreed()
     }
 
     companion object {

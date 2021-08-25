@@ -22,15 +22,15 @@ class ItemListViewModel : ViewModel() {
     }
 
     fun sortItemsByName() {
-        repository.sortItemsByName()
+      /* val nameSortedItems=*/ repository.sortItemsByName().asLiveDataFlow()
     }
 
     fun sortItemsByAge() {
-        repository.sortItemsByAge()
+    /*   val ageSortedItems=*/ repository.sortItemsByAge().asLiveDataFlow()
     }
 
     fun sortItemsByBreed() {
-        repository.sortItemsByBreed()
+       /* val breedSortedItems =*/repository.sortItemsByBreed().asLiveDataFlow()
     }
 
     //для отдачи последнего состояния если активити было уничтожено
