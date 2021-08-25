@@ -19,13 +19,12 @@ interface ItemDao {
     @Query("DELETE FROM items")
     suspend fun deleteAllItems()
 
-
-    @Query("SELECT * FROM items ORDER BY age")
+    @Query("SELECT * FROM items ORDER BY age ASC")
     fun sortItemsByAge(): Flow<List<Item>>
 
-    @Query("SELECT * FROM items ORDER BY name")
+    @Query("SELECT * FROM items ORDER BY name ASC")
     fun sortItemsByName(): Flow<List<Item>>
 
-    @Query("SELECT * FROM items ORDER BY breed")
+    @Query("SELECT * FROM items ORDER BY breed ASC")
     fun sortItemsByBreed(): Flow<List<Item>>
 }

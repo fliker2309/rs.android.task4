@@ -52,7 +52,19 @@ class ItemListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setHasOptionsMenu(true)
+        subscribeUi()
+        binding?.toolbar?.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.sort_by_name -> viewModel.nameSortedItems.onEach(::renderItems)
+                    .launchIn(lifecycleScope)
+                R.id.sort_by_breed -> viewModel.breedSortedItems.onEach(::renderItems)
+                    .launchIn(lifecycleScope)
+                R.id.sort_by_age -> viewModel.ageSortedItems.onEach(::renderItems)
+                    .launchIn(lifecycleScope)
+            }
+            true
+        }
+
         views {
             itemListRecycler.adapter = ItemAdapter()
             itemListRecycler.layoutManager = LinearLayoutManager(context)
@@ -61,10 +73,9 @@ class ItemListFragment : Fragment() {
             }
         }
 
-        viewModel.items.onEach(::renderItems).launchIn(lifecycleScope)
-
+        subscribeUi()
         onFloatingButtonClickListener()
-        onClearTableButtonListener()
+        /*  onClearTableButtonListener()*/
     }
 
 
@@ -84,16 +95,11 @@ class ItemListFragment : Fragment() {
         super.onCreateOptionsMenu(menu, inflater)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.sort_by_name -> Log.d(TAG, "name was clicked")
-            R.id.sort_by_breed -> Log.d(TAG, "breed was clicked")
-            R.id.sort_by_age -> Log.d(TAG, "age was clicked")
-        }
+    private fun subscribeUi() {
+        viewModel.items.onEach(::renderItems).launchIn(lifecycleScope)
 
-
-        return super.onOptionsItemSelected(item)
     }
+
 
     private fun onClearTableButtonListener() {
         binding?.clearTableButton?.setOnClickListener {
@@ -113,18 +119,6 @@ class ItemListFragment : Fragment() {
     }
 
     private fun <T> views(block: ItemListBinding.() -> T): T? = binding?.block()
-
-    private fun sortItemsByAge() {
-        viewModel.sortItemsByAge()
-    }
-
-    private fun sortItemsByName() {
-        viewModel.sortItemsByName()
-    }
-
-    private fun sortItemsByBreed() {
-        viewModel.sortItemsByBreed()
-    }
 
     companion object {
         fun newInstance() = ItemListFragment()
