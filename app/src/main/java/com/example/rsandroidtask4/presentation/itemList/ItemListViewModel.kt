@@ -21,6 +21,18 @@ class ItemListViewModel : ViewModel() {
         viewModelScope.launch { repository.deleteItemFromDb(item) }
     }
 
+    fun sortItemsByName() {
+        repository.sortItemsByName()
+    }
+
+    fun sortItemsByAge() {
+        repository.sortItemsByAge()
+    }
+
+    fun sortItemsByBreed() {
+        repository.sortItemsByBreed()
+    }
+
     //для отдачи последнего состояния если активити было уничтожено
     private fun <T> Flow<T>.asLiveDataFlow() =
         shareIn(viewModelScope, SharingStarted.Eagerly, replay = 1)
