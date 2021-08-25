@@ -8,11 +8,20 @@ import kotlinx.coroutines.flow.Flow
 interface ItemDao {
 
     @Query("SELECT * FROM items")
-   fun readItemsFromDb(): Flow<List<Item>>
+    fun readItemsFromDb(): Flow<List<Item>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertItemInDb(item: Item)
 
     @Delete
-    suspend fun deleteItemFromDb(item:Item)
+    suspend fun deleteItemFromDb(item: Item)
+
+    @Query("SELECT * FROM items ORDER BY age")
+    fun sortItemsByAge(): Flow<List<Item>>
+
+    @Query("SELECT * FROM items ORDER BY name")
+    fun sortItemsByName(): Flow<List<Item>>
+
+    @Query("SELECT * FROM items ORDER BY breed")
+    fun sortItemsByBreed(): Flow<List<Item>>
 }
