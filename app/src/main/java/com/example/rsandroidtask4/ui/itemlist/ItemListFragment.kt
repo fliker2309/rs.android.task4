@@ -4,13 +4,11 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.rsandroidtask4.R
 
 import com.example.rsandroidtask4.data.db.entity.Item
@@ -20,7 +18,7 @@ import com.example.rsandroidtask4.databinding.ItemListBinding
 import com.example.rsandroidtask4.presentation.itemList.ItemListViewModel
 import com.example.rsandroidtask4.presentation.itemList.ItemListViewModelFactory
 import com.example.rsandroidtask4.ui.itemlist.adapter.ItemAdapter
-import com.example.rsandroidtask4.ui.itemlist.adapter.SwipeGesture
+import com.example.rsandroidtask4.ui.itemlist.swipegesture.SwipeHelper
 import com.example.rsandroidtask4.ui.navigationinterface.NavigationInterface
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.flow.launchIn
@@ -71,6 +69,7 @@ class ItemListFragment : Fragment() {
             addNewItemFloatingButton.setOnClickListener {
                 addNewItem?.openAddItemFragment()
             }
+            SwipeHelper(viewModel::deleteFromDb, requireContext()).attachToRecyclerView(itemListRecycler)
         }
 
         subscribeUi()
@@ -97,7 +96,6 @@ class ItemListFragment : Fragment() {
 
     private fun subscribeUi() {
         viewModel.items.onEach(::renderItems).launchIn(lifecycleScope)
-
     }
 
 

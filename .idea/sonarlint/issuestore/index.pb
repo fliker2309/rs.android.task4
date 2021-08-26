@@ -11,8 +11,6 @@ Zapp/src/main/java/com/example/rsandroidtask4/ui/navigationinterface/NavigationI
 app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
 Œ
 \app/src/main/java/com/example/rsandroidtask4/presentation/additem/AddItemViewModelFactory.kt,9\8\981686f4d9e1dfe1de7b5108e960edaab77b8464
-€
-Papp/src/main/java/com/example/rsandroidtask4/ui/itemlist/adapter/SwipeGesture.kt,3\1\31b026359cca5ba44500993dcbcd66e6afbc96b6
 {
 Kapp/src/main/java/com/example/rsandroidtask4/data/locator/ServiceLocator.kt,8\c\8c334437c7aa42190dfa612f16c6284031988642
 f
@@ -34,3 +32,9 @@ P
 Rapp/src/main/java/com/example/rsandroidtask4/ui/itemlist/adapter/ItemViewHolder.kt,f\6\f6a29838a8175384125dea549dfb7d4d09f92c24
 o
 ?app/src/main/java/com/example/rsandroidtask4/ui/MainActivity.kt,4\4\44635996d4b6978e1c44bd8c574afef4e2ad8b46
+€
+Papp/src/main/java/com/example/rsandroidtask4/ui/addnewitem/AddNewItemFragment.kt,4\e\4ed0c2736f8801d6e89d7c001d742260ff5c7228
+x
+Happ/src/main/java/com/example/rsandroidtask4/ui/dialog/DialogFragment.kt,2\2\22db4202a62c4f123993b698e05fabeeed866397
+ˆ
+Xapp/src/main/java/com/example/rsandroidtask4/ui/itemlist/adapter/ItemDiffUtilCallback.kt,b\d\bd0b171ca777963cef70e1b36be3624c56ef692c
