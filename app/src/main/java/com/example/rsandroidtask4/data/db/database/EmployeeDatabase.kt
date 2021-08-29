@@ -11,23 +11,23 @@ import com.example.rsandroidtask4.data.db.entity.Employee
 
 @Database(entities = [Employee::class], version = 3, exportSchema = false)
 
-abstract class ItemDatabase : RoomDatabase() {
+abstract class EmployeeDatabase : RoomDatabase() {
 
     abstract fun itemDao(): ItemDao
 
     companion object {
         @Volatile
-        private var INSTANCE: ItemDatabase? = null
+        private var INSTANCE: EmployeeDatabase? = null
 
         @InternalCoroutinesApi
-        fun getDatabase(context: Context): ItemDatabase {
+        fun getDatabase(context: Context): EmployeeDatabase {
             val tempInstance = INSTANCE
             if (tempInstance != null) return tempInstance
 
             synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
-                    ItemDatabase::class.java,
+                    EmployeeDatabase::class.java,
                     "employees_database"
                 )
                     .fallbackToDestructiveMigration()

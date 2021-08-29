@@ -8,13 +8,16 @@ import kotlinx.coroutines.flow.Flow
 interface ItemDao {
 
     @Query("SELECT * FROM employees")
-    fun readItemsFromDb(): Flow<List<Employee>>
+    fun getEmployees(): Flow<List<Employee>>
 
     @Query("SELECT * FROM employees WHERE id=(:id)")
     fun getEmployee(id: Int): Flow<Employee?>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertEmployee(employee: Employee)
+
+    @Update
+    fun updateEmployee(employee: Employee)
 
     @Delete
     suspend fun deleteEmployee(employee: Employee)

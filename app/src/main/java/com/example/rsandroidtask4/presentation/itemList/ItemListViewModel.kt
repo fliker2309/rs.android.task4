@@ -3,7 +3,7 @@ package com.example.rsandroidtask4.presentation.itemList
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.rsandroidtask4.data.db.entity.Employee
-import com.example.rsandroidtask4.data.db.repository.ItemRepository
+import com.example.rsandroidtask4.data.db.repository.EmployeeRepository
 import com.example.rsandroidtask4.data.locator.ServiceLocator.locateLazy
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.launch
@@ -14,18 +14,18 @@ import kotlinx.coroutines.flow.shareIn
 @InternalCoroutinesApi
 class ItemListViewModel : ViewModel() {
 
-    private val repository: ItemRepository by locateLazy()
-    val items = repository.readItemsFromDb().asLiveDataFlow()
-    val nameSortedItems = repository.sortItemsByName().asLiveDataFlow()
-    val ageSortedItems = repository.sortItemsByAge().asLiveDataFlow()
-    val breedSortedItems = repository.sortItemsByBreed().asLiveDataFlow()
+    private val repository: EmployeeRepository by locateLazy()
+    val items = repository.getEmployees().asLiveDataFlow()
+    val nameSortedItems = repository.sortEmployeesByName().asLiveDataFlow()
+    val ageSortedItems = repository.sortEmployeesByAge().asLiveDataFlow()
+    val breedSortedItems = repository.sortEmployeesByPosition().asLiveDataFlow()
 
     fun deleteFromDb(employee: Employee) {
-        viewModelScope.launch { repository.deleteItemFromDb(employee) }
+        viewModelScope.launch { repository.deleteEmployee(employee) }
     }
 
     fun deleteAllItems() {
-        viewModelScope.launch { repository.deleteAllItems() }
+        viewModelScope.launch { repository.wipeDatabase() }
     }
 
     //для отдачи последнего состояния если активити было уничтожено

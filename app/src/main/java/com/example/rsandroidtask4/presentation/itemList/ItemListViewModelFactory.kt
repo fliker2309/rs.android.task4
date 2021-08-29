@@ -2,7 +2,6 @@ package com.example.rsandroidtask4.presentation.itemList
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.rsandroidtask4.data.db.repository.ItemRepository
 import kotlinx.coroutines.InternalCoroutinesApi
 
 class ItemListViewModelFactory : ViewModelProvider.Factory {
