@@ -22,7 +22,7 @@
 
             <item
                 android:id="@+id/sort_by_breed"
-                android:title="@string/breed"
+                android:title="@string/surname"
                 app:showAsAction="never" />
 
         </menu>

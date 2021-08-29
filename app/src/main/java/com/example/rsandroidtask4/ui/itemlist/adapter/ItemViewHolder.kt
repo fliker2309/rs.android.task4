@@ -19,7 +19,9 @@ class ItemViewHolder(
         views {
             ageTv.text = employee.age
             nameTv.text = employee.name
-            breedTv.text = employee.position
+            positionTv.text = employee.position
+            surnameTv.text = employee.surname
+            experienceTv.text = employee.experience
         }
     }
 

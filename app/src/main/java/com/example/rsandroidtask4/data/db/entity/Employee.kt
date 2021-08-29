@@ -16,11 +16,11 @@ data class Employee(
     @ColumnInfo(name = "surname")
     val surname: String,
 
-    @ColumnInfo(name = "position")
-    val position: String,
-
     @ColumnInfo(name = "age")
     val age: String,
+
+    @ColumnInfo(name = "position")
+    val position: String,
 
     @ColumnInfo(name = "experience")
     val experience: String

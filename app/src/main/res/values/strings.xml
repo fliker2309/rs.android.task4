@@ -4,11 +4,14 @@
     <string name="sort_by">Sort by:</string>
     <string name="name">Name</string>
     <string name="age">Age</string>
-    <string name="breed">Breed</string>
     <string name="add_new_item">add_new_item</string>
     <string name="add_to_table">Add to table</string>
     <string name="back">Back</string>
-    <string name="save">save</string>
+    <string name="save">Save</string>
     <string name="clear_table">Clear table</string>
-
+    <string name="surname">Surname</string>
+    <string name="position">Position</string>
+    <string name="experience">Experience</string>
+    <string name="edit_user">edit user</string>
+    <string name="surname_list">Surname:</string>
 </resources>

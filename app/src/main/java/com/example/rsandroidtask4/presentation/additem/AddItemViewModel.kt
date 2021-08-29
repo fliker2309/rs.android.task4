@@ -11,15 +11,15 @@ class AddItemViewModel : ViewModel() {
 
     private val repository: EmployeeRepository by locateLazy()
 
-    fun addNewItem(employee: Employee) {
-        viewModelScope.launch { repository.insertEmployee(createItem(employee)) }
+    fun addNewEmployee(employee: Employee) {
+        viewModelScope.launch { repository.insertEmployee((createEmployee(employee))) }
     }
 
-    private fun createItem(employee: Employee) = Employee(
-        id = employee.id,
+    private fun createEmployee(employee: Employee) = Employee(
         name = employee.name,
+        surname = employee.surname,
         age = employee.age,
-        position = employee.position
-
+        position = employee.position,
+        experience = employee.experience
     )
 }
