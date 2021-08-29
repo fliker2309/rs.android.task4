@@ -7,27 +7,30 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface ItemDao {
 
-    @Query("SELECT * FROM items")
+    @Query("SELECT * FROM employees")
     fun readItemsFromDb(): Flow<List<Employee>>
 
-    @Query("SELECT * FROM items WHERE id=(:id)")
-    fun getItem(id: Int): Flow<Employee?>
+    @Query("SELECT * FROM employees WHERE id=(:id)")
+    fun getEmployee(id: Int): Flow<Employee?>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertItemInDb(employee: Employee)
+    suspend fun insertEmployee(employee: Employee)
 
     @Delete
-    suspend fun deleteItemFromDb(employee: Employee)
+    suspend fun deleteEmployee(employee: Employee)
 
-    @Query("DELETE FROM items")
-    suspend fun deleteAllItems()
+    @Query("DELETE FROM employees")
+    suspend fun wipeDatabase()
 
-    @Query("SELECT * FROM items ORDER BY age ASC")
-    fun sortItemsByAge(): Flow<List<Employee>>
+    @Query("SELECT * FROM employees ORDER BY age ASC")
+    fun sortEmployeesByAge(): Flow<List<Employee>>
 
-    @Query("SELECT * FROM items ORDER BY name ASC")
-    fun sortItemsByName(): Flow<List<Employee>>
+    @Query("SELECT * FROM employees ORDER BY name ASC")
+    fun sortEmployeesByName(): Flow<List<Employee>>
 
-    @Query("SELECT * FROM items ORDER BY breed ASC")
-    fun sortItemsByBreed(): Flow<List<Employee>>
+    @Query("SELECT * FROM employees ORDER BY position ASC")
+    fun sortEmployeesByPosition(): Flow<List<Employee>>
+
+    @Query("SELECT * FROM employees ORDER BY `experience` ASC")
+    fun sortEmployeesByExperience(): Flow<List<Employee>>
 }

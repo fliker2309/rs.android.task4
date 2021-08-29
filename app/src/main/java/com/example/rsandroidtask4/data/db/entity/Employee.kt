@@ -22,6 +22,6 @@ data class Employee(
     @ColumnInfo(name = "age")
     val age: String,
 
-    @ColumnInfo(name = "work experience")
+    @ColumnInfo(name = "experience")
     val experience: String
 )

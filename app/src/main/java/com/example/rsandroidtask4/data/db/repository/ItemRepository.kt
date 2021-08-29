@@ -11,13 +11,13 @@ class ItemRepository(private val itemDatabase: ItemDatabase) {
 
     fun readItemsFromDb(): Flow<List<Employee>> = itemDao.readItemsFromDb()
 
-    fun sortItemsByAge(): Flow<List<Employee>> = itemDao.sortItemsByAge()
-    fun sortItemsByName(): Flow<List<Employee>> = itemDao.sortItemsByName()
-    fun sortItemsByBreed(): Flow<List<Employee>> = itemDao.sortItemsByBreed()
+    fun sortItemsByAge(): Flow<List<Employee>> = itemDao.sortEmployeesByAge()
+    fun sortItemsByName(): Flow<List<Employee>> = itemDao.sortEmployeesByName()
+    fun sortItemsByBreed(): Flow<List<Employee>> = itemDao.sortEmployeesByPosition()
 
-    suspend fun insertItemInDb(employee: Employee) = itemDao.insertItemInDb(employee)
+    suspend fun insertItemInDb(employee: Employee) = itemDao.insertEmployee(employee)
 
-    suspend fun deleteItemFromDb(employee: Employee) = itemDao.deleteItemFromDb(employee)
+    suspend fun deleteItemFromDb(employee: Employee) = itemDao.deleteEmployee(employee)
 
-    suspend fun deleteAllItems() = itemDao.deleteAllItems()
+    suspend fun deleteAllItems() = itemDao.wipeDatabase()
 }
