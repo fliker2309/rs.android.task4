@@ -86,7 +86,7 @@ class AddNewItemFragment : Fragment() {
             val inputName = textInputName.text.toString().takeIf { it.isNotBlank() } ?: return@views
             val inputBreed =
                 textInputBreed.text.toString().takeIf { it.isNotBlank() } ?: return@views
-            val savedItem = Employee(name = inputName, age = inputAge, breed = inputBreed)
+            val savedItem = Employee(name = inputName, age = inputAge, position = inputBreed)
 
             viewModel.addNewItem(savedItem)
             backToList?.backToItemList()

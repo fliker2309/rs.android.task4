@@ -7,7 +7,7 @@ class ItemDiffUtilCallback : DiffUtil.ItemCallback<Employee>() {
     override fun areItemsTheSame(oldEmployee: Employee, newEmployee: Employee): Boolean = oldEmployee == newEmployee
 
     override fun areContentsTheSame(oldEmployee: Employee, newEmployee: Employee): Boolean {
-        return oldEmployee.id == newEmployee.id && oldEmployee.name == newEmployee.name && oldEmployee.age == newEmployee.age && oldEmployee.breed == newEmployee.breed
+        return oldEmployee.id == newEmployee.id && oldEmployee.name == newEmployee.name && oldEmployee.age == newEmployee.age && oldEmployee.position == newEmployee.position
     }
 
 }

@@ -9,7 +9,7 @@ import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.internal.synchronized
 import com.example.rsandroidtask4.data.db.entity.Employee
 
-@Database(entities = [Employee::class], version = 2, exportSchema = false)
+@Database(entities = [Employee::class], version = 3, exportSchema = false)
 
 abstract class ItemDatabase : RoomDatabase() {
 
@@ -28,7 +28,7 @@ abstract class ItemDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     ItemDatabase::class.java,
-                    "item_database"
+                    "employees_database"
                 )
                     .fallbackToDestructiveMigration()
                     .build()

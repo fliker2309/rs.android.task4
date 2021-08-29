@@ -19,7 +19,7 @@ class AddItemViewModel : ViewModel() {
         id = employee.id,
         name = employee.name,
         age = employee.age,
-        breed = employee.breed
+        position = employee.position
 
     )
 }

@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "items")
+@Entity(tableName = "employees")
 data class Employee(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
@@ -13,9 +13,15 @@ data class Employee(
     @ColumnInfo(name = "name")
     val name: String,
 
+    @ColumnInfo(name = "surname")
+    val surname: String,
+
+    @ColumnInfo(name = "position")
+    val position: String,
+
     @ColumnInfo(name = "age")
     val age: String,
 
-    @ColumnInfo(name = "breed")
-    val breed: String
+    @ColumnInfo(name = "work experience")
+    val experience: String
 )
