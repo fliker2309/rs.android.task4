@@ -43,6 +43,7 @@ class AddNewItemFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initListeners()
+
         val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 onBackClickListener()
@@ -80,19 +81,23 @@ class AddNewItemFragment : Fragment() {
 
     private fun saveItem() {
         views {
-
-            val inputAge = textInputAge.text.toString().takeIf { it.isNotBlank() } ?: return@views
-
             val inputName = textInputName.text.toString().takeIf { it.isNotBlank() } ?: return@views
-            val inputBreed =
-                textInputBreed.text.toString().takeIf { it.isNotBlank() } ?: return@views
-            val savedItem = Employee(name = inputName, age = inputAge, position = inputBreed)
+            val inputSurname=  textInputSurname.text.toString().takeIf { it.isNotBlank() }?: return@views
+            val inputAge = textInputAge.text.toString().takeIf { it.isNotBlank() } ?: return@views
+            val inputPosition =
+                textInputPosition.text.toString().takeIf { it.isNotBlank() } ?: return@views
+            val inputExperience = textInputExperience.text.toString().takeIf { it.isNotBlank() } ?: return@views
 
-            viewModel.addNewItem(savedItem)
+            val savedItem = Employee(name = inputName,surname=inputSurname, age = inputAge, position = inputPosition,experience = inputExperience)
+
+            viewModel.addNewEmployee(savedItem)
             backToList?.backToItemList()
             Toast.makeText(context, "Item successful added", Toast.LENGTH_LONG).show()
         }
     }
+
+
+
 
     private fun onBackClickListener() {
         backToList?.backToItemList()
