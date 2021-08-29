@@ -11,7 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.rsandroidtask4.R
 
-import com.example.rsandroidtask4.data.db.entity.Item
+import com.example.rsandroidtask4.data.db.entity.Employee
 
 import com.example.rsandroidtask4.databinding.ItemListBinding
 
@@ -69,7 +69,10 @@ class ItemListFragment : Fragment() {
             addNewItemFloatingButton.setOnClickListener {
                 addNewItem?.openAddItemFragment()
             }
-            SwipeHelper(viewModel::deleteFromDb, requireContext()).attachToRecyclerView(itemListRecycler)
+            SwipeHelper(viewModel::deleteFromDb, requireContext()).attachToRecyclerView(
+                itemListRecycler
+            )
+
         }
 
         subscribeUi()
@@ -112,8 +115,8 @@ class ItemListFragment : Fragment() {
         }
     }
 
-    private fun renderItems(items: List<Item>) {
-        adapter?.submitList(items)
+    private fun renderItems(employees: List<Employee>) {
+        adapter?.submitList(employees)
     }
 
     private fun <T> views(block: ItemListBinding.() -> T): T? = binding?.block()

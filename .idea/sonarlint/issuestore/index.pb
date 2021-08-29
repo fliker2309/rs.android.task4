@@ -17,10 +17,6 @@ f
 6app/src/main/java/com/example/rsandroidtask4/ui/App.kt,3\d\3dc7ed8c959e86136015bdbc7cf68d8a6461f0ea
 Ž
 ^app/src/main/java/com/example/rsandroidtask4/presentation/itemList/ItemListViewModelFactory.kt,d\1\d11dfd7ab902e9251f1844032d6bc5f1d038f8be
-
-Oapp/src/main/java/com/example/rsandroidtask4/ui/itemlist/adapter/ItemAdapter.kt,f\c\fcf4bd0b09396c74322f4134ded9b07661f316e3
-…
-Uapp/src/main/java/com/example/rsandroidtask4/presentation/additem/AddItemViewModel.kt,a\c\ac14e7d4cba981fc520e9a38452612e3d4a8f5b0
 s
 Capp/src/main/java/com/example/rsandroidtask4/data/db/entity/Item.kt,6\1\61146098f8508e10f41437e83614467bfe9caba5
 P
@@ -28,13 +24,7 @@ P
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
-‚
-Rapp/src/main/java/com/example/rsandroidtask4/ui/itemlist/adapter/ItemViewHolder.kt,f\6\f6a29838a8175384125dea549dfb7d4d09f92c24
 o
 ?app/src/main/java/com/example/rsandroidtask4/ui/MainActivity.kt,4\4\44635996d4b6978e1c44bd8c574afef4e2ad8b46
-€
-Papp/src/main/java/com/example/rsandroidtask4/ui/addnewitem/AddNewItemFragment.kt,4\e\4ed0c2736f8801d6e89d7c001d742260ff5c7228
 x
 Happ/src/main/java/com/example/rsandroidtask4/ui/dialog/DialogFragment.kt,2\2\22db4202a62c4f123993b698e05fabeeed866397
-ˆ
-Xapp/src/main/java/com/example/rsandroidtask4/ui/itemlist/adapter/ItemDiffUtilCallback.kt,b\d\bd0b171ca777963cef70e1b36be3624c56ef692c

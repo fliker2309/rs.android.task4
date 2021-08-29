@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.example.rsandroidtask4.data.db.entity.Item
+import com.example.rsandroidtask4.data.db.entity.Employee
 import com.example.rsandroidtask4.databinding.FragmentAddNewItemBinding
 import com.example.rsandroidtask4.presentation.additem.AddItemViewModel
 import com.example.rsandroidtask4.presentation.additem.AddItemViewModelFactory
@@ -86,7 +86,7 @@ class AddNewItemFragment : Fragment() {
             val inputName = textInputName.text.toString().takeIf { it.isNotBlank() } ?: return@views
             val inputBreed =
                 textInputBreed.text.toString().takeIf { it.isNotBlank() } ?: return@views
-            val savedItem = Item(name = inputName, age = inputAge, breed = inputBreed)
+            val savedItem = Employee(name = inputName, age = inputAge, breed = inputBreed)
 
             viewModel.addNewItem(savedItem)
             backToList?.backToItemList()

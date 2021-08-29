@@ -7,9 +7,9 @@ import androidx.room.RoomDatabase
 import com.example.rsandroidtask4.data.db.dao.ItemDao
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.internal.synchronized
-import com.example.rsandroidtask4.data.db.entity.Item
+import com.example.rsandroidtask4.data.db.entity.Employee
 
-@Database(entities = [Item::class], version = 2, exportSchema = false)
+@Database(entities = [Employee::class], version = 2, exportSchema = false)
 
 abstract class ItemDatabase : RoomDatabase() {
 

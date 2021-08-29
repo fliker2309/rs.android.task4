@@ -3,25 +3,26 @@ package com.example.rsandroidtask4.ui.itemlist.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.rsandroidtask4.data.db.entity.Item
+import com.example.rsandroidtask4.data.db.entity.Employee
 import com.example.rsandroidtask4.databinding.ViewHolderItemBinding
 
 class ItemViewHolder(
     private val binding: ViewHolderItemBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
-    var item: Item? = null
+    var employee: Employee? = null
         private set
 
-    fun bind(item: Item) {
-        this.item = item
+    fun bind(employee: Employee) {
+        this.employee = employee
 
         views {
-            ageTv.text = item.age
-            nameTv.text = item.name
-            breedTv.text = item.breed
+            ageTv.text = employee.age
+            nameTv.text = employee.name
+            breedTv.text = employee.breed
         }
     }
+
 
     private fun <T> views(block: ViewHolderItemBinding.() -> T): T? = binding.block()
 

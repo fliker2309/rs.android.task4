@@ -6,13 +6,13 @@ import androidx.recyclerview.widget.RecyclerView
 import android.content.Context
 import androidx.core.content.ContextCompat
 import com.example.rsandroidtask4.R
-import com.example.rsandroidtask4.data.db.entity.Item
+import com.example.rsandroidtask4.data.db.entity.Employee
 import com.example.rsandroidtask4.ui.itemlist.adapter.ItemViewHolder
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator
 
 class SwipeCallback(
     context: Context,
-    private val onSwiped: (Item) -> Unit,
+    private val onSwiped: (Employee) -> Unit,
 
     ) : ItemTouchHelper.SimpleCallback(
     0,
@@ -21,7 +21,7 @@ class SwipeCallback(
 
 
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-        (viewHolder as? ItemViewHolder)?.item?.let { onSwiped(it) }
+        (viewHolder as? ItemViewHolder)?.employee?.let { onSwiped(it) }
     }
 
        private val deleteColor = ContextCompat.getColor(context, R.color.red)
