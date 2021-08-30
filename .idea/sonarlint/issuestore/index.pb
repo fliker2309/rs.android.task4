@@ -36,10 +36,6 @@ Uapp/src/main/java/com/example/rsandroidtask4/data/db/repository/EmployeeReposit
 Papp/src/main/java/com/example/rsandroidtask4/ui/addnewitem/AddNewItemFragment.kt,4\e\4ed0c2736f8801d6e89d7c001d742260ff5c7228
 s
 Capp/src/main/java/com/example/rsandroidtask4/data/db/dao/ItemDao.kt,1\8\18c59e6cd3b35a9f9ff7fcc5e30d22d72f458eb6
-†
-Vapp/src/main/java/com/example/rsandroidtask4/ui/itemlist/swipegesture/SwipeCallback.kt,e\9\e9cc6588aebc0d344cbc3d84b297a3074c7db7e7
-„
-Tapp/src/main/java/com/example/rsandroidtask4/ui/itemlist/swipegesture/SwipeHelper.kt,8\3\83a12b59d2fc22b9a0b971de2802b281cac7ade8
 w
 Gapp/src/main/java/com/example/rsandroidtask4/data/db/entity/Employee.kt,8\f\8f2d72eac05386bba7b5a23bc70213ccb8dda3ad
 …
