@@ -40,3 +40,7 @@ Capp/src/main/java/com/example/rsandroidtask4/data/db/dao/ItemDao.kt,1\8\18c59e
 Vapp/src/main/java/com/example/rsandroidtask4/ui/itemlist/swipegesture/SwipeCallback.kt,e\9\e9cc6588aebc0d344cbc3d84b297a3074c7db7e7
 „
 Tapp/src/main/java/com/example/rsandroidtask4/ui/itemlist/swipegesture/SwipeHelper.kt,8\3\83a12b59d2fc22b9a0b971de2802b281cac7ade8
+w
+Gapp/src/main/java/com/example/rsandroidtask4/data/db/entity/Employee.kt,8\f\8f2d72eac05386bba7b5a23bc70213ccb8dda3ad
+…
+Uapp/src/main/java/com/example/rsandroidtask4/presentation/additem/AddItemViewModel.kt,a\c\ac14e7d4cba981fc520e9a38452612e3d4a8f5b0

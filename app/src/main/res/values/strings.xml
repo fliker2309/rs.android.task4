@@ -14,4 +14,8 @@
     <string name="experience">Experience</string>
     <string name="edit_user">edit user</string>
     <string name="surname_list">Surname:</string>
+    <string name="name_name">Name:</string>
+    <string name="age_age">Age:</string>
+    <string name="position_position">Position:</string>
+    <string name="experience_exp">Experience:</string>
 </resources>

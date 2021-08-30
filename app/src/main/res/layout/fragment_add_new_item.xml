@@ -37,7 +37,6 @@
         app:counterMaxLength="15"
         app:endIconMode="clear_text"
         app:helperText="Required*"
-        app:prefixText="Name: "
         app:helperTextTextColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
