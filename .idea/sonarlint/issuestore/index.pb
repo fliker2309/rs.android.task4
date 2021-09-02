@@ -1,8 +1,4 @@
 
-9
-	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
-<
-build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
 Š
 Zapp/src/main/java/com/example/rsandroidtask4/ui/navigationinterface/NavigationInterface.kt,f\0\f06aba0eba9a8eebdee0a66f9482a5dff7844045
 @
@@ -14,10 +10,6 @@ P
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
-o
-?app/src/main/java/com/example/rsandroidtask4/ui/MainActivity.kt,4\4\44635996d4b6978e1c44bd8c574afef4e2ad8b46
-x
-Happ/src/main/java/com/example/rsandroidtask4/ui/dialog/DialogFragment.kt,2\2\22db4202a62c4f123993b698e05fabeeed866397
 ˆ
 Xapp/src/main/java/com/example/rsandroidtask4/ui/itemlist/adapter/ItemDiffUtilCallback.kt,b\d\bd0b171ca777963cef70e1b36be3624c56ef692c
 Œ
@@ -28,14 +20,6 @@ Wapp/src/main/java/com/example/rsandroidtask4/presentation/itemList/ItemListView
 ^app/src/main/java/com/example/rsandroidtask4/presentation/itemList/ItemListViewModelFactory.kt,d\1\d11dfd7ab902e9251f1844032d6bc5f1d038f8be
 f
 6app/src/main/java/com/example/rsandroidtask4/ui/App.kt,3\d\3dc7ed8c959e86136015bdbc7cf68d8a6461f0ea
-
-Qapp/src/main/java/com/example/rsandroidtask4/data/db/database/EmployeeDatabase.kt,e\8\e80f3c450b65eb9054d9cdcf413fbbfdd40c2651
-…
-Uapp/src/main/java/com/example/rsandroidtask4/data/db/repository/EmployeeRepository.kt,7\6\7618b2b57754c7d711a7de32eec65f0ea6d1c18a
-€
-Papp/src/main/java/com/example/rsandroidtask4/ui/addnewitem/AddNewItemFragment.kt,4\e\4ed0c2736f8801d6e89d7c001d742260ff5c7228
-s
-Capp/src/main/java/com/example/rsandroidtask4/data/db/dao/ItemDao.kt,1\8\18c59e6cd3b35a9f9ff7fcc5e30d22d72f458eb6
 w
 Gapp/src/main/java/com/example/rsandroidtask4/data/db/entity/Employee.kt,8\f\8f2d72eac05386bba7b5a23bc70213ccb8dda3ad
 …
