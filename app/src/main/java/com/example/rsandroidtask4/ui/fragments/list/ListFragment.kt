@@ -83,6 +83,9 @@ class ListFragment : Fragment() {
         }
     }*/
 
+    /*private fun onEditButtonListener(){
+        val action = ListFragmentD
+    }*/
     private fun onClearTableButtonListener() {
         binding?.clearTableButton?.setOnClickListener {
             viewModel.deleteAllItems()

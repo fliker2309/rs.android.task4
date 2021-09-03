@@ -22,6 +22,10 @@ class EmployeeViewHolder(
             positionTv.text = employee.position
             surnameTv.text = employee.surname
             experienceTv.text = employee.experience
+
+            /*editUserBtn.setOnClickListener {
+                val action = ListFragmentDirections
+            }*/
         }
     }
 
