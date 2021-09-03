@@ -48,6 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
+        android:focusable="true"
         android:contentDescription="@string/add_new_item"
         android:src="@drawable/ic_baseline_add_24"
         app:layout_constraintBottom_toTopOf="@id/margin_bottom_guideline_main_page"

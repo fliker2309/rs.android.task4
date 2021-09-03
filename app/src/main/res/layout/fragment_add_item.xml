@@ -25,7 +25,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/text_update_layout_name"
+        android:id="@+id/text_input_layout_name"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
         app:layout_constraintTop_toBottomOf="@id/appBarLayout">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/text_update_name"
+            android:id="@+id/text_input_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
@@ -53,7 +53,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/text_update_layout_surname"
+        android:id="@+id/text_input_layout_surname"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -68,10 +68,10 @@
         app:helperTextTextColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_update_layout_name">
+        app:layout_constraintTop_toBottomOf="@id/text_input_layout_name">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/text_update_surname"
+            android:id="@+id/text_input_surname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
@@ -81,7 +81,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/text_update_layout_age"
+        android:id="@+id/text_input_layout_age"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -96,10 +96,10 @@
         app:helperTextTextColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_update_layout_surname">
+        app:layout_constraintTop_toBottomOf="@id/text_input_layout_surname">
 
         <AutoCompleteTextView
-            android:id="@+id/text_update_age"
+            android:id="@+id/text_input_age"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -124,7 +124,7 @@
         app:helperTextTextColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_update_layout_age">
+        app:layout_constraintTop_toBottomOf="@id/text_input_layout_age">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/text_input_position"

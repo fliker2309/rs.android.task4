@@ -1,6 +1,5 @@
 package com.example.rsandroidtask4.ui.fragments.add
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,26 +8,19 @@ import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.example.rsandroidtask4.R
 import com.example.rsandroidtask4.data.db.entity.Employee
-import com.example.rsandroidtask4.databinding.FragmentAddNewItemBinding
+import com.example.rsandroidtask4.databinding.FragmentAddItemBinding
 import com.example.rsandroidtask4.presentation.add.AddViewModel
 import com.example.rsandroidtask4.presentation.add.AddViewModelFactory
-import com.example.rsandroidtask4.ui.NavigationInterface
 
 class AddFragment : Fragment() {
 
-    private var binding: FragmentAddNewItemBinding? = null
-
-    private var backToList: NavigationInterface? = null
+    private var binding: FragmentAddItemBinding? = null
 
     private val viewModel: AddViewModel by viewModels {
         AddViewModelFactory()
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is NavigationInterface)
-            backToList = context
     }
 
     override fun onCreateView(
@@ -36,7 +28,7 @@ class AddFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View =
-        FragmentAddNewItemBinding.inflate(inflater, container, false).also { binding = it }.root
+        FragmentAddItemBinding.inflate(inflater, container, false).also { binding = it }.root
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -46,16 +38,10 @@ class AddFragment : Fragment() {
 
         val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                onBackClickListener()
+                findNavController().navigate(R.id.action_addItemFragment_to_ListFragment)
             }
         }
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
-    }
-
-
-    override fun onDetach() {
-        super.onDetach()
-        backToList = null
     }
 
     override fun onDestroy() {
@@ -63,24 +49,20 @@ class AddFragment : Fragment() {
         binding = null
     }
 
-    private fun <T> views(block: FragmentAddNewItemBinding.() -> T): T? = binding?.block()
+    private fun <T> views(block: FragmentAddItemBinding.() -> T): T? = binding?.block()
 
     private fun initListeners() {
         views {
             backButton.setOnClickListener {
-                onBackClickListener()
+                findNavController().navigate(R.id.action_addItemFragment_to_ListFragment)
             }
             toolbar.setOnClickListener {
-                onBackClickListener()
+                findNavController().navigate(R.id.action_addItemFragment_to_ListFragment)
             }
             addToTableButton.setOnClickListener {
                 saveEmployee()
             }
         }
-    }
-
-    private fun editEmployee() {
-
     }
 
     private fun saveEmployee() {
@@ -103,19 +85,8 @@ class AddFragment : Fragment() {
             )
 
             viewModel.addNewEmployee(savedItem)
-            backToList?.backToItemList()
+            findNavController().navigate(R.id.action_addItemFragment_to_ListFragment)
             Toast.makeText(context, "Item successful added", Toast.LENGTH_LONG).show()
         }
-    }
-
-
-
-
-    private fun onBackClickListener() {
-        backToList?.backToItemList()
-    }
-
-    companion object {
-        fun newInstance() = AddFragment()
     }
 }

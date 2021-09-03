@@ -7,7 +7,7 @@ import com.example.rsandroidtask4.ui.fragments.add.AddFragment
 import com.example.rsandroidtask4.ui.fragments.list.ListFragment
 import kotlinx.coroutines.InternalCoroutinesApi
 
-class MainActivity : AppCompatActivity(), NavigationInterface {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -16,27 +16,5 @@ class MainActivity : AppCompatActivity(), NavigationInterface {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        if (savedInstanceState == null) {
-            openItemListFragment()
-        }
     }
-
-    @InternalCoroutinesApi
-    private fun openItemListFragment() {
-        supportFragmentManager.beginTransaction()
-            .replace(binding.fragmentContainer.id, ListFragment.newInstance())
-            .commit()
-    }
-
-    override fun openAddItemFragment() {
-        supportFragmentManager.beginTransaction()
-            .replace(binding.fragmentContainer.id, AddFragment.newInstance())
-            .commit()
-    }
-
-    @InternalCoroutinesApi
-    override fun backToItemList() {
-        openItemListFragment()
-    }
-
 }
