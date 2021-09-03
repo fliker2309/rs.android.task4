@@ -1,14 +1,14 @@
-package com.example.rsandroidtask4.presentation.additem
+package com.example.rsandroidtask4.presentation.add
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.coroutines.InternalCoroutinesApi
 
-class AddItemViewModelFactory : ViewModelProvider.Factory {
+class AddViewModelFactory : ViewModelProvider.Factory {
     @InternalCoroutinesApi
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T = when (modelClass) {
-        AddItemViewModel::class.java -> AddItemViewModel()
+        AddViewModel::class.java -> AddViewModel()
         else -> throw IllegalArgumentException("$modelClass is not registered ViewModel")
     } as T
 }

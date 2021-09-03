@@ -1,4 +1,4 @@
-package com.example.rsandroidtask4.ui.itemlist.adapter
+package com.example.rsandroidtask4.ui.fragments.list.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.rsandroidtask4.data.db.entity.Employee
 import com.example.rsandroidtask4.databinding.ViewHolderItemBinding
 
-class ItemViewHolder(
+class EmployeeViewHolder(
     private val binding: ViewHolderItemBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
@@ -29,10 +29,10 @@ class ItemViewHolder(
     private fun <T> views(block: ViewHolderItemBinding.() -> T): T? = binding.block()
 
     companion object {
-        fun create(parent: ViewGroup): ItemViewHolder {
+        fun create(parent: ViewGroup): EmployeeViewHolder {
             val inflater = LayoutInflater.from(parent.context)
             val binding = ViewHolderItemBinding.inflate(inflater, parent, false)
-            return ItemViewHolder(binding)
+            return EmployeeViewHolder(binding)
         }
     }
 }

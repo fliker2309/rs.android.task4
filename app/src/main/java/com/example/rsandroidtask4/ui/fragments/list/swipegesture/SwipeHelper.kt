@@ -1,4 +1,4 @@
-package com.example.rsandroidtask4.ui.itemlist.swipegesture
+package com.example.rsandroidtask4.ui.fragments.list.swipegesture
 
 
 import android.content.Context

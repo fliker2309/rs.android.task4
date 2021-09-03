@@ -1,4 +1,4 @@
-package com.example.rsandroidtask4.ui.addnewitem
+package com.example.rsandroidtask4.ui.fragments.add
 
 import android.content.Context
 import android.os.Bundle
@@ -11,18 +11,18 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.rsandroidtask4.data.db.entity.Employee
 import com.example.rsandroidtask4.databinding.FragmentAddNewItemBinding
-import com.example.rsandroidtask4.presentation.additem.AddItemViewModel
-import com.example.rsandroidtask4.presentation.additem.AddItemViewModelFactory
-import com.example.rsandroidtask4.ui.navigationinterface.NavigationInterface
+import com.example.rsandroidtask4.presentation.add.AddViewModel
+import com.example.rsandroidtask4.presentation.add.AddViewModelFactory
+import com.example.rsandroidtask4.ui.NavigationInterface
 
-class AddNewItemFragment : Fragment() {
+class AddFragment : Fragment() {
 
     private var binding: FragmentAddNewItemBinding? = null
 
     private var backToList: NavigationInterface? = null
 
-    private val viewModel: AddItemViewModel by viewModels {
-        AddItemViewModelFactory()
+    private val viewModel: AddViewModel by viewModels {
+        AddViewModelFactory()
     }
 
     override fun onAttach(context: Context) {
@@ -74,21 +74,33 @@ class AddNewItemFragment : Fragment() {
                 onBackClickListener()
             }
             addToTableButton.setOnClickListener {
-                saveItem()
+                saveEmployee()
             }
         }
     }
 
-    private fun saveItem() {
+    private fun editEmployee() {
+
+    }
+
+    private fun saveEmployee() {
         views {
             val inputName = textInputName.text.toString().takeIf { it.isNotBlank() } ?: return@views
-            val inputSurname=  textInputSurname.text.toString().takeIf { it.isNotBlank() }?: return@views
+            val inputSurname =
+                textInputSurname.text.toString().takeIf { it.isNotBlank() } ?: return@views
             val inputAge = textInputAge.text.toString().takeIf { it.isNotBlank() } ?: return@views
             val inputPosition =
                 textInputPosition.text.toString().takeIf { it.isNotBlank() } ?: return@views
-            val inputExperience = textInputExperience.text.toString().takeIf { it.isNotBlank() } ?: return@views
+            val inputExperience =
+                textInputExperience.text.toString().takeIf { it.isNotBlank() } ?: return@views
 
-            val savedItem = Employee(name = inputName,surname=inputSurname, age = inputAge, position = inputPosition,experience = inputExperience)
+            val savedItem = Employee(
+                name = inputName,
+                surname = inputSurname,
+                age = inputAge,
+                position = inputPosition,
+                experience = inputExperience
+            )
 
             viewModel.addNewEmployee(savedItem)
             backToList?.backToItemList()
@@ -104,6 +116,6 @@ class AddNewItemFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance() = AddNewItemFragment()
+        fun newInstance() = AddFragment()
     }
 }

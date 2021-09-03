@@ -3,9 +3,8 @@ package com.example.rsandroidtask4.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.rsandroidtask4.databinding.ActivityMainBinding
-import com.example.rsandroidtask4.ui.addnewitem.AddNewItemFragment
-import com.example.rsandroidtask4.ui.itemlist.ItemListFragment
-import com.example.rsandroidtask4.ui.navigationinterface.NavigationInterface
+import com.example.rsandroidtask4.ui.fragments.add.AddFragment
+import com.example.rsandroidtask4.ui.fragments.list.ListFragment
 import kotlinx.coroutines.InternalCoroutinesApi
 
 class MainActivity : AppCompatActivity(), NavigationInterface {
@@ -25,13 +24,13 @@ class MainActivity : AppCompatActivity(), NavigationInterface {
     @InternalCoroutinesApi
     private fun openItemListFragment() {
         supportFragmentManager.beginTransaction()
-            .replace(binding.fragmentContainer.id, ItemListFragment.newInstance())
+            .replace(binding.fragmentContainer.id, ListFragment.newInstance())
             .commit()
     }
 
     override fun openAddItemFragment() {
         supportFragmentManager.beginTransaction()
-            .replace(binding.fragmentContainer.id, AddNewItemFragment.newInstance())
+            .replace(binding.fragmentContainer.id, AddFragment.newInstance())
             .commit()
     }
 

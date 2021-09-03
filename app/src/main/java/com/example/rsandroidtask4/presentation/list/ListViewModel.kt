@@ -1,4 +1,4 @@
-package com.example.rsandroidtask4.presentation.itemList
+package com.example.rsandroidtask4.presentation.list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.shareIn
 
 @InternalCoroutinesApi
-class ItemListViewModel : ViewModel() {
+class ListViewModel : ViewModel() {
 
     private val repository: EmployeeRepository by locateLazy()
     val items = repository.getEmployees().asLiveDataFlow()

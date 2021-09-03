@@ -1,4 +1,4 @@
-package com.example.rsandroidtask4.ui.navigationinterface
+package com.example.rsandroidtask4.ui
 
 interface NavigationInterface {
     fun openAddItemFragment()

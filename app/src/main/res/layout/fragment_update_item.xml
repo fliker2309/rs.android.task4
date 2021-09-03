@@ -4,26 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:fitsSystemWindows="true"
-            app:navigationContentDescription="Back to the item list"
-            app:navigationIcon="@drawable/ic_arrow"
-            app:title="Add new employee" />
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_update_layout_name"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -40,7 +20,7 @@
         app:helperTextTextColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appBarLayout">
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/text_update_name"
@@ -103,13 +83,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:maxLength="2"
-            android:inputType="number" />
+            android:inputType="number"
+            android:maxLength="2" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/text_input_layout_position"
+        android:id="@+id/text_update_layout_position"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -127,7 +107,7 @@
         app:layout_constraintTop_toBottomOf="@id/text_update_layout_age">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/text_input_position"
+            android:id="@+id/text_update_position"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
@@ -138,7 +118,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/text_input_layout_experience"
+        android:id="@+id/text_update_layout_experience"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -153,15 +133,15 @@
         app:helperTextTextColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_input_layout_position">
+        app:layout_constraintTop_toBottomOf="@id/text_update_layout_position">
 
         <AutoCompleteTextView
-            android:id="@+id/text_input_experience"
+            android:id="@+id/text_update_experience"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:maxLength="2"
-            android:inputType="number" />
+            android:inputType="number"
+            android:maxLength="2" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -191,11 +171,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/main_dimen"
-        android:text="@string/save"
+        android:text="@string/update"
         app:icon="@drawable/ic_baseline_save_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/margin_bottom_guideline">
 
     </com.google.android.material.button.MaterialButton>
 </androidx.constraintlayout.widget.ConstraintLayout>
-

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination ="@id/my_nav">
+
+    <fragment
+        android:id="@+id/itemListFragment"
+        android:name="com.example.rsandroidtask4.ui.fragments.list.ListFragment"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" >
+        <action
+            android:id="@+id/action_itemListFragment_to_addNewItemFragment2"
+            app:destination="@id/addNewItemFragment" />
+        <action
+            android:id="@+id/action_itemListFragment_to_updateItem2"
+            app:destination="@id/updateItem" />
+    </fragment>
+    <fragment
+        android:id="@+id/addNewItemFragment"
+        android:name="com.example.rsandroidtask4.ui.fragments.add.AddFragment"
+        android:label="AddNewItemFragment" >
+        <action
+            android:id="@+id/action_addNewItemFragment_to_itemListFragment"
+            app:destination="@id/itemListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateItem"
+        android:name="com.example.rsandroidtask4.ui.fragments.update.UpdateItem"
+        android:label="UpdateItem" >
+        <action
+            android:id="@+id/action_updateItem_to_itemListFragment2"
+            app:destination="@id/itemListFragment" />
+    </fragment>
+</navigation>

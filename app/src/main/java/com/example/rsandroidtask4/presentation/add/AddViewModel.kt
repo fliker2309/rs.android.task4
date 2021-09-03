@@ -1,4 +1,4 @@
-package com.example.rsandroidtask4.presentation.additem
+package com.example.rsandroidtask4.presentation.add
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -7,7 +7,7 @@ import com.example.rsandroidtask4.data.db.repository.EmployeeRepository
 import com.example.rsandroidtask4.data.locator.ServiceLocator.locateLazy
 import kotlinx.coroutines.launch
 
-class AddItemViewModel : ViewModel() {
+class AddViewModel : ViewModel() {
 
     private val repository: EmployeeRepository by locateLazy()
 
