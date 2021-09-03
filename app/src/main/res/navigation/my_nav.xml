@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/updateItem"
-        android:name="com.example.rsandroidtask4.ui.fragments.update.UpdateItem"
+        android:name="com.example.rsandroidtask4.ui.fragments.update.UpdateFragment"
         android:label="Update employee" >
         <action
             android:id="@+id/action_updateItem_to_itemListFragment"

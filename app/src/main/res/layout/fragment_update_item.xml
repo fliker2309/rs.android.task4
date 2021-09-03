@@ -168,12 +168,12 @@
     </com.google.android.material.button.MaterialButton>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/add_to_table_button"
+        android:id="@+id/update_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/main_dimen"
         android:text="@string/update"
-        app:icon="@drawable/ic_baseline_save_24"
+        app:icon="@drawable/ic_update"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/margin_bottom_guideline">
 
