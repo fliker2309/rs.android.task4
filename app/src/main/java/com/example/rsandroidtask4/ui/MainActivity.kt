@@ -1,20 +1,20 @@
 package com.example.rsandroidtask4.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.rsandroidtask4.databinding.ActivityMainBinding
-import com.example.rsandroidtask4.ui.fragments.add.AddFragment
-import com.example.rsandroidtask4.ui.fragments.list.ListFragment
-import kotlinx.coroutines.InternalCoroutinesApi
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupActionBarWithNavController
+import com.example.rsandroidtask4.R
 
 class MainActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityMainBinding
-
-    @InternalCoroutinesApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_main)
+        setupActionBarWithNavController(findNavController(R.id.nav_host_fragment))
     }
+//переделать навигацию
+   /* override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.nav_host_fragment)
+        return navController.navigateUp() || super.onSupportNavigateUp()
+    }*/
 }

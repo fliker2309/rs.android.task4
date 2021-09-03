@@ -4,26 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:fitsSystemWindows="true"
-            app:navigationContentDescription="Back to the item list"
-            app:navigationIcon="@drawable/ic_arrow"
-            app:title="Add new employee" />
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_input_layout_name"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -40,7 +20,7 @@
         app:helperTextTextColor="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appBarLayout">
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/text_input_name"

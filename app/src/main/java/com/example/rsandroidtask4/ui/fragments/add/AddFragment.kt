@@ -1,6 +1,7 @@
 package com.example.rsandroidtask4.ui.fragments.add
 
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -56,9 +57,9 @@ class AddFragment : Fragment() {
             backButton.setOnClickListener {
                 findNavController().navigate(R.id.action_addItemFragment_to_ListFragment)
             }
-            toolbar.setOnClickListener {
-                findNavController().navigate(R.id.action_addItemFragment_to_ListFragment)
-            }
+            /*  toolbar.setOnClickListener {
+                  findNavController().navigate(R.id.action_addItemFragment_to_ListFragment)
+              }*/
             addToTableButton.setOnClickListener {
                 saveEmployee()
             }
@@ -67,26 +68,39 @@ class AddFragment : Fragment() {
 
     private fun saveEmployee() {
         views {
-            val inputName = textInputName.text.toString().takeIf { it.isNotBlank() } ?: return@views
-            val inputSurname =
-                textInputSurname.text.toString().takeIf { it.isNotBlank() } ?: return@views
-            val inputAge = textInputAge.text.toString().takeIf { it.isNotBlank() } ?: return@views
-            val inputPosition =
-                textInputPosition.text.toString().takeIf { it.isNotBlank() } ?: return@views
-            val inputExperience =
-                textInputExperience.text.toString().takeIf { it.isNotBlank() } ?: return@views
+            val inputName = textInputName.text.toString()
+            val inputSurname = textInputSurname.text.toString()
+            val inputAge = textInputAge.text.toString()
+            val inputPosition = textInputPosition.text.toString()
+            val inputExperience = textInputExperience.text.toString()
 
-            val savedItem = Employee(
-                name = inputName,
-                surname = inputSurname,
-                age = inputAge,
-                position = inputPosition,
-                experience = inputExperience
-            )
+            if (inputCheck(inputName, inputSurname, inputAge, inputPosition, inputExperience)) {
+                val employee = Employee(
+                    name = inputName,
+                    surname = inputSurname,
+                    age = inputAge,
+                    position = inputPosition,
+                    experience = inputExperience
+                )
+                viewModel.addNewEmployee(employee)
+                findNavController().navigate(R.id.action_addItemFragment_to_ListFragment)
+                Toast.makeText(context, "Employee successful added", Toast.LENGTH_LONG).show()
+            } else {
+                Toast.makeText(context, "Please, input all fields", Toast.LENGTH_SHORT).show()
 
-            viewModel.addNewEmployee(savedItem)
-            findNavController().navigate(R.id.action_addItemFragment_to_ListFragment)
-            Toast.makeText(context, "Item successful added", Toast.LENGTH_LONG).show()
+            }
         }
+    }
+
+    private fun inputCheck(
+        name: String,
+        surname: String,
+        age: String,
+        position: String,
+        experience: String
+    ): Boolean {
+        return !(TextUtils.isEmpty(name) || TextUtils.isEmpty(surname) || TextUtils.isEmpty(age) || TextUtils.isEmpty(
+            position
+        ) || TextUtils.isEmpty(experience))
     }
 }

@@ -1,6 +1,6 @@
 package com.example.rsandroidtask4.ui.fragments.list
 
-import android.content.Context
+
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -14,7 +14,6 @@ import com.example.rsandroidtask4.data.db.entity.Employee
 import com.example.rsandroidtask4.databinding.ItemListBinding
 import com.example.rsandroidtask4.presentation.list.ListViewModel
 import com.example.rsandroidtask4.presentation.list.ListViewModelFactory
-import com.example.rsandroidtask4.ui.NavigationInterface
 import com.example.rsandroidtask4.ui.fragments.list.adapter.EmployeeAdapter
 import com.example.rsandroidtask4.ui.fragments.list.swipegesture.SwipeHelper
 import kotlinx.coroutines.InternalCoroutinesApi
@@ -28,14 +27,8 @@ class ListFragment : Fragment() {
         ListViewModelFactory()
     }
     private var binding: ItemListBinding? = null
-    private var addNewItem: NavigationInterface? = null
-    private val adapter: EmployeeAdapter? get() = views { itemListRecycler.adapter as? EmployeeAdapter }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is NavigationInterface)
-            addNewItem = context
-    }
+    private val adapter: EmployeeAdapter? get() = views { itemListRecycler.adapter as? EmployeeAdapter }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,7 +40,7 @@ class ListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         subscribeUi()
-        initSortButton()
+    /*    initSortButton()*/
 
         views {
             itemListRecycler.adapter = EmployeeAdapter()
@@ -57,15 +50,8 @@ class ListFragment : Fragment() {
             )
         }
 
-        subscribeUi()
         onFloatingButtonClickListener()
         /*  onClearTableButtonListener()*/
-    }
-
-
-    override fun onDetach() {
-        super.onDetach()
-        addNewItem = null
     }
 
     override fun onDestroy() {
@@ -73,17 +59,17 @@ class ListFragment : Fragment() {
         binding = null
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+   /* override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.filter, menu)
         Log.d(TAG, "menu was created")
         super.onCreateOptionsMenu(menu, inflater)
-    }
+    }*/
 
     private fun subscribeUi() {
         viewModel.items.onEach(::renderItems).launchIn(lifecycleScope)
     }
 
-    private fun initSortButton() {
+  /*  private fun initSortButton() {
         binding?.toolbar?.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.sort_by_name -> viewModel.nameSortedItems.onEach(::renderItems)
@@ -95,7 +81,7 @@ class ListFragment : Fragment() {
             }
             true
         }
-    }
+    }*/
 
     private fun onClearTableButtonListener() {
         binding?.clearTableButton?.setOnClickListener {

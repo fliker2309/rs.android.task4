@@ -12,8 +12,6 @@ P
 Wapp/src/main/java/com/example/rsandroidtask4/presentation/itemList/ItemListViewModel.kt,f\8\f8823077c47a116f05f7e025fc1155013746ccd2
 Ž
 ^app/src/main/java/com/example/rsandroidtask4/presentation/itemList/ItemListViewModelFactory.kt,d\1\d11dfd7ab902e9251f1844032d6bc5f1d038f8be
-f
-6app/src/main/java/com/example/rsandroidtask4/ui/App.kt,3\d\3dc7ed8c959e86136015bdbc7cf68d8a6461f0ea
 w
 Gapp/src/main/java/com/example/rsandroidtask4/data/db/entity/Employee.kt,8\f\8f2d72eac05386bba7b5a23bc70213ccb8dda3ad
 …

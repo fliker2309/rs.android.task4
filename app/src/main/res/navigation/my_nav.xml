@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/ListFragment"
         android:name="com.example.rsandroidtask4.ui.fragments.list.ListFragment"
-        android:label="activity_main"
+        android:label="Employee List"
         tools:layout="@layout/activity_main" >
         <action
             android:id="@+id/action_ListFragment_to_addItemFragment"
@@ -20,7 +20,7 @@
     <fragment
         android:id="@+id/addFragment"
         android:name="com.example.rsandroidtask4.ui.fragments.add.AddFragment"
-        android:label="AddFragment">
+        android:label="Add employee">
         <action
             android:id="@+id/action_addItemFragment_to_ListFragment"
             app:destination="@id/ListFragment" />
@@ -28,7 +28,7 @@
     <fragment
         android:id="@+id/updateItem"
         android:name="com.example.rsandroidtask4.ui.fragments.update.UpdateItem"
-        android:label="UpdateItem" >
+        android:label="Update employee" >
         <action
             android:id="@+id/action_updateItem_to_itemListFragment"
             app:destination="@id/ListFragment" />
