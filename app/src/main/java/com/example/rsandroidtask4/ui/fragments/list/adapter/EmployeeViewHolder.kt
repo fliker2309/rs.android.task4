@@ -2,9 +2,11 @@ package com.example.rsandroidtask4.ui.fragments.list.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rsandroidtask4.data.db.entity.Employee
 import com.example.rsandroidtask4.databinding.ViewHolderItemBinding
+import com.example.rsandroidtask4.ui.fragments.list.ListFragmentDirections
 
 class EmployeeViewHolder(
     private val binding: ViewHolderItemBinding
@@ -23,6 +25,10 @@ class EmployeeViewHolder(
             surnameTv.text = employee.surname
             experienceTv.text = employee.experience
 
+            viewHolderItem.setOnClickListener {
+                val action = ListFragmentDirections.actionListFragmentToUpdateFragment(employee)
+                viewHolderItem.findNavController().navigate(action)
+            }
         }
     }
 
