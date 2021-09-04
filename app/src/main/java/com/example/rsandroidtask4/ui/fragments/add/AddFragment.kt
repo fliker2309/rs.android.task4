@@ -39,7 +39,7 @@ class AddFragment : Fragment() {
 
         val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                findNavController().navigate(R.id.action_addItemFragment_to_ListFragment)
+                findNavController().navigate(R.id.action_addFragment_to_listFragment)
             }
         }
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
@@ -55,7 +55,7 @@ class AddFragment : Fragment() {
     private fun initListeners() {
         views {
             backButton.setOnClickListener {
-                findNavController().navigate(R.id.action_addItemFragment_to_ListFragment)
+                findNavController().navigate(R.id.action_addFragment_to_listFragment)
             }
             /*  toolbar.setOnClickListener {
                   findNavController().navigate(R.id.action_addItemFragment_to_ListFragment)
@@ -83,7 +83,7 @@ class AddFragment : Fragment() {
                     experience = inputExperience
                 )
                 viewModel.addNewEmployee(employee)
-                findNavController().navigate(R.id.action_addItemFragment_to_ListFragment)
+                findNavController().navigate(R.id.action_addFragment_to_listFragment)
                 Toast.makeText(context, "Employee successful added", Toast.LENGTH_LONG).show()
             } else {
                 Toast.makeText(context, "Please, input all fields", Toast.LENGTH_SHORT).show()

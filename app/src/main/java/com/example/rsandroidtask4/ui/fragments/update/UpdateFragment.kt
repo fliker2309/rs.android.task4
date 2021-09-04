@@ -37,7 +37,7 @@ class UpdateFragment : Fragment() {
     private fun initListeners() {
         views {
             backButton.setOnClickListener {
-                findNavController().navigate(R.id.action_updateItem_to_itemListFragment)
+                findNavController().navigate(R.id.action_updateFragment_to_listFragment)
             }
 
         }

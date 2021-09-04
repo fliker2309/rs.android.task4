@@ -87,7 +87,7 @@ class ListFragment : Fragment() {
 
     private fun onFloatingButtonClickListener() {
         binding?.addNewItemFloatingButton?.setOnClickListener {
-            findNavController().navigate(R.id.action_ListFragment_to_addItemFragment)
+            findNavController().navigate(R.id.action_ListFragment_to_addFragment)
         }
     }
 
