@@ -25,5 +25,4 @@ class SwipeCallback(
     ): Boolean {
         return false
     }
-
 }

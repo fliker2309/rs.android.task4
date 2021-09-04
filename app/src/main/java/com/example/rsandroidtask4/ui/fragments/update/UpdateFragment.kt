@@ -55,6 +55,11 @@ class UpdateFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+
     private fun updateEmployee() {
         binding.run {
             val updateName = textUpdateName.text.toString()
@@ -75,7 +80,7 @@ class UpdateFragment : Fragment() {
                 )
                 viewModel.updateEmployee(updatedEmployee)
                 findNavController().navigate(R.id.action_updateFragment_to_listFragment)
-                Toast.makeText(context, "Employee successful updated", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Successfully updated", Toast.LENGTH_SHORT).show()
 
             } else {
                 Toast.makeText(context, "Please, input all fields", Toast.LENGTH_SHORT).show()
