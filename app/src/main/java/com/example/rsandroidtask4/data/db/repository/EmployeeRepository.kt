@@ -10,7 +10,6 @@ class EmployeeRepository(private val employeeDatabase: EmployeeDatabase) {
     private val employeeDao get() = employeeDatabase.itemDao()
 
     fun getEmployees(): Flow<List<Employee>> = employeeDao.getEmployees()
-    fun getEmployee(id: Int): Flow<Employee?> = employeeDao.getEmployee(id)
 
     fun sortEmployeesByAge(): Flow<List<Employee>> = employeeDao.sortEmployeesByAge()
     fun sortEmployeesByName(): Flow<List<Employee>> = employeeDao.sortEmployeesByName()

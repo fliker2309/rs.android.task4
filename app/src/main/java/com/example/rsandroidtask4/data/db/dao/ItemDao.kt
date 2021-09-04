@@ -10,14 +10,11 @@ interface ItemDao {
     @Query("SELECT * FROM employees")
     fun getEmployees(): Flow<List<Employee>>
 
-    @Query("SELECT * FROM employees WHERE id=(:id)")
-    fun getEmployee(id: Int): Flow<Employee?>
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertEmployee(employee: Employee)
 
     @Update
-    fun updateEmployee(employee: Employee)
+    suspend fun updateEmployee(employee: Employee)
 
     @Delete
     suspend fun deleteEmployee(employee: Employee)
@@ -36,5 +33,4 @@ interface ItemDao {
 
     @Query("SELECT * FROM employees ORDER BY `experience` ASC")
     fun sortEmployeesByExperience(): Flow<List<Employee>>
-
 }
