@@ -83,10 +83,6 @@ class ListFragment : Fragment() {
           }
       }*/
 
-   /* private fun onEditButtonListener() {
-        val action = ListFragmentDirections.actionItemListFragmentToUpdateItem()
-        findNavController().navigate(action)
-    }*/
 
 
     private fun onFloatingButtonClickListener() {
