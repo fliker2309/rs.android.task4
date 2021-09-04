@@ -5,6 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rsandroidtask4.data.db.entity.Employee
 import com.example.rsandroidtask4.databinding.ViewHolderItemBinding
+import com.example.rsandroidtask4.ui.fragments.list.ListFragment
+import com.example.rsandroidtask4.ui.fragments.list.ListFragmentDirections
 
 class EmployeeViewHolder(
     private val binding: ViewHolderItemBinding
@@ -23,9 +25,6 @@ class EmployeeViewHolder(
             surnameTv.text = employee.surname
             experienceTv.text = employee.experience
 
-            /*editUserBtn.setOnClickListener {
-                val action = ListFragmentDirections
-            }*/
         }
     }
 

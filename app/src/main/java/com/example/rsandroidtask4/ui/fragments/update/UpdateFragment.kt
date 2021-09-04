@@ -23,7 +23,12 @@ class UpdateFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initListeners()
+
+
+
+
         super.onViewCreated(view, savedInstanceState)
+
     }
 
 
@@ -31,9 +36,10 @@ class UpdateFragment : Fragment() {
 
     private fun initListeners() {
         views {
-backButton.setOnClickListener {
-    findNavController().navigate(R.id.action_updateItem_to_itemListFragment)
-}
+            backButton.setOnClickListener {
+                findNavController().navigate(R.id.action_updateItem_to_itemListFragment)
+            }
+
         }
     }
 }

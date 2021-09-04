@@ -22,18 +22,19 @@ interface ItemDao {
     @Delete
     suspend fun deleteEmployee(employee: Employee)
 
-    @Query("DELETE FROM employees")
-    suspend fun wipeDatabase()
-
     @Query("SELECT * FROM employees ORDER BY age ASC")
     fun sortEmployeesByAge(): Flow<List<Employee>>
 
     @Query("SELECT * FROM employees ORDER BY name ASC")
     fun sortEmployeesByName(): Flow<List<Employee>>
 
+    @Query("SELECT * FROM employees ORDER BY surname ASC")
+    fun sortEmployeeBySurname(): Flow<List<Employee>>
+
     @Query("SELECT * FROM employees ORDER BY position ASC")
     fun sortEmployeesByPosition(): Flow<List<Employee>>
 
     @Query("SELECT * FROM employees ORDER BY `experience` ASC")
     fun sortEmployeesByExperience(): Flow<List<Employee>>
+
 }

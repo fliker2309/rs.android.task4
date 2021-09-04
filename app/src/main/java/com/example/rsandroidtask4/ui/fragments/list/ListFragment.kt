@@ -40,7 +40,7 @@ class ListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         subscribeUi()
-    /*    initSortButton()*/
+        /*    initSortButton()*/
 
         views {
             itemListRecycler.adapter = EmployeeAdapter()
@@ -51,7 +51,7 @@ class ListFragment : Fragment() {
         }
 
         onFloatingButtonClickListener()
-        /*  onClearTableButtonListener()*/
+
     }
 
     override fun onDestroy() {
@@ -59,39 +59,35 @@ class ListFragment : Fragment() {
         binding = null
     }
 
-   /* override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.filter, menu)
-        Log.d(TAG, "menu was created")
-        super.onCreateOptionsMenu(menu, inflater)
-    }*/
+    /* override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+         inflater.inflate(R.menu.filter, menu)
+         Log.d(TAG, "menu was created")
+         super.onCreateOptionsMenu(menu, inflater)
+     }*/
 
     private fun subscribeUi() {
         viewModel.items.onEach(::renderItems).launchIn(lifecycleScope)
     }
 
-  /*  private fun initSortButton() {
-        binding?.toolbar?.setOnMenuItemClickListener { item ->
-            when (item.itemId) {
-                R.id.sort_by_name -> viewModel.nameSortedItems.onEach(::renderItems)
-                    .launchIn(lifecycleScope)
-                R.id.sort_by_breed -> viewModel.breedSortedItems.onEach(::renderItems)
-                    .launchIn(lifecycleScope)
-                R.id.sort_by_age -> viewModel.ageSortedItems.onEach(::renderItems)
-                    .launchIn(lifecycleScope)
-            }
-            true
-        }
+    /*  private fun initSortButton() {
+          binding?.toolbar?.setOnMenuItemClickListener { item ->
+              when (item.itemId) {
+                  R.id.sort_by_name -> viewModel.nameSortedItems.onEach(::renderItems)
+                      .launchIn(lifecycleScope)
+                  R.id.sort_by_breed -> viewModel.breedSortedItems.onEach(::renderItems)
+                      .launchIn(lifecycleScope)
+                  R.id.sort_by_age -> viewModel.ageSortedItems.onEach(::renderItems)
+                      .launchIn(lifecycleScope)
+              }
+              true
+          }
+      }*/
+
+   /* private fun onEditButtonListener() {
+        val action = ListFragmentDirections.actionItemListFragmentToUpdateItem()
+        findNavController().navigate(action)
     }*/
 
-    /*private fun onEditButtonListener(){
-        val action = ListFragmentD
-    }*/
-    private fun onClearTableButtonListener() {
-        binding?.clearTableButton?.setOnClickListener {
-            viewModel.deleteAllItems()
-            Log.d(TAG, "delete all was clicked")
-        }
-    }
 
     private fun onFloatingButtonClickListener() {
         binding?.addNewItemFloatingButton?.setOnClickListener {

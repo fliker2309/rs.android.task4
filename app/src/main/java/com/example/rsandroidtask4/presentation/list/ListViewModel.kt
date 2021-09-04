@@ -24,10 +24,6 @@ class ListViewModel : ViewModel() {
         viewModelScope.launch { repository.deleteEmployee(employee) }
     }
 
-    fun deleteAllItems() {
-        viewModelScope.launch { repository.wipeDatabase() }
-    }
-
     //для отдачи последнего состояния если активити было уничтожено
     private fun <T> Flow<T>.asLiveDataFlow() =
         shareIn(viewModelScope, SharingStarted.Eagerly, replay = 1)

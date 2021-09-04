@@ -16,12 +16,11 @@ class EmployeeRepository(private val employeeDatabase: EmployeeDatabase) {
     fun sortEmployeesByName(): Flow<List<Employee>> = employeeDao.sortEmployeesByName()
     fun sortEmployeesByPosition(): Flow<List<Employee>> = employeeDao.sortEmployeesByPosition()
     fun sortEmployeesByExperience(): Flow<List<Employee>> = employeeDao.sortEmployeesByExperience()
+    fun sortEmployeesBySurname(): Flow<List<Employee>> = employeeDao.sortEmployeeBySurname()
 
     suspend fun insertEmployee(employee: Employee) = employeeDao.insertEmployee(employee)
 
     suspend fun updateEmployee(employee: Employee) = employeeDao.updateEmployee(employee)
 
     suspend fun deleteEmployee(employee: Employee) = employeeDao.deleteEmployee(employee)
-
-    suspend fun wipeDatabase() = employeeDao.wipeDatabase()
 }
