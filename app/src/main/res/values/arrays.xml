@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Database management -->
+
+    <string-array name="dbms_entries">
+        <item>Room</item>
+        <item>Cursor</item>
+    </string-array>
+    <string-array name="dbms_values">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+
+    <!--Sorting methods -->
+    <string-array name="sort_entries">
+        <item>Name</item>
+        <item>Surname</item>
+        <item>Age</item>
+        <item>Position</item>
+        <item>Experience</item>
+    </string-array>
+
+    <string-array name="sort_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+</resources>

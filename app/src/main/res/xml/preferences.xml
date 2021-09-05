@@ -1,8 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-<PreferenceCategory
-    app:key="Sort"
-    app:title="Sort"
-    />
+
+
+    <PreferenceCategory
+        android:key="dbms_preference_fragment"
+        android:summary="@arra"
+        app:title="Database implementation">
+        <SwitchPreferenceCompat
+            app:key="enable_cursor"
+            app:title="Enable cursor implementation"
+            app:icon="@drawable/ic_storage"/>
+    </PreferenceCategory>
+
+    <Preference
+        app:key="sorting_fragment"
+        app:title="Sort DB"
+        app:icon="@drawable/ic_sort">
+
+
+
+    </Preference>
 </PreferenceScreen>
