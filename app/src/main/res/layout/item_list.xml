@@ -25,6 +25,17 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/view_holder_item" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/settings_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/settings"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/margin_bottom_guideline_main_page">
+
+    </com.google.android.material.button.MaterialButton>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_new_item_floating_button"
         android:layout_width="wrap_content"
