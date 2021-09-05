@@ -41,11 +41,11 @@ class ListFragment : Fragment() {
     ): View = ItemListBinding.inflate(inflater).also { _binding = it }.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+
         setHasOptionsMenu(true)
         subscribeUi()
         /*    initSortButton()*/
-
+        Log.d(TAG, "onViewCreated")
         binding.apply {
             itemListRecycler.adapter = EmployeeAdapter()
             itemListRecycler.layoutManager = LinearLayoutManager(context)
@@ -56,7 +56,7 @@ class ListFragment : Fragment() {
 
         onFloatingButtonClickListener()
         onSettingsButtonListener()
-
+        super.onViewCreated(view, savedInstanceState)
     }
 
     private fun onSettingsButtonListener() {
@@ -86,15 +86,6 @@ class ListFragment : Fragment() {
             }
             else -> super.onOptionsItemSelected(item)
         }
-
-
-
-
-
-
-
-
-
     }
 
 
@@ -118,7 +109,6 @@ class ListFragment : Fragment() {
             }
         }
     }
-
 
     /*  private fun initSortButton() {
           binding?.toolbar?.setOnMenuItemClickListener { item ->
