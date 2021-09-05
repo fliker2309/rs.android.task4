@@ -55,7 +55,14 @@ class ListFragment : Fragment() {
         }
 
         onFloatingButtonClickListener()
+        onSettingsButtonListener()
 
+    }
+
+    private fun onSettingsButtonListener() {
+        binding.settingsButton.setOnClickListener {
+            findNavController().navigate(R.id.action_listFragment_to_settingsFragment)
+        }
     }
 
     override fun onDestroy() {

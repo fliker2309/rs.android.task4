@@ -2,23 +2,14 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
-    <PreferenceCategory
+    <ListPreference
         android:key="dbms_preference_fragment"
-        android:summary="@arra"
-        app:title="Database implementation">
-        <SwitchPreferenceCompat
-            app:key="enable_cursor"
-            app:title="Enable cursor implementation"
-            app:icon="@drawable/ic_storage"/>
-    </PreferenceCategory>
+        android:summary="@array/dbms_values"
+        android:title="Database implementation: "
+        app:entries="@array/dbms_entries"
+        app:entryValues="@array/dbms_values"
+        app:icon="@drawable/ic_storage"
+        app:useSimpleSummaryProvider="true">
+    </ListPreference>
 
-    <Preference
-        app:key="sorting_fragment"
-        app:title="Sort DB"
-        app:icon="@drawable/ic_sort">
-
-
-
-    </Preference>
 </PreferenceScreen>
