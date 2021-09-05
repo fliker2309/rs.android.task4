@@ -3,6 +3,8 @@ package com.example.rsandroidtask4.ui.fragments.list
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.PopupMenu
+import androidx.annotation.MenuRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -40,7 +42,7 @@ class ListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        setHasOptionsMenu(true)
         subscribeUi()
         /*    initSortButton()*/
 
@@ -61,15 +63,55 @@ class ListFragment : Fragment() {
         _binding = null
     }
 
-     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-         inflater.inflate(R.menu.filter, menu)
-         Log.d(TAG, "menu was created")
-         super.onCreateOptionsMenu(menu, inflater)
-     }
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.filter, menu)
+        Log.d(TAG, "menu was created")
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val navController = findNavController()
+        return when(item.itemId){
+            R.id.filter_icon ->{
+                val menuItemView: View = activity?.findViewById(item.itemId) as View
+                showMenu(R.menu.filter, menuItemView)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+
+
+
+
+
+
+
+
+
+    }
+
 
     private fun subscribeUi() {
-        viewModel.items.onEach(::renderItems).launchIn(lifecycleScope)
+        viewModel.employees.onEach(::renderItems).launchIn(lifecycleScope)
     }
+
+    private fun showMenu(@MenuRes menuRes: Int, anchor: View) {
+        PopupMenu(requireContext(), anchor).apply {
+            inflate(menuRes)
+
+            setOnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    R.id.sort_by_name -> Log.d(TAG,"clicked name")
+
+                        /*viewModel.nameSortedEmployees.onEach(::renderItems)
+                        .launchIn(lifecycleScope)*/
+                    R.id.sort_by_surname -> viewModel.surnameSortedEmployees.onEach(::renderItems)
+                }
+                true
+            }
+        }
+    }
+
 
     /*  private fun initSortButton() {
           binding?.toolbar?.setOnMenuItemClickListener { item ->
@@ -84,7 +126,6 @@ class ListFragment : Fragment() {
               true
           }
       }*/
-
 
 
     private fun onFloatingButtonClickListener() {

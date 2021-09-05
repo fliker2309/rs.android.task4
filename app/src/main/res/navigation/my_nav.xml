@@ -17,6 +17,9 @@
         <action
             android:id="@+id/action_listFragment_to_updateFragment"
             app:destination="@id/updateFragment" />
+        <action
+            android:id="@+id/action_listFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/addFragment"
@@ -37,5 +40,13 @@
         <argument
             android:name="currentEmployee"
             app:argType="com.example.rsandroidtask4.data.db.entity.Employee" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.rsandroidtask4.ui.settings.SettingsFragment"
+        android:label="SettingsFragment" >
+        <action
+            android:id="@+id/action_settingsFragment_to_listFragment"
+            app:destination="@id/listFragment" />
     </fragment>
 </navigation>
