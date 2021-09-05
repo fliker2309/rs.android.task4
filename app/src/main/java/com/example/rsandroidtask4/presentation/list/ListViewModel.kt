@@ -16,9 +16,31 @@ class ListViewModel : ViewModel() {
 
     private val repository: EmployeeRepository by locateLazy()
     val items = repository.getEmployees().asLiveDataFlow()
-    val nameSortedItems = repository.sortEmployeesByName().asLiveDataFlow()
-    val ageSortedItems = repository.sortEmployeesByAge().asLiveDataFlow()
-    val breedSortedItems = repository.sortEmployeesByPosition().asLiveDataFlow()
+    /*   val nameSortedEmployees = repository.sortEmployeesByName().asLiveDataFlow()*/
+    /*   val ageSortedEmployees = repository.sortEmployeesByAge().asLiveDataFlow()
+       val positionSortedEmployees = repository.sortEmployeesByPosition().asLiveDataFlow()
+       val surnameSortedEmployees = repository.sortEmployeesBySurname().asLiveDataFlow()
+       val experienceSortedEmployees = repository.sortEmployeesByExperience().asLiveDataFlow()*/
+
+    fun sortByName() {
+        viewModelScope.launch { repository.sortEmployeesByName().asLiveDataFlow() }
+    }
+
+    fun sortBySurname() {
+        viewModelScope.launch { repository.sortEmployeesBySurname().asLiveDataFlow() }
+    }
+
+    fun sortByAge() {
+        viewModelScope.launch { repository.sortEmployeesByAge().asLiveDataFlow() }
+    }
+
+    fun sortByPosition() {
+        viewModelScope.launch { repository.sortEmployeesByExperience().asLiveDataFlow() }
+    }
+
+    fun sortByExperience() {
+        viewModelScope.launch { repository.sortEmployeesByExperience().asLiveDataFlow() }
+    }
 
     fun deleteFromDb(employee: Employee) {
         viewModelScope.launch { repository.deleteEmployee(employee) }

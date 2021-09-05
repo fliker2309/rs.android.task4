@@ -13,17 +13,30 @@
             <item
                 android:id="@+id/sort_by_name"
                 android:title="@string/name"
+                android:orderInCategory="0"
                 app:showAsAction="never" />
-
+            <item
+                android:id="@+id/sort_by_surname"
+                android:title="@string/surname"
+                android:orderInCategory="1"
+                app:showAsAction="never" />
             <item
                 android:id="@+id/sort_by_age"
                 android:title="@string/age"
+                android:orderInCategory="2"
                 app:showAsAction="never" />
 
             <item
-                android:id="@+id/sort_by_breed"
-                android:title="@string/surname"
+                android:id="@+id/sort_by_position"
+                android:title="@string/position"
+                android:orderInCategory="3"
                 app:showAsAction="never" />
+            <item
+                android:id="@+id/sort_by_experience"
+                android:title="@string/experience"
+                android:orderInCategory="4"
+                app:showAsAction="never" />
+
 
         </menu>
 
