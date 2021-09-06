@@ -1,5 +1,6 @@
 package com.example.rsandroidtask4.data.db.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.rsandroidtask4.data.db.entity.Employee
 import kotlinx.coroutines.flow.Flow
@@ -7,8 +8,8 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface ItemDao {
 
-    @Query("SELECT * FROM employees")
-    fun getEmployees(): Flow<List<Employee>>
+    @Query("SELECT * FROM employees ORDER BY id ASC")
+    fun getEmployees(): LiveData<List<Employee>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertEmployee(employee: Employee)
@@ -20,17 +21,17 @@ interface ItemDao {
     suspend fun deleteEmployee(employee: Employee)
 
     @Query("SELECT * FROM employees ORDER BY age ASC")
-    fun sortEmployeesByAge(): Flow<List<Employee>>
+    fun sortEmployeesByAge(): LiveData<List<Employee>>
 
     @Query("SELECT * FROM employees ORDER BY name ASC")
-    fun sortEmployeesByName(): Flow<List<Employee>>
+    fun sortEmployeesByName(): LiveData<List<Employee>>
 
     @Query("SELECT * FROM employees ORDER BY surname ASC")
-    fun sortEmployeeBySurname(): Flow<List<Employee>>
+    fun sortEmployeeBySurname(): LiveData<List<Employee>>
 
     @Query("SELECT * FROM employees ORDER BY position ASC")
-    fun sortEmployeesByPosition(): Flow<List<Employee>>
+    fun sortEmployeesByPosition(): LiveData<List<Employee>>
 
     @Query("SELECT * FROM employees ORDER BY `experience` ASC")
-    fun sortEmployeesByExperience(): Flow<List<Employee>>
+    fun sortEmployeesByExperience(): LiveData<List<Employee>>
 }
