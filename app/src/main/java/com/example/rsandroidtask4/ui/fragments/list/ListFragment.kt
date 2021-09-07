@@ -58,46 +58,10 @@ class ListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
     }
 
-
-
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
     }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.filter, menu)
-        Log.d(TAG, "menu was created")
-        super.onCreateOptionsMenu(menu, inflater)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
-        return when (item.itemId) {
-            R.id.filter_icon -> {
-
-                val menuItemView: View = activity?.findViewById(item.itemId) as View
-                showMenu(R.menu.filter, menuItemView)
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
-
-
-    private fun showMenu(@MenuRes menuRes: Int, anchor: View) {
-        PopupMenu(requireContext(), anchor).apply {
-            inflate(menuRes)
-
-            setOnMenuItemClickListener { menuItem: MenuItem ->
-                viewModel.updateSortStateById(menuItem.order)
-                true
-            }
-
-show()
-        }
-    }
-
 
     private fun onFloatingButtonClickListener() {
         binding.addNewItemFloatingButton.setOnClickListener {
