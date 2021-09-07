@@ -155,7 +155,6 @@
 
     </androidx.constraintlayout.widget.Guideline>
 
-
     <com.google.android.material.button.MaterialButton
         android:id="@+id/back_button"
         android:layout_width="0dp"
