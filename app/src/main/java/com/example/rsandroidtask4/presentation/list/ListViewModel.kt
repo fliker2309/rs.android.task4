@@ -15,13 +15,7 @@ class ListViewModel : ViewModel() {
 
     private val repository: EmployeeRepository by locateLazy()
 
-    private val readAllEmployees: LiveData<List<Employee>> = repository.getEmployees()
-
-    fun addEmployee(employee: Employee) {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.insertEmployee(employee)
-        }
-    }
+    val readAllEmployees: LiveData<List<Employee>> = repository.getEmployees()
 
     fun deleteFromDb(employee: Employee) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -29,7 +23,7 @@ class ListViewModel : ViewModel() {
     }
 
 
-    /*  val employees = repository.getEmployees()
+    /*
 
       val nameSortedEmployees = repository.sortEmployeesByName().asLiveDataFlow()
       val ageSortedEmployees = repository.sortEmployeesByAge().asLiveDataFlow()

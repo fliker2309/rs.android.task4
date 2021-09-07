@@ -3,23 +3,17 @@ package com.example.rsandroidtask4.ui.fragments.list
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import android.widget.PopupMenu
-import androidx.annotation.MenuRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.rsandroidtask4.R
-import com.example.rsandroidtask4.data.db.entity.Employee
 import com.example.rsandroidtask4.databinding.ItemListBinding
 import com.example.rsandroidtask4.presentation.list.ListViewModel
 import com.example.rsandroidtask4.presentation.list.ListViewModelFactory
 import com.example.rsandroidtask4.ui.fragments.list.adapter.EmployeeAdapter
 import com.example.rsandroidtask4.ui.fragments.list.swipegesture.SwipeHelper
 import kotlinx.coroutines.InternalCoroutinesApi
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
 
 @InternalCoroutinesApi
 class ListFragment : Fragment() {
@@ -43,7 +37,7 @@ class ListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         setHasOptionsMenu(true)
-      /*  subscribeUi()*/
+
         /*    initSortButton()*/
         Log.d(TAG, "onViewCreated")
         binding.apply {
@@ -54,17 +48,17 @@ class ListFragment : Fragment() {
             )
         }
 
+        viewModel.readAllEmployees.observe(viewLifecycleOwner, { employee ->
+            adapter?.submitList(employee)
+        })
+
         onFloatingButtonClickListener()
         onSettingsButtonListener()
 
         super.onViewCreated(view, savedInstanceState)
     }
 
-    private fun onSettingsButtonListener() {
-        binding.settingsButton.setOnClickListener {
-            findNavController().navigate(R.id.action_listFragment_to_settingsFragment)
-        }
-    }
+
 
     override fun onDestroy() {
         super.onDestroy()
@@ -89,10 +83,6 @@ class ListFragment : Fragment() {
         }
     }*/
 
-
-  /*  private fun subscribeUi() {
-        viewModel.employees.onEach(::renderItems).launchIn(lifecycleScope)
-    }*/
 
   /*  private fun showMenu(@MenuRes menuRes: Int, anchor: View) {
         PopupMenu(requireContext(), anchor).apply {
@@ -132,8 +122,10 @@ class ListFragment : Fragment() {
         }
     }
 
-    private fun renderItems(employees: List<Employee>) {
-        adapter?.submitList(employees)
+    private fun onSettingsButtonListener() {
+        binding.settingsButton.setOnClickListener {
+            findNavController().navigate(R.id.action_listFragment_to_settingsFragment)
+        }
     }
 
     private fun <T> views(block: ItemListBinding.() -> T): T? = binding.block()
@@ -141,6 +133,5 @@ class ListFragment : Fragment() {
     companion object {
         const val TAG = "myLog"
     }
-
 }
 
