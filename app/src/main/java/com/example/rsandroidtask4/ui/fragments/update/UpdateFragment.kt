@@ -33,6 +33,7 @@ class UpdateFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentUpdateItemBinding.inflate(inflater, container, false)
+        //saveArgs NavComponent
         binding.apply {
             textUpdateName.setText(args.currentEmployee.name)
             textUpdateSurname.setText(args.currentEmployee.surname)
