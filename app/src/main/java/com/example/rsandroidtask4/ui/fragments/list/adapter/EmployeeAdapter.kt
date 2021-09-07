@@ -12,7 +12,6 @@ class EmployeeAdapter : ListAdapter<Employee, EmployeeViewHolder>(EmployeeDiffUt
     override fun onBindViewHolder(holder: EmployeeViewHolder, position: Int) {
         val currentItem = currentList[position]
         holder.bind(currentItem)
-
     }
 
     override fun getItemCount() = currentList.size

@@ -43,7 +43,7 @@ class ListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         setHasOptionsMenu(true)
-        subscribeUi()
+      /*  subscribeUi()*/
         /*    initSortButton()*/
         Log.d(TAG, "onViewCreated")
         binding.apply {
@@ -56,6 +56,7 @@ class ListFragment : Fragment() {
 
         onFloatingButtonClickListener()
         onSettingsButtonListener()
+
         super.onViewCreated(view, savedInstanceState)
     }
 
@@ -76,7 +77,7 @@ class ListFragment : Fragment() {
         super.onCreateOptionsMenu(menu, inflater)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+   /* override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val navController = findNavController()
         return when(item.itemId){
             R.id.filter_icon ->{
@@ -86,14 +87,14 @@ class ListFragment : Fragment() {
             }
             else -> super.onOptionsItemSelected(item)
         }
-    }
+    }*/
 
 
-    private fun subscribeUi() {
+  /*  private fun subscribeUi() {
         viewModel.employees.onEach(::renderItems).launchIn(lifecycleScope)
-    }
+    }*/
 
-    private fun showMenu(@MenuRes menuRes: Int, anchor: View) {
+  /*  private fun showMenu(@MenuRes menuRes: Int, anchor: View) {
         PopupMenu(requireContext(), anchor).apply {
             inflate(menuRes)
 
@@ -101,14 +102,14 @@ class ListFragment : Fragment() {
                 when (item.itemId) {
                     R.id.sort_by_name -> Log.d(TAG,"clicked name")
 
-                        /*viewModel.nameSortedEmployees.onEach(::renderItems)
-                        .launchIn(lifecycleScope)*/
+                        *//*viewModel.nameSortedEmployees.onEach(::renderItems)
+                        .launchIn(lifecycleScope)*//*
                     R.id.sort_by_surname -> viewModel.surnameSortedEmployees.onEach(::renderItems)
                 }
                 true
             }
         }
-    }
+    }*/
 
     /*  private fun initSortButton() {
           binding?.toolbar?.setOnMenuItemClickListener { item ->

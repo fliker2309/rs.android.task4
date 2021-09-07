@@ -18,7 +18,9 @@ import com.example.rsandroidtask4.presentation.add.AddViewModelFactory
 
 class AddFragment : Fragment() {
 
-    private var binding: FragmentAddItemBinding? = null
+    private var _binding: FragmentAddItemBinding? = null
+    private val binding: FragmentAddItemBinding
+        get() = _binding!!
 
     private val viewModel: AddViewModel by viewModels {
         AddViewModelFactory()
@@ -29,14 +31,14 @@ class AddFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View =
-        FragmentAddItemBinding.inflate(inflater, container, false).also { binding = it }.root
+        FragmentAddItemBinding.inflate(inflater, container, false).also { _binding = it }.root
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         initListeners()
-
+//глянуть кусок кода
         val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 findNavController().navigate(R.id.action_addFragment_to_listFragment)
@@ -47,19 +49,17 @@ class AddFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        binding = null
+        _binding = null
     }
 
-    private fun <T> views(block: FragmentAddItemBinding.() -> T): T? = binding?.block()
+    //вместо биндинга можно использовать
+    /*private fun <T> views(block: FragmentAddItemBinding.() -> T): T? = binding?.block()*/
 
     private fun initListeners() {
-        views {
+        binding.apply {
             backButton.setOnClickListener {
                 findNavController().navigate(R.id.action_addFragment_to_listFragment)
             }
-            /*  toolbar.setOnClickListener {
-                  findNavController().navigate(R.id.action_addItemFragment_to_ListFragment)
-              }*/
             addToTableButton.setOnClickListener {
                 saveEmployee()
             }
@@ -67,7 +67,7 @@ class AddFragment : Fragment() {
     }
 
     private fun saveEmployee() {
-        views {
+        binding.apply {
             val inputName = textInputName.text.toString()
             val inputSurname = textInputSurname.text.toString()
             val inputAge = textInputAge.text.toString()
@@ -86,8 +86,7 @@ class AddFragment : Fragment() {
                 findNavController().navigate(R.id.action_addFragment_to_listFragment)
                 Toast.makeText(context, "Employee successful added", Toast.LENGTH_LONG).show()
             } else {
-                Toast.makeText(context, "Please, input all fields", Toast.LENGTH_SHORT).show()
-
+                Toast.makeText(context, "Please, fill out all fields", Toast.LENGTH_SHORT).show()
             }
         }
     }

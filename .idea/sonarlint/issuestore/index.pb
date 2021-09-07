@@ -20,15 +20,19 @@ Mapp/src/main/java/com/example/rsandroidtask4/presentation/add/AddViewModel.kt,
 Tapp/src/main/java/com/example/rsandroidtask4/presentation/add/AddViewModelFactory.kt,e\1\e18d5e4eed6a477c140a7a57d972e24972b7f89d
 †
 Vapp/src/main/java/com/example/rsandroidtask4/presentation/list/ListViewModelFactory.kt,6\b\6b06ebc935b81903b4a35154e2ab74027954d276
-’
-bapp/src/main/java/com/example/rsandroidtask4/ui/fragments/list/adapter/EmployeeDiffUtilCallback.kt,1\6\16e02140a62e12732da81081a2919529fd5e86ac
 Œ
 \app/src/main/java/com/example/rsandroidtask4/ui/fragments/list/swipegesture/SwipeCallback.kt,5\4\548cd919246c9bdc708d29ffcdd5465dcd1bb73b
 Š
 Zapp/src/main/java/com/example/rsandroidtask4/ui/fragments/list/swipegesture/SwipeHelper.kt,e\c\ec8c801fc307ea5723d026504078f167d7ccb29b
-~
-Napp/src/main/java/com/example/rsandroidtask4/ui/fragments/update/UpdateItem.kt,3\a\3aa25909d821088298c2a1acdd59908de5692bf6
 <
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
 f
 6app/src/main/java/com/example/rsandroidtask4/ui/App.kt,3\d\3dc7ed8c959e86136015bdbc7cf68d8a6461f0ea
+@
+app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
+w
+Gapp/src/main/java/com/example/rsandroidtask4/data/db/entity/Employee.kt,8\f\8f2d72eac05386bba7b5a23bc70213ccb8dda3ad
+s
+Capp/src/main/java/com/example/rsandroidtask4/data/db/dao/ItemDao.kt,1\8\18c59e6cd3b35a9f9ff7fcc5e30d22d72f458eb6
+o
+?app/src/main/java/com/example/rsandroidtask4/ui/MainActivity.kt,4\4\44635996d4b6978e1c44bd8c574afef4e2ad8b46

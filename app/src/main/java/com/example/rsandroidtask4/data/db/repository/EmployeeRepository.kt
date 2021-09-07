@@ -11,10 +11,10 @@ class EmployeeRepository(private val employeeDatabase: EmployeeDatabase) {
 
     fun getEmployees(): LiveData<List<Employee>> = employeeDao.getEmployees()
 
-    fun sortEmployeesByAge():  LiveData<List<Employee>> = employeeDao.sortEmployeesByAge()
+    fun sortEmployeesByAge(): LiveData<List<Employee>> = employeeDao.sortEmployeesByAge()
     fun sortEmployeesByName(): LiveData<List<Employee>> = employeeDao.sortEmployeesByName()
-    fun sortEmployeesByPosition():  LiveData<List<Employee>> = employeeDao.sortEmployeesByPosition()
-    fun sortEmployeesByExperience():  LiveData<List<Employee>> = employeeDao.sortEmployeesByExperience()
+    fun sortEmployeesByPosition(): LiveData<List<Employee>> = employeeDao.sortEmployeesByPosition()
+    fun sortEmployeesByExperience(): LiveData<List<Employee>> = employeeDao.sortEmployeesByExperience()
     fun sortEmployeesBySurname(): LiveData<List<Employee>> = employeeDao.sortEmployeeBySurname()
 
     suspend fun insertEmployee(employee: Employee) = employeeDao.insertEmployee(employee)
