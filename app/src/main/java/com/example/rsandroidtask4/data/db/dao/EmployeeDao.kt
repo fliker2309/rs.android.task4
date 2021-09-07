@@ -3,10 +3,9 @@ package com.example.rsandroidtask4.data.db.dao
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.rsandroidtask4.data.db.entity.Employee
-import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface ItemDao {
+interface EmployeeDao {
 
     @Query("SELECT * FROM employees ORDER BY id ASC")
     fun getEmployees(): LiveData<List<Employee>>
@@ -19,6 +18,17 @@ interface ItemDao {
 
     @Delete
     suspend fun deleteEmployee(employee: Employee)
+
+ /*   @Query(
+        "SELECT * FROM employees ORDER BY " +
+                "CASE WHEN :order = 'name' THEN name END," +
+                "CASE WHEN :order = 'surname' THEN surname END," +
+                "CASE WHEN :order = 'age' THEN age END," +
+                "CASE WHEN :order = 'position' THEN position END," +
+                "CASE WHEN :order = 'experience' THEN experience END"
+    )
+    fun sortEmployees(order: String): LiveData<List<Employee>>*/
+
 
     @Query("SELECT * FROM employees ORDER BY age ASC")
     fun sortEmployeesByAge(): LiveData<List<Employee>>

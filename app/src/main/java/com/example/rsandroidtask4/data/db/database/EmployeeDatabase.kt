@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.rsandroidtask4.data.db.dao.ItemDao
+import com.example.rsandroidtask4.data.db.dao.EmployeeDao
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.internal.synchronized
 import com.example.rsandroidtask4.data.db.entity.Employee
@@ -13,7 +13,7 @@ import com.example.rsandroidtask4.data.db.entity.Employee
 
 abstract class EmployeeDatabase : RoomDatabase() {
 
-    abstract fun itemDao(): ItemDao
+    abstract fun itemDao(): EmployeeDao
 
     companion object {
         @Volatile
