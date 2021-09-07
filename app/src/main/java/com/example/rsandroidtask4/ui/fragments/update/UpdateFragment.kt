@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.rsandroidtask4.R
@@ -50,7 +51,7 @@ class UpdateFragment : Fragment() {
                 updateEmployee()
             }
             backButton.setOnClickListener {
-                findNavController().navigate(R.id.action_updateFragment_to_listFragment)
+                findNavController().popBackStack()
             }
         }
         super.onViewCreated(view, savedInstanceState)

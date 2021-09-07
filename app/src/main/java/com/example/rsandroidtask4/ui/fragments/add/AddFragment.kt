@@ -46,7 +46,7 @@ class AddFragment : Fragment() {
     private fun initListeners() {
         binding.apply {
             backButton.setOnClickListener {
-                findNavController().navigate(R.id.action_addFragment_to_listFragment)
+                findNavController().popBackStack()
             }
             addToTableButton.setOnClickListener {
                 saveEmployee()
