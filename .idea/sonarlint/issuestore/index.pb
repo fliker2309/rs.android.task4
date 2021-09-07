@@ -8,8 +8,6 @@ P
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
-Ö
-Uapp/src/main/java/com/example/rsandroidtask4/data/db/repository/EmployeeRepository.kt,7\6\7618b2b57754c7d711a7de32eec65f0ea6d1c18a
 Å
 Qapp/src/main/java/com/example/rsandroidtask4/data/db/database/EmployeeDatabase.kt,e\8\e80f3c450b65eb9054d9cdcf413fbbfdd40c2651
 T
@@ -20,8 +18,6 @@ L
 Mapp/src/main/java/com/example/rsandroidtask4/presentation/add/AddViewModel.kt,b\1\b1ab0a08ede525abde19b319302cf8ee4b6e926a
 Ñ
 Tapp/src/main/java/com/example/rsandroidtask4/presentation/add/AddViewModelFactory.kt,e\1\e18d5e4eed6a477c140a7a57d972e24972b7f89d
-
-Oapp/src/main/java/com/example/rsandroidtask4/presentation/list/ListViewModel.kt,d\a\daf62a6592cad3bf20342ddd103026a99f21caa6
 Ü
 Vapp/src/main/java/com/example/rsandroidtask4/presentation/list/ListViewModelFactory.kt,6\b\6b06ebc935b81903b4a35154e2ab74027954d276
 í
