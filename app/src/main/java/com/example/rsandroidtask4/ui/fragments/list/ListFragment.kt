@@ -3,6 +3,8 @@ package com.example.rsandroidtask4.ui.fragments.list
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import androidx.annotation.MenuRes
+import androidx.appcompat.widget.PopupMenu
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -35,10 +37,8 @@ class ListFragment : Fragment() {
     ): View = ItemListBinding.inflate(inflater).also { _binding = it }.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
         setHasOptionsMenu(true)
 
-        /*    initSortButton()*/
         Log.d(TAG, "onViewCreated")
         binding.apply {
             itemListRecycler.adapter = EmployeeAdapter()
@@ -71,49 +71,32 @@ class ListFragment : Fragment() {
         super.onCreateOptionsMenu(menu, inflater)
     }
 
-   /* override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val navController = findNavController()
-        return when(item.itemId){
-            R.id.filter_icon ->{
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        return when (item.itemId) {
+            R.id.filter_icon -> {
+
                 val menuItemView: View = activity?.findViewById(item.itemId) as View
                 showMenu(R.menu.filter, menuItemView)
                 true
             }
             else -> super.onOptionsItemSelected(item)
         }
-    }*/
+    }
 
 
-  /*  private fun showMenu(@MenuRes menuRes: Int, anchor: View) {
+    private fun showMenu(@MenuRes menuRes: Int, anchor: View) {
         PopupMenu(requireContext(), anchor).apply {
             inflate(menuRes)
 
-            setOnMenuItemClickListener { item ->
-                when (item.itemId) {
-                    R.id.sort_by_name -> Log.d(TAG,"clicked name")
-
-                        *//*viewModel.nameSortedEmployees.onEach(::renderItems)
-                        .launchIn(lifecycleScope)*//*
-                    R.id.sort_by_surname -> viewModel.surnameSortedEmployees.onEach(::renderItems)
-                }
+            setOnMenuItemClickListener { menuItem: MenuItem ->
+                viewModel.updateSortStateById(menuItem.order)
                 true
             }
-        }
-    }*/
 
-    /*  private fun initSortButton() {
-          binding?.toolbar?.setOnMenuItemClickListener { item ->
-              when (item.itemId) {
-                  R.id.sort_by_name -> viewModel.nameSortedItems.onEach(::renderItems)
-                      .launchIn(lifecycleScope)
-                  R.id.sort_by_breed -> viewModel.breedSortedItems.onEach(::renderItems)
-                      .launchIn(lifecycleScope)
-                  R.id.sort_by_age -> viewModel.ageSortedItems.onEach(::renderItems)
-                      .launchIn(lifecycleScope)
-              }
-              true
-          }
-      }*/
+show()
+        }
+    }
 
 
     private fun onFloatingButtonClickListener() {

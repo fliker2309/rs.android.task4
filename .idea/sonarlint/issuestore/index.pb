@@ -32,12 +32,8 @@ o
 Yapp/src/main/java/com/example/rsandroidtask4/ui/fragments/list/adapter/EmployeeAdapter.kt,1\5\159d2a5d3f4ae615bbd1aae02ae2b175894feda5
 ’
 bapp/src/main/java/com/example/rsandroidtask4/ui/fragments/list/adapter/EmployeeDiffUtilCallback.kt,1\6\16e02140a62e12732da81081a2919529fd5e86ac
-~
-Napp/src/main/java/com/example/rsandroidtask4/ui/fragments/list/ListFragment.kt,7\6\763116d85e68713844e00d3a39706618ca362975
 |
 Lapp/src/main/java/com/example/rsandroidtask4/ui/fragments/add/AddFragment.kt,7\e\7e6c66de06835bee4526d1aa7278bc4f9edfd592
-
-Oapp/src/main/java/com/example/rsandroidtask4/presentation/list/ListViewModel.kt,d\a\daf62a6592cad3bf20342ddd103026a99f21caa6
 †
 Vapp/src/main/java/com/example/rsandroidtask4/presentation/list/ListViewModelFactory.kt,6\b\6b06ebc935b81903b4a35154e2ab74027954d276
 Ž
