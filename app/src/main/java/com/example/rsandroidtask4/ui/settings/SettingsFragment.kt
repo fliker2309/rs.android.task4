@@ -20,9 +20,9 @@ class SettingsFragment : PreferenceFragmentCompat() {
      setPreferencesFromResource(R.xml.preferences,rootKey)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+   /* override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val dbms = preferenceManager.findPreference<ListPreference>("dbms_")
-    }
+    }*/
 }

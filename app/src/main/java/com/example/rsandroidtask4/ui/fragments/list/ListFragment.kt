@@ -2,14 +2,16 @@ package com.example.rsandroidtask4.ui.fragments.list
 
 import android.os.Bundle
 import android.util.Log
-import android.view.*
-import androidx.annotation.MenuRes
-import androidx.appcompat.widget.PopupMenu
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.rsandroidtask4.R
+import com.example.rsandroidtask4.data.db.entity.Employee
 import com.example.rsandroidtask4.databinding.ItemListBinding
 import com.example.rsandroidtask4.presentation.list.ListViewModel
 import com.example.rsandroidtask4.presentation.list.ListViewModelFactory
@@ -37,7 +39,8 @@ class ListFragment : Fragment() {
     ): View = ItemListBinding.inflate(inflater).also { _binding = it }.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        setHasOptionsMenu(true)
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
+        val order = sharedPreferences.getString("sort_by", "name") ?: "name"
 
         Log.d(TAG, "onViewCreated")
         binding.apply {
@@ -48,8 +51,11 @@ class ListFragment : Fragment() {
             )
         }
 
-        viewModel.readAllEmployees.observe(viewLifecycleOwner, { employee ->
-            adapter?.submitList(employee)
+        viewModel.sortBy(order)
+        viewModel.employeeListLiveData.observe(viewLifecycleOwner, { employees ->
+            employees?.let {
+                updateUI(it)
+            }
         })
 
         onFloatingButtonClickListener()
@@ -61,6 +67,10 @@ class ListFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    private fun updateUI(employees: List<Employee>) {
+        adapter?.submitList(employees)
     }
 
     private fun onFloatingButtonClickListener() {

@@ -1,3 +1,4 @@
+/*
 package com.example.rsandroidtask4.data.db.cursor
 
 import android.annotation.SuppressLint
@@ -107,9 +108,11 @@ class EmployeeDatabaseCursor(context: Context) : SQLiteOpenHelper(
         TODO("Not yet implemented")
     }
 
-    /* override fun sortEmployees(order: String): LiveData<List<Employee>> {
+    */
+/* override fun sortEmployees(order: String): LiveData<List<Employee>> {
          TODO("Not yet implemented")
-     }*/
+     }*//*
+
 
     @SuppressLint("Range")
     private suspend fun getEmployeeList(): List<Employee> {
@@ -154,8 +157,10 @@ class EmployeeDatabaseCursor(context: Context) : SQLiteOpenHelper(
     }
 
 
-   /* private fun getCursorWithEmployees(): Cursor {
+   */
+/* private fun getCursorWithEmployees(): Cursor {
         return writableDatabase.rawQuery("SELECT * FROM $TABLE_NAME ", null)
-    }*/
+    }*//*
 
-}
+
+}*/
