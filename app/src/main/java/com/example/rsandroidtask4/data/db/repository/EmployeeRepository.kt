@@ -9,16 +9,10 @@ import com.example.rsandroidtask4.data.db.database.EmployeeDatabase
 import com.example.rsandroidtask4.data.db.entity.Employee
 
 
-class EmployeeRepository(private val employeeDatabase: EmployeeDatabase, val context:Context) {
-
+class EmployeeRepository(private val employeeDatabase: EmployeeDatabase) {
 
     private var employeeDao : EmployeeDao = employeeDatabase.itemDao()
-        get() {
-            val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
-            val dbms = preferenceManager.findPreference<ListPreference>("dbms_")
 
-
-            employeeDatabase.itemDao()}
 
     fun getEmployees(order: String): LiveData<List<Employee>> = employeeDao.getEmployees(order)
 

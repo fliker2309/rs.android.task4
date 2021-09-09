@@ -10,6 +10,7 @@
         android:title="Current implementation: "
         app:entries="@array/dbms_entries"
         app:entryValues="@array/dbms_values"
+        android:defaultValue="0"
         app:icon="@drawable/ic_storage"
         app:useSimpleSummaryProvider="true">
 
@@ -23,6 +24,7 @@
             android:key="sort_preference_fragment"
             android:summary="@array/sort_values"
             android:title="Sort Employees by: "
+            android:defaultValue="0"
             app:entries="@array/sort_entries"
             app:entryValues="@array/sort_values"
             app:icon="@drawable/ic_sort"
