@@ -44,7 +44,7 @@
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.rsandroidtask4.ui.settings.SettingsFragment"
-        android:label="SettingsFragment" >
+        android:label="Settings" >
         <action
             android:id="@+id/action_settingsFragment_to_listFragment"
             app:destination="@id/listFragment" />

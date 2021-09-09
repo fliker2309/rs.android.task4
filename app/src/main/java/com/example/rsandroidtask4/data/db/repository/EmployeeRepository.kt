@@ -13,6 +13,9 @@ class EmployeeRepository(private val employeeDatabase: EmployeeDatabase) {
 
     private var employeeDao : EmployeeDao = employeeDatabase.itemDao()
 
+    //getByRoom репозиторий умный, сам решает откуда взять буль меньше места
+    //GetByCursor
+
 
     fun getEmployees(order: String): LiveData<List<Employee>> = employeeDao.getEmployees(order)
 

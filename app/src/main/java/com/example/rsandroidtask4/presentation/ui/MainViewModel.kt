@@ -25,13 +25,13 @@ class MainViewModel: ViewModel() {
         }
     }
 
-    private var sort: MutableLiveData<String> = MutableLiveData("name")
-    var employeeListLiveData: LiveData<List<Employee>> = Transformations.switchMap(sort) { order ->
+    private var chosenSort: MutableLiveData<String> = MutableLiveData("name")
+    var employeeListLiveData: LiveData<List<Employee>> = Transformations.switchMap(chosenSort) { order ->
         repository.getEmployees(order)
     }
 
     fun sortBy(order: String) {
-        sort.value = order
+        chosenSort.value = order
     }
 
     private fun createEmployee(employee: Employee) = Employee(
