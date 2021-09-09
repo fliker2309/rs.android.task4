@@ -12,8 +12,8 @@ import androidx.navigation.fragment.findNavController
 import com.example.rsandroidtask4.R
 import com.example.rsandroidtask4.data.db.entity.Employee
 import com.example.rsandroidtask4.databinding.FragmentAddItemBinding
-import com.example.rsandroidtask4.presentation.add.AddViewModel
-import com.example.rsandroidtask4.presentation.add.AddViewModelFactory
+import com.example.rsandroidtask4.presentation.ui.MainViewModel
+import com.example.rsandroidtask4.presentation.ui.MainViewModelFactory
 
 class AddFragment : Fragment() {
 
@@ -21,8 +21,8 @@ class AddFragment : Fragment() {
     private val binding: FragmentAddItemBinding
         get() = _binding!!
 
-    private val viewModel: AddViewModel by viewModels {
-        AddViewModelFactory()
+    private val viewModel: MainViewModel by viewModels {
+        MainViewModelFactory()
     }
 
     override fun onCreateView(

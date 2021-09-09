@@ -13,8 +13,8 @@ import androidx.navigation.fragment.navArgs
 import com.example.rsandroidtask4.R
 import com.example.rsandroidtask4.data.db.entity.Employee
 import com.example.rsandroidtask4.databinding.FragmentUpdateItemBinding
-import com.example.rsandroidtask4.presentation.update.UpdateViewModel
-import com.example.rsandroidtask4.presentation.update.UpdateViewModelFactory
+import com.example.rsandroidtask4.presentation.ui.MainViewModel
+import com.example.rsandroidtask4.presentation.ui.MainViewModelFactory
 
 class UpdateFragment : Fragment() {
 
@@ -23,8 +23,8 @@ class UpdateFragment : Fragment() {
     private val binding: FragmentUpdateItemBinding
         get() = _binding!!
 
-    private val viewModel: UpdateViewModel by viewModels {
-        UpdateViewModelFactory()
+    private val viewModel: MainViewModel by viewModels {
+        MainViewModelFactory()
     }
 
     override fun onCreateView(
