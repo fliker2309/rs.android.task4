@@ -13,8 +13,8 @@ import androidx.navigation.fragment.navArgs
 import com.example.rsandroidtask4.R
 import com.example.rsandroidtask4.data.db.entity.Employee
 import com.example.rsandroidtask4.databinding.FragmentUpdateItemBinding
-import com.example.rsandroidtask4.presentation.ui.MainViewModel
-import com.example.rsandroidtask4.presentation.ui.MainViewModelFactory
+import com.example.rsandroidtask4.presentation.MainViewModel
+import com.example.rsandroidtask4.presentation.MainViewModelFactory
 
 class UpdateFragment : Fragment() {
 

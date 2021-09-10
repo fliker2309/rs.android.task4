@@ -2,10 +2,10 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 <PreferenceCategory
-    android:key="database"
+    android:key="choose_db_implementation"
     android:title="Database implementation">
     <ListPreference
-        android:key="dbms_preference_fragment"
+        android:key="database"
         android:summary="@array/dbms_values"
         android:title="Current implementation: "
         app:entries="@array/dbms_entries"
@@ -18,10 +18,10 @@
 </PreferenceCategory>
 
     <PreferenceCategory
-        android:key="sort"
+        android:key="sort_method"
         android:title="Sorting option">
         <ListPreference
-            android:key="sort_preference_fragment"
+            android:key="sort"
             android:summary="@array/sort_values"
             android:title="Sort Employees by: "
             android:defaultValue="0"

@@ -1,4 +1,4 @@
-package com.example.rsandroidtask4.presentation.ui
+package com.example.rsandroidtask4.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

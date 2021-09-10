@@ -13,10 +13,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.rsandroidtask4.R
 import com.example.rsandroidtask4.data.db.entity.Employee
 import com.example.rsandroidtask4.databinding.ItemListBinding
-import com.example.rsandroidtask4.presentation.ui.MainViewModel
-import com.example.rsandroidtask4.presentation.ui.MainViewModelFactory
+import com.example.rsandroidtask4.presentation.MainViewModel
+import com.example.rsandroidtask4.presentation.MainViewModelFactory
 import com.example.rsandroidtask4.ui.fragments.list.adapter.EmployeeAdapter
 import com.example.rsandroidtask4.ui.fragments.list.swipegesture.SwipeHelper
+import com.example.rsandroidtask4.ui.settings.SettingsLiveData
 import kotlinx.coroutines.InternalCoroutinesApi
 
 @InternalCoroutinesApi
@@ -24,6 +25,10 @@ class ListFragment : Fragment() {
 
     private val viewModel: MainViewModel by viewModels {
         MainViewModelFactory()
+    }
+
+    private val preferences by lazy {
+        SettingsLiveData(PreferenceManager.getDefaultSharedPreferences(context?.applicationContext))
     }
 
     private var _binding: ItemListBinding? = null
@@ -40,7 +45,7 @@ class ListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
-        val order = sharedPreferences.getString("sort_by", "name") ?: "name"
+        val order = sharedPreferences.getString("sort_by", "name") ?: "name"// глянуть
 
         Log.d(TAG, "onViewCreated")
         binding.apply {

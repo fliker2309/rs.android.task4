@@ -1,15 +1,17 @@
-package com.example.rsandroidtask4.presentation.ui
+package com.example.rsandroidtask4.presentation
 
 import androidx.lifecycle.*
 import com.example.rsandroidtask4.data.db.entity.Employee
 import com.example.rsandroidtask4.data.db.repository.EmployeeRepository
 import com.example.rsandroidtask4.data.locator.ServiceLocator
+import com.example.rsandroidtask4.ui.settings.SettingsLiveData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class MainViewModel: ViewModel() {
 
     private val repository: EmployeeRepository by ServiceLocator.locateLazy()
+    private val preferences : SettingsLiveData by ServiceLocator.locateLazy()
 
     fun addNewEmployee(employee: Employee) {
         viewModelScope.launch { repository.insertEmployee((createEmployee(employee))) }
@@ -24,6 +26,9 @@ class MainViewModel: ViewModel() {
             repository.deleteEmployee(employee)
         }
     }
+
+    @JvmName("getPreferences1")
+    fun getPreferences() = preferences
 
     private var chosenSort: MutableLiveData<String> = MutableLiveData("name")
     var employeeListLiveData: LiveData<List<Employee>> = Transformations.switchMap(chosenSort) { order ->
