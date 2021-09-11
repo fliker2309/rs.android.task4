@@ -7,17 +7,21 @@ import androidx.preference.PreferenceManager
 import com.example.rsandroidtask4.data.db.dao.EmployeeDao
 import com.example.rsandroidtask4.data.db.database.EmployeeDatabase
 import com.example.rsandroidtask4.data.db.entity.Employee
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOf
 
 
 class EmployeeRepository(private val employeeDatabase: EmployeeDatabase) {
 
-    private val employeeDao : EmployeeDao = employeeDatabase.itemDao()
+    private val employeeDao: EmployeeDao = employeeDatabase.itemDao()
 
     //getByRoom репозиторий умный, сам решает откуда взять буль меньше места
     //GetByCursor
 
-
-    fun roomGetEmployees(order: String): LiveData<List<Employee>> = employeeDao.getEmployees(order)
+    //comments!
+    /* fun roomGetEmployees(*//*order: String*//*): LiveData<List<Employee>> = employeeDao.getEmployees(*//*order*//*)*/
+    fun roomGetEmployees(): Flow<List<Employee>> = employeeDao.getEmployees()
+   val employees = flowOf(listOf<Employee>())
 
     suspend fun roomInsertEmployee(employee: Employee) = employeeDao.insertEmployee(employee)
 

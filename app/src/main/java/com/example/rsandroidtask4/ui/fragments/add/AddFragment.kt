@@ -1,19 +1,29 @@
 package com.example.rsandroidtask4.ui.fragments.add
 
+import android.content.Context
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.datastore.dataStore
+import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.rsandroidtask4.R
 import com.example.rsandroidtask4.data.db.entity.Employee
 import com.example.rsandroidtask4.databinding.FragmentAddItemBinding
 import com.example.rsandroidtask4.presentation.MainViewModel
 import com.example.rsandroidtask4.presentation.MainViewModelFactory
+import com.example.rsandroidtask4.ui.fragments.list.USER_PREFERENCES_NAME
+import com.example.rsandroidtask4.ui.settings.UserPreferencesRepository
+
+/*private val Context.dataStore by preferencesDataStore(
+    name = USER_PREFERENCES_NAME
+)*/
 
 class AddFragment : Fragment() {
 
@@ -21,9 +31,7 @@ class AddFragment : Fragment() {
     private val binding: FragmentAddItemBinding
         get() = _binding!!
 
-    private val viewModel: MainViewModel by viewModels {
-        MainViewModelFactory()
-    }
+    private lateinit var viewModel: MainViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,6 +43,14 @@ class AddFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        viewModel =ViewModelProvider(
+            this,
+            MainViewModelFactory(
+                UserPreferencesRepository()
+            )
+        ).get(MainViewModel::class.java)
+
         initListeners()
     }
 

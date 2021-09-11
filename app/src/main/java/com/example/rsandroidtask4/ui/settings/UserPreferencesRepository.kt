@@ -63,10 +63,6 @@ class UserPreferencesRepository(private val dataStore: DataStore<Preferences>) {
             UserPreferences(database, sortOrder)
         }
 
-
-
-
-
     suspend fun sortMethod(){
         dataStore.edit { preferences ->
             val currentOrder = SortOrder.valueOf(

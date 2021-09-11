@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,12 +20,13 @@ import com.example.rsandroidtask4.presentation.MainViewModel
 import com.example.rsandroidtask4.presentation.MainViewModelFactory
 import com.example.rsandroidtask4.ui.fragments.list.adapter.EmployeeAdapter
 import com.example.rsandroidtask4.ui.fragments.list.swipegesture.SwipeHelper
+import com.example.rsandroidtask4.ui.settings.SortOrder
 /*import com.example.rsandroidtask4.ui.settings.SettingsLiveData*/
 import kotlinx.coroutines.InternalCoroutinesApi
 
-private const val USER_PREFERENCES_NAME = "user_preferences"
+const val USER_PREFERENCES_NAME = "user_preferences"
 
-private val Context.dataStore by preferencesDataStore(
+val Context.dataStore by preferencesDataStore(
     name = USER_PREFERENCES_NAME
 )
 @InternalCoroutinesApi
@@ -48,8 +50,13 @@ class ListFragment : Fragment() {
     ): View = ItemListBinding.inflate(inflater).also { _binding = it }.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
-        val order = sharedPreferences.getString("sort_by", "name") ?: "name"// глянуть
+
+       viewModel.mainUiModel.observe(viewLifecycleOwner){ mainUiModel->
+           adapter?.submitList(mainUiModel.employees)
+           /*updateSort(mainUiModel.sortOrder)*/
+           // добавить обработку БД
+       }
+
 
         Log.d(TAG, "onViewCreated")
         binding.apply {
@@ -60,12 +67,15 @@ class ListFragment : Fragment() {
             )
         }
 
-        viewModel.sortBy(order)
+        /*viewModel.sortBy(order)
         viewModel.employeeListLiveData.observe(viewLifecycleOwner, { employees ->
             employees?.let {
                 updateUI(it)
             }
-        })
+        })*/
+
+
+
 
         onFloatingButtonClickListener()
         onSettingsButtonListener()
@@ -78,9 +88,9 @@ class ListFragment : Fragment() {
         _binding = null
     }
 
-    private fun updateUI(employees: List<Employee>) {
+   /* private fun updateUI(employees: List<Employee>) {
         adapter?.submitList(employees)
-    }
+    }*/
 
     private fun onFloatingButtonClickListener() {
         binding.addNewItemFloatingButton.setOnClickListener {
@@ -93,6 +103,12 @@ class ListFragment : Fragment() {
             findNavController().navigate(R.id.action_listFragment_to_settingsFragment)
         }
     }
+
+  /*  private fun updateSort(sortOrder: SortOrder){
+        when(sortOrder){
+
+        }
+    }*/
 
     private fun <T> views(block: ItemListBinding.() -> T): T? = binding.block()
 
