@@ -1,10 +1,12 @@
 package com.example.rsandroidtask4.ui.fragments.list
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -17,9 +19,14 @@ import com.example.rsandroidtask4.presentation.MainViewModel
 import com.example.rsandroidtask4.presentation.MainViewModelFactory
 import com.example.rsandroidtask4.ui.fragments.list.adapter.EmployeeAdapter
 import com.example.rsandroidtask4.ui.fragments.list.swipegesture.SwipeHelper
-import com.example.rsandroidtask4.ui.settings.SettingsLiveData
+/*import com.example.rsandroidtask4.ui.settings.SettingsLiveData*/
 import kotlinx.coroutines.InternalCoroutinesApi
 
+private const val USER_PREFERENCES_NAME = "user_preferences"
+
+private val Context.dataStore by preferencesDataStore(
+    name = USER_PREFERENCES_NAME
+)
 @InternalCoroutinesApi
 class ListFragment : Fragment() {
 
@@ -27,9 +34,6 @@ class ListFragment : Fragment() {
         MainViewModelFactory()
     }
 
-    private val preferences by lazy {
-        SettingsLiveData(PreferenceManager.getDefaultSharedPreferences(context?.applicationContext))
-    }
 
     private var _binding: ItemListBinding? = null
     private val binding: ItemListBinding
@@ -96,4 +100,3 @@ class ListFragment : Fragment() {
         const val TAG = "myLog"
     }
 }
-
