@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.datastore.dataStore
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -26,16 +27,16 @@ import kotlinx.coroutines.InternalCoroutinesApi
 
 const val USER_PREFERENCES_NAME = "user_preferences"
 
-val Context.dataStore by preferencesDataStore(
+private val Context.dataStore by preferencesDataStore(
     name = USER_PREFERENCES_NAME
 )
 @InternalCoroutinesApi
 class ListFragment : Fragment() {
 
-    private val viewModel: MainViewModel by viewModels {
-        MainViewModelFactory()
-    }
-
+  /*  private val viewModel: MainViewModel by viewModels {
+        MainViewModelFactory(dataStore)
+    }*/
+    private lateinit var viewModel: MainViewModel
 
     private var _binding: ItemListBinding? = null
     private val binding: ItemListBinding

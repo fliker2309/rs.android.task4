@@ -21,9 +21,9 @@ import com.example.rsandroidtask4.presentation.MainViewModelFactory
 import com.example.rsandroidtask4.ui.fragments.list.USER_PREFERENCES_NAME
 import com.example.rsandroidtask4.ui.settings.UserPreferencesRepository
 
-/*private val Context.dataStore by preferencesDataStore(
+private val Context.dataStore by preferencesDataStore(
     name = USER_PREFERENCES_NAME
-)*/
+)
 
 class AddFragment : Fragment() {
 
@@ -31,6 +31,9 @@ class AddFragment : Fragment() {
     private val binding: FragmentAddItemBinding
         get() = _binding!!
 
+   /* private val viewModel: MainViewModel by viewModels {
+        MainViewModelFactory()
+    }*/
     private lateinit var viewModel: MainViewModel
 
     override fun onCreateView(
@@ -44,10 +47,12 @@ class AddFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+
         viewModel =ViewModelProvider(
             this,
             MainViewModelFactory(
-                UserPreferencesRepository()
+                UserPreferencesRepository(dataStore)
             )
         ).get(MainViewModel::class.java)
 

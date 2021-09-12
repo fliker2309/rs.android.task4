@@ -23,9 +23,10 @@ class UpdateFragment : Fragment() {
     private val binding: FragmentUpdateItemBinding
         get() = _binding!!
 
-    private val viewModel: MainViewModel by viewModels {
+   /* private val viewModel: MainViewModel by viewModels {
         MainViewModelFactory()
-    }
+    }*/
+   private lateinit var viewModel: MainViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,

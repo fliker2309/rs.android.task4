@@ -24,16 +24,12 @@ Zapp/src/main/java/com/example/rsandroidtask4/ui/fragments/list/swipegesture/Swi
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
 f
 6app/src/main/java/com/example/rsandroidtask4/ui/App.kt,3\d\3dc7ed8c959e86136015bdbc7cf68d8a6461f0ea
-@
-app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
 o
 ?app/src/main/java/com/example/rsandroidtask4/ui/MainActivity.kt,4\4\44635996d4b6978e1c44bd8c574afef4e2ad8b46
 ‰
 Yapp/src/main/java/com/example/rsandroidtask4/ui/fragments/list/adapter/EmployeeAdapter.kt,1\5\159d2a5d3f4ae615bbd1aae02ae2b175894feda5
 ’
 bapp/src/main/java/com/example/rsandroidtask4/ui/fragments/list/adapter/EmployeeDiffUtilCallback.kt,1\6\16e02140a62e12732da81081a2919529fd5e86ac
-|
-Lapp/src/main/java/com/example/rsandroidtask4/ui/fragments/add/AddFragment.kt,7\e\7e6c66de06835bee4526d1aa7278bc4f9edfd592
 †
 Vapp/src/main/java/com/example/rsandroidtask4/presentation/list/ListViewModelFactory.kt,6\b\6b06ebc935b81903b4a35154e2ab74027954d276
 Ž
