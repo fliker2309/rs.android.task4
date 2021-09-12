@@ -1,41 +1,31 @@
 package com.example.rsandroidtask4.ui.fragments.list
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.datastore.dataStore
-import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.rsandroidtask4.R
-import com.example.rsandroidtask4.data.db.entity.Employee
 import com.example.rsandroidtask4.databinding.ItemListBinding
 import com.example.rsandroidtask4.presentation.MainViewModel
 import com.example.rsandroidtask4.presentation.MainViewModelFactory
+import com.example.rsandroidtask4.ui.fragments.add.dataStore
 import com.example.rsandroidtask4.ui.fragments.list.adapter.EmployeeAdapter
 import com.example.rsandroidtask4.ui.fragments.list.swipegesture.SwipeHelper
-import com.example.rsandroidtask4.ui.settings.SortOrder
-/*import com.example.rsandroidtask4.ui.settings.SettingsLiveData*/
+import com.example.rsandroidtask4.ui.settings.UserPreferencesRepository
 import kotlinx.coroutines.InternalCoroutinesApi
 
 const val USER_PREFERENCES_NAME = "user_preferences"
 
-private val Context.dataStore by preferencesDataStore(
-    name = USER_PREFERENCES_NAME
-)
+
 @InternalCoroutinesApi
 class ListFragment : Fragment() {
 
-  /*  private val viewModel: MainViewModel by viewModels {
-        MainViewModelFactory(dataStore)
-    }*/
+
     private lateinit var viewModel: MainViewModel
 
     private var _binding: ItemListBinding? = null
@@ -52,11 +42,18 @@ class ListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-       viewModel.mainUiModel.observe(viewLifecycleOwner){ mainUiModel->
-           adapter?.submitList(mainUiModel.employees)
-           /*updateSort(mainUiModel.sortOrder)*/
-           // добавить обработку БД
-       }
+        viewModel = ViewModelProvider(
+            this,
+            MainViewModelFactory(
+                UserPreferencesRepository(requireContext().dataStore)
+            )
+        ).get(MainViewModel::class.java)
+
+        viewModel.mainUiModel.observe(viewLifecycleOwner) { mainUiModel ->
+            adapter?.submitList(mainUiModel.employees)
+            /*updateSort(mainUiModel.sortOrder)*/
+            // добавить обработку БД
+        }
 
 
         Log.d(TAG, "onViewCreated")
