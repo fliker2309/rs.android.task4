@@ -16,6 +16,7 @@ import com.example.rsandroidtask4.presentation.MainViewModelFactory
 import com.example.rsandroidtask4.ui.fragments.add.dataStore
 import com.example.rsandroidtask4.ui.fragments.list.adapter.EmployeeAdapter
 import com.example.rsandroidtask4.ui.fragments.list.swipegesture.SwipeHelper
+import com.example.rsandroidtask4.ui.settings.SortOrder
 import com.example.rsandroidtask4.ui.settings.UserPreferencesRepository
 import kotlinx.coroutines.InternalCoroutinesApi
 
@@ -50,8 +51,10 @@ class ListFragment : Fragment() {
         ).get(MainViewModel::class.java)
 
         viewModel.mainUiModel.observe(viewLifecycleOwner) { mainUiModel ->
+
+                updateSort(mainUiModel.sortOrder)
             adapter?.submitList(mainUiModel.employees)
-            /*updateSort(mainUiModel.sortOrder)*/
+
             // добавить обработку БД
         }
 
@@ -86,9 +89,9 @@ class ListFragment : Fragment() {
         _binding = null
     }
 
-   /* private fun updateUI(employees: List<Employee>) {
-        adapter?.submitList(employees)
-    }*/
+    /*  private fun updateUI(employees: List<Employee>) {
+          adapter?.submitList(employees)
+      }*/
 
     private fun onFloatingButtonClickListener() {
         binding.addNewItemFloatingButton.setOnClickListener {
@@ -102,11 +105,15 @@ class ListFragment : Fragment() {
         }
     }
 
-  /*  private fun updateSort(sortOrder: SortOrder){
-        when(sortOrder){
-
+    private fun updateSort(sortOrder: SortOrder) {
+        return when (sortOrder) {
+            SortOrder.BY_NAME -> viewModel.sortByName()
+            SortOrder.BY_SURNAME -> viewModel.sortBySurname()
+            SortOrder.BY_AGE -> viewModel.sortByAge()
+            SortOrder.BY_POSITION -> viewModel.sortByPosition()
+            SortOrder.BY_EXPERIENCE -> viewModel.sortByExperience()
         }
-    }*/
+    }
 
     private fun <T> views(block: ItemListBinding.() -> T): T? = binding.block()
 

@@ -63,7 +63,7 @@ class UserPreferencesRepository(private val dataStore: DataStore<Preferences>) {
             UserPreferences(database, sortOrder)
         }
 
-    suspend fun sortMethod(){
+    suspend fun sortMethod() {
         dataStore.edit { preferences ->
             val currentOrder = SortOrder.valueOf(
                 preferences[PreferencesKeys.SORT_ORDER]?: SortOrder.BY_NAME.name

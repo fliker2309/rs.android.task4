@@ -8,23 +8,23 @@ import kotlinx.coroutines.flow.Flow
 
 class EmployeeRepository(private val employeeDatabase: EmployeeDatabase) {
 
-    private val employeeDao: EmployeeDao = employeeDatabase.itemDao()
+    private val roomEmployeeDao: EmployeeDao = employeeDatabase.itemDao()
 
     //getByRoom репозиторий умный, сам решает откуда взять буль меньше места
     //GetByCursor
 
     //comments!
-    fun roomGetEmployees(): Flow<List<Employee>> = employeeDao.roomGetEmployees()
+    fun roomGetEmployees(): Flow<List<Employee>> = roomEmployeeDao.roomGetEmployees()
 
-    suspend fun roomInsertEmployee(employee: Employee) = employeeDao.roomInsertEmployee(employee)
+    suspend fun roomInsertEmployee(employee: Employee) = roomEmployeeDao.roomInsertEmployee(employee)
 
-    suspend fun roomUpdateEmployee(employee: Employee) = employeeDao.roomUpdateEmployee(employee)
+    suspend fun roomUpdateEmployee(employee: Employee) = roomEmployeeDao.roomUpdateEmployee(employee)
 
-    suspend fun roomDeleteEmployee(employee: Employee) = employeeDao.roomDeleteEmployee(employee)
+    suspend fun roomDeleteEmployee(employee: Employee) = roomEmployeeDao.roomDeleteEmployee(employee)
 
-    fun roomSortByName() : Flow<List<Employee>> = employeeDao.roomSortByName()
-    fun roomSortBySurname() : Flow<List<Employee>> = employeeDao.roomSortBySurname()
-    fun roomSortByAge() : Flow<List<Employee>> = employeeDao.roomSortByAge()
-    fun roomSortByPosition() : Flow<List<Employee>> = employeeDao.roomSortByPosition()
-    fun roomSortByExperience() : Flow<List<Employee>> = employeeDao.roomSortByExperience()
+    fun roomSortByName() : Flow<List<Employee>> = roomEmployeeDao.roomSortByName()
+    fun roomSortBySurname() : Flow<List<Employee>> = roomEmployeeDao.roomSortBySurname()
+    fun roomSortByAge() : Flow<List<Employee>> = roomEmployeeDao.roomSortByAge()
+    fun roomSortByPosition() : Flow<List<Employee>> = roomEmployeeDao.roomSortByPosition()
+    fun roomSortByExperience() : Flow<List<Employee>> = roomEmployeeDao.roomSortByExperience()
 }
