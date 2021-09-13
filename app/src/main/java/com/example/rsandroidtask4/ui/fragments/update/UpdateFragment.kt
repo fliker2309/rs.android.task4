@@ -7,18 +7,25 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.preference.PreferenceManager
 import com.example.rsandroidtask4.R
 import com.example.rsandroidtask4.data.db.entity.Employee
 import com.example.rsandroidtask4.databinding.FragmentUpdateItemBinding
 import com.example.rsandroidtask4.presentation.MainViewModel
 import com.example.rsandroidtask4.presentation.MainViewModelFactory
-import com.example.rsandroidtask4.ui.fragments.add.dataStore
-import com.example.rsandroidtask4.ui.settings.UserPreferencesRepository
+import com.example.rsandroidtask4.ui.App
 
+import com.example.rsandroidtask4.ui.settings.DatabaseSettingsLiveData
+import com.example.rsandroidtask4.ui.settings.SettingsLiveData
+
+import kotlinx.coroutines.InternalCoroutinesApi
+
+@InternalCoroutinesApi
 class UpdateFragment : Fragment() {
 
     private val args by navArgs<UpdateFragmentArgs>()
@@ -26,7 +33,31 @@ class UpdateFragment : Fragment() {
     private val binding: FragmentUpdateItemBinding
         get() = _binding!!
 
-   private lateinit var viewModel: MainViewModel
+    private val preferences by lazy {
+        SettingsLiveData(
+            PreferenceManager.getDefaultSharedPreferences(
+                context?.applicationContext
+            )
+        )
+    }
+
+    private val dbPreferences by lazy {
+        DatabaseSettingsLiveData(
+            PreferenceManager.getDefaultSharedPreferences(
+                context?.applicationContext
+            )
+        )
+    }
+
+    private val viewModel : MainViewModel by activityViewModels {
+        MainViewModelFactory(
+            (activity?.application as App)
+                .repository,
+            preferences,
+            dbPreferences
+        )
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,12 +65,6 @@ class UpdateFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        viewModel = ViewModelProvider(
-            this,
-            MainViewModelFactory(
-                UserPreferencesRepository(requireContext().dataStore)
-            )
-        ).get(MainViewModel::class.java)
         _binding = FragmentUpdateItemBinding.inflate(inflater, container, false)
         //saveArgs NavComponent
         binding.apply {

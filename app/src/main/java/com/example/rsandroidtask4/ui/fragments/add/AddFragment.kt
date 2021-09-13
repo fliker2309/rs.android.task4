@@ -7,31 +7,55 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.datastore.dataStore
-import androidx.datastore.preferences.preferencesDataStore
+
+
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.preference.PreferenceManager
 import com.example.rsandroidtask4.R
 import com.example.rsandroidtask4.data.db.entity.Employee
 import com.example.rsandroidtask4.databinding.FragmentAddItemBinding
 import com.example.rsandroidtask4.presentation.MainViewModel
 import com.example.rsandroidtask4.presentation.MainViewModelFactory
-import com.example.rsandroidtask4.ui.fragments.list.USER_PREFERENCES_NAME
-import com.example.rsandroidtask4.ui.settings.UserPreferencesRepository
+import com.example.rsandroidtask4.ui.App
+import com.example.rsandroidtask4.ui.settings.DatabaseSettingsLiveData
+import com.example.rsandroidtask4.ui.settings.SettingsLiveData
+import kotlinx.coroutines.InternalCoroutinesApi
 
-val Context.dataStore by preferencesDataStore(
-    name = USER_PREFERENCES_NAME
-)
 
+@InternalCoroutinesApi
 class AddFragment : Fragment() {
 
     private var _binding: FragmentAddItemBinding? = null
     private val binding: FragmentAddItemBinding
         get() = _binding!!
 
-    private lateinit var viewModel: MainViewModel
+    private val preferences by lazy {
+        SettingsLiveData(
+            PreferenceManager.getDefaultSharedPreferences(
+                context?.applicationContext
+            )
+        )
+    }
+    private val dbPreferences by lazy {
+        DatabaseSettingsLiveData(
+            PreferenceManager.getDefaultSharedPreferences(
+                context?.applicationContext
+            )
+        )
+    }
+    private val viewModel : MainViewModel by activityViewModels {
+        MainViewModelFactory(
+            (activity?.application as App)
+                .repository,
+            preferences,
+            dbPreferences
+        )
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,12 +68,7 @@ class AddFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel =ViewModelProvider(
-            this,
-            MainViewModelFactory(
-                UserPreferencesRepository(requireContext().dataStore)
-            )
-        ).get(MainViewModel::class.java)
+
 
         initListeners()
     }

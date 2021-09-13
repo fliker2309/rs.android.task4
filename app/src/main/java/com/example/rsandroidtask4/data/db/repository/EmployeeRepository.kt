@@ -3,7 +3,6 @@ package com.example.rsandroidtask4.data.db.repository
 import com.example.rsandroidtask4.data.db.cursor.EmployeeDatabaseCursor
 import com.example.rsandroidtask4.data.db.dao.EmployeeDao
 import com.example.rsandroidtask4.data.db.entity.Employee
-import com.example.rsandroidtask4.ui.settings.UsesDatabase
 import kotlinx.coroutines.flow.Flow
 
 
@@ -15,31 +14,31 @@ class EmployeeRepository(
     val roomList: Flow<List<Employee>> = employeeDao.roomGetEmployees()
     val sqLiteList: Flow<List<Employee>> = sqLiteDatabase.getEmployeeList()
 
-    fun getEmployees(database: UsesDatabase): Flow<List<Employee>> {
-        return when (database.name) {
-            UsesDatabase.ROOM.name -> employeeDao.roomGetEmployees()
+    fun getEmployees(database: Int): Flow<List<Employee>> {
+        return when (database) {
+            0 -> employeeDao.roomGetEmployees()
             else -> sqLiteDatabase.getEmployeeList()
         }
     }
 
-  suspend fun insertEmployee(employee: Employee, database: UsesDatabase) {
-      when(database.name){
-          UsesDatabase.ROOM.name ->  employeeDao.roomInsertEmployee(employee)
-          UsesDatabase.CURSOR.name -> sqLiteDatabase.insertEmployee(employee)
-      }
-  }
-
-    suspend fun updateEmployee(employee: Employee, database: UsesDatabase) {
-        when(database.name){
-            UsesDatabase.ROOM.name ->  employeeDao.roomUpdateEmployee(employee)
-            UsesDatabase.CURSOR.name ->  sqLiteDatabase.updateEmployee(employee)
+    suspend fun insertEmployee(employee: Employee, database: Int) {
+        when (database) {
+            0 -> employeeDao.roomInsertEmployee(employee)
+            1 -> sqLiteDatabase.insertEmployee(employee)
         }
     }
 
-    suspend fun deleteEmployee(employee: Employee, database: UsesDatabase){
-        when(database.name) {
-            UsesDatabase.ROOM.name -> employeeDao.roomDeleteEmployee(employee)
-            UsesDatabase.CURSOR.name -> sqLiteDatabase.deleteEmployee(employee)
+    suspend fun updateEmployee(employee: Employee, database: Int) {
+        when (database) {
+            0 -> employeeDao.roomUpdateEmployee(employee)
+            1 -> sqLiteDatabase.updateEmployee(employee)
+        }
+    }
+
+    suspend fun deleteEmployee(employee: Employee, database: Int) {
+        when (database) {
+            0 -> employeeDao.roomDeleteEmployee(employee)
+            1 -> sqLiteDatabase.deleteEmployee(employee)
         }
     }
 

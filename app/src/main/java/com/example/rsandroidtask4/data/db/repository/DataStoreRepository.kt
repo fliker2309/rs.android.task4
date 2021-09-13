@@ -1,11 +1,10 @@
-package com.example.rsandroidtask4.ui.settings
+/*
+package com.example.rsandroidtask4.data.db.repository
 
+import android.content.Context
 import android.util.Log
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.edit
-import androidx.datastore.preferences.core.emptyPreferences
-import androidx.datastore.preferences.core.stringPreferencesKey
+import androidx.datastore.DataStore
+import androidx.datastore.preferences.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
@@ -29,17 +28,21 @@ enum class UsesDatabase {
     CURSOR
 }
 
-private const val TAG = "UserPreferencesRepo"
+private const val TAG = "DataStoreRepository"
+const val PREFERENCE_NAME = "user_preference"
 
-class UserPreferencesRepository(private val dataStore: DataStore<Preferences>) {
+class DataStoreRepository(context: Context) {
 
+    private val dataStore: DataStore<Preferences> = context.createDataStore(
+        name = PREFERENCE_NAME
+    )
 
     private object PreferencesKeys {
-        val SORT_ORDER = stringPreferencesKey("sort")
-        val USES_DATABASE = stringPreferencesKey("database")
+        val SORT_ORDER = preferencesKey<String>("sort")
+        val USES_DATABASE = preferencesKey<String>("database")
     }
 
-    val userPreferencesFlow: Flow<UserPreferences> = dataStore.data
+    val dataStoreFlow: Flow<UserPreferences> = dataStore.data
         .catch { exception ->
             if (exception is IOException) {
                 Log.e(TAG, "Error reading preferences.", exception)
@@ -63,7 +66,7 @@ class UserPreferencesRepository(private val dataStore: DataStore<Preferences>) {
             UserPreferences(database, sortOrder)
         }
 
-    suspend fun sortMethod() {
+    suspend fun saveSortMethod() {
         dataStore.edit { preferences ->
             val currentOrder = SortOrder.valueOf(
                 preferences[PreferencesKeys.SORT_ORDER]?: SortOrder.BY_NAME.name
@@ -78,7 +81,7 @@ class UserPreferencesRepository(private val dataStore: DataStore<Preferences>) {
         }
     }
 
-    suspend fun currentDBMS(){
+    suspend fun saveDatabaseImplementation(){
         dataStore.edit{ preferences ->
             val currentDatabase = UsesDatabase.valueOf(
                 preferences[PreferencesKeys.USES_DATABASE]?:UsesDatabase.ROOM.name
@@ -91,3 +94,6 @@ class UserPreferencesRepository(private val dataStore: DataStore<Preferences>) {
         }
     }
 }
+
+
+*/
