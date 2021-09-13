@@ -18,14 +18,14 @@ import com.example.rsandroidtask4.ui.App
 import com.example.rsandroidtask4.ui.fragments.list.adapter.EmployeeAdapter
 import com.example.rsandroidtask4.ui.fragments.list.swipegesture.SwipeHelper
 import com.example.rsandroidtask4.ui.settings.DatabaseSettingsLiveData
-import com.example.rsandroidtask4.ui.settings.SettingsLiveData
+import com.example.rsandroidtask4.ui.settings.SortSettingsLiveData
 import kotlinx.coroutines.InternalCoroutinesApi
 
 @InternalCoroutinesApi
 class ListFragment : Fragment() {
 
     private val preferences by lazy {
-        SettingsLiveData(
+        SortSettingsLiveData(
             PreferenceManager.getDefaultSharedPreferences(
                 context?.applicationContext
             )
@@ -77,13 +77,18 @@ class ListFragment : Fragment() {
             }
         }
 
+
         Log.d(TAG, "onViewCreated")
         binding.apply {
             itemListRecycler.adapter = EmployeeAdapter()
             itemListRecycler.layoutManager = LinearLayoutManager(context)
-            SwipeHelper(viewModel::deleteEmployee, requireContext()).attachToRecyclerView(
-                itemListRecycler
-            )
+            /*  viewModel.updateList().observe(this){
+                  SwipeHelper(viewModel::deleteEmployee, requireContext()).attachToRecyclerView(
+                      itemListRecycler)
+              } */
+            onSwiped()
+
+
         }
 
         onFloatingButtonClickListener()
@@ -95,6 +100,15 @@ class ListFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    private fun onSwiped() {
+        viewModel.updateList().observe(viewLifecycleOwner) { employees ->
+            SwipeHelper(viewModel::deleteEmployee, requireContext()).attachToRecyclerView(
+                binding.itemListRecycler
+            )
+            adapter?.submitList(employees)
+        }
     }
 
     private fun onFloatingButtonClickListener() {

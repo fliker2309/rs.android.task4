@@ -1,5 +1,6 @@
 package com.example.rsandroidtask4.data.db.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.rsandroidtask4.data.db.entity.Employee
 import kotlinx.coroutines.flow.Flow
@@ -17,6 +18,6 @@ interface EmployeeDao {
     suspend fun roomDeleteEmployee(employee: Employee)
 
     @Query("SELECT * FROM employees")
-    fun roomGetEmployees(): Flow<List<Employee>>
+    fun roomGetEmployees(): LiveData<List<Employee>>
 
 }

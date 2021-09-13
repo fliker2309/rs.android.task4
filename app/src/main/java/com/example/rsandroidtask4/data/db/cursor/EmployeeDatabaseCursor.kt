@@ -6,6 +6,7 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asFlow
 import com.example.rsandroidtask4.data.db.entity.Employee
@@ -15,7 +16,7 @@ import java.sql.SQLException
 private const val TAG = "SQLiteOpenHelper"
 private const val DATABASE_NAME = "employees_database"
 private const val TABLE_NAME = "employees"
-private const val DATABASE_VERSION = 3
+private const val DATABASE_VERSION = 4
 private const val CREATE_TABLE_SQL =
     "CREATE TABLE IF NOT EXISTS $TABLE_NAME (" +
             "id INTEGER NOT NULL," +
@@ -85,7 +86,7 @@ class EmployeeDatabaseCursor(context: Context) : SQLiteOpenHelper(
 
 
     @SuppressLint("Range")
-     fun getEmployeeList(): Flow<List<Employee>> {
+     fun getEmployeeList(): LiveData<List<Employee>> {
 
         val listOfEmployees = mutableListOf<Employee>()
         val liveDataEmployees = MutableLiveData<List<Employee>>()
@@ -123,7 +124,7 @@ class EmployeeDatabaseCursor(context: Context) : SQLiteOpenHelper(
         }
         Log.d(TAG, "Get all fun getEmployeeList")
         liveDataEmployees.value = listOfEmployees
-        return liveDataEmployees.asFlow()
+        return liveDataEmployees
     }
 
     companion object{

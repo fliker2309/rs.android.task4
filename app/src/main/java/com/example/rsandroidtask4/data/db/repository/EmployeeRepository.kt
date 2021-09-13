@@ -1,5 +1,6 @@
 package com.example.rsandroidtask4.data.db.repository
 
+import androidx.lifecycle.LiveData
 import com.example.rsandroidtask4.data.db.cursor.EmployeeDatabaseCursor
 import com.example.rsandroidtask4.data.db.dao.EmployeeDao
 import com.example.rsandroidtask4.data.db.entity.Employee
@@ -11,10 +12,7 @@ class EmployeeRepository(
     private val sqLiteDatabase: EmployeeDatabaseCursor
 ) {
 
-    val roomList: Flow<List<Employee>> = employeeDao.roomGetEmployees()
-    val sqLiteList: Flow<List<Employee>> = sqLiteDatabase.getEmployeeList()
-
-    fun getEmployees(database: Int): Flow<List<Employee>> {
+    fun getEmployees(database: Int): LiveData<List<Employee>> {
         return when (database) {
             0 -> employeeDao.roomGetEmployees()
             else -> sqLiteDatabase.getEmployeeList()

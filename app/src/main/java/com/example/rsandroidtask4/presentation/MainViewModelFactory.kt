@@ -4,11 +4,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.rsandroidtask4.data.db.repository.EmployeeRepository
 import com.example.rsandroidtask4.ui.settings.DatabaseSettingsLiveData
-import com.example.rsandroidtask4.ui.settings.SettingsLiveData
+import com.example.rsandroidtask4.ui.settings.SortSettingsLiveData
 
 class MainViewModelFactory(
     private val repository: EmployeeRepository,
-    private val preferences: SettingsLiveData,
+    private val preferences: SortSettingsLiveData,
     private val dbPreferences: DatabaseSettingsLiveData
 ) : ViewModelProvider.Factory {
     @Suppress("UNCHECKED_CAST")

@@ -4,12 +4,12 @@ import androidx.lifecycle.*
 import com.example.rsandroidtask4.data.db.entity.Employee
 import com.example.rsandroidtask4.data.db.repository.EmployeeRepository
 import com.example.rsandroidtask4.ui.settings.DatabaseSettingsLiveData
-import com.example.rsandroidtask4.ui.settings.SettingsLiveData
+import com.example.rsandroidtask4.ui.settings.SortSettingsLiveData
 import kotlinx.coroutines.launch
 
 class MainViewModel(
     private val repository: EmployeeRepository,
-    private val preferences: SettingsLiveData,
+    private val preferences: SortSettingsLiveData,
     private val dbPreferences: DatabaseSettingsLiveData
 
 ) : ViewModel() {
@@ -20,7 +20,7 @@ class MainViewModel(
     private val database get() = getDbPreferences().value ?: 0
 
     private val _allEmployees
-        get() = repository.getEmployees(database).asLiveData() as MutableLiveData<List<Employee>>
+        get() = repository.getEmployees(database)
     private val allEmployees: LiveData<List<Employee>> get() = _allEmployees
 
     fun updateList() = allEmployees.map { allEmployees ->

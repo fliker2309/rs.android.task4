@@ -18,7 +18,7 @@ import com.example.rsandroidtask4.presentation.MainViewModel
 import com.example.rsandroidtask4.presentation.MainViewModelFactory
 import com.example.rsandroidtask4.ui.App
 import com.example.rsandroidtask4.ui.settings.DatabaseSettingsLiveData
-import com.example.rsandroidtask4.ui.settings.SettingsLiveData
+import com.example.rsandroidtask4.ui.settings.SortSettingsLiveData
 
 import kotlinx.coroutines.InternalCoroutinesApi
 
@@ -31,7 +31,7 @@ class UpdateFragment : Fragment() {
         get() = _binding!!
 
     private val preferences by lazy {
-        SettingsLiveData(
+        SortSettingsLiveData(
             PreferenceManager.getDefaultSharedPreferences(
                 context?.applicationContext
             )
