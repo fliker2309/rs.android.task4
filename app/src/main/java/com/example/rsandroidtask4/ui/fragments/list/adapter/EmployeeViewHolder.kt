@@ -18,7 +18,7 @@ class EmployeeViewHolder(
     fun bind(employee: Employee) {
         this.employee = employee
 
-        views {
+        binding.apply {
             ageTv.text = employee.age
             nameTv.text = employee.name
             positionTv.text = employee.position
@@ -31,8 +31,6 @@ class EmployeeViewHolder(
             }
         }
     }
-
-    private fun <T> views(block: ViewHolderItemBinding.() -> T): T? = binding.block()
 
     companion object {
         fun create(parent: ViewGroup): EmployeeViewHolder {

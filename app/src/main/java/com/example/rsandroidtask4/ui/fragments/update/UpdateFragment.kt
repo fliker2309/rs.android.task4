@@ -24,6 +24,7 @@ import kotlinx.coroutines.InternalCoroutinesApi
 class UpdateFragment : Fragment() {
 
     private val args by navArgs<UpdateFragmentArgs>()
+
     private var _binding: FragmentUpdateItemBinding? = null
     private val binding: FragmentUpdateItemBinding
         get() = _binding!!
@@ -53,13 +54,11 @@ class UpdateFragment : Fragment() {
         )
     }
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         _binding = FragmentUpdateItemBinding.inflate(inflater, container, false)
         //saveArgs NavComponent
         binding.apply {
@@ -99,10 +98,10 @@ class UpdateFragment : Fragment() {
             R.id.delete_button ->  {
                 val currentEmployee = args.currentEmployee
                 viewModel.deleteEmployee(currentEmployee)
+                Toast.makeText(requireContext(), "Successful deleted", Toast.LENGTH_SHORT).show()
                 findNavController().popBackStack()
             }
         }
-
         return super.onOptionsItemSelected(item)
     }
 

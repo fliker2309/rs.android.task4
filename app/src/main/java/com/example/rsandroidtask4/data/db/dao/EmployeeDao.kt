@@ -3,7 +3,6 @@ package com.example.rsandroidtask4.data.db.dao
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.rsandroidtask4.data.db.entity.Employee
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface EmployeeDao {

@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
-import com.example.rsandroidtask4.R
 import com.example.rsandroidtask4.data.db.entity.Employee
 import com.example.rsandroidtask4.databinding.FragmentAddItemBinding
 import com.example.rsandroidtask4.presentation.MainViewModel
@@ -19,7 +18,6 @@ import com.example.rsandroidtask4.ui.App
 import com.example.rsandroidtask4.ui.settings.DatabaseSettingsLiveData
 import com.example.rsandroidtask4.ui.settings.SortSettingsLiveData
 import kotlinx.coroutines.InternalCoroutinesApi
-
 
 @InternalCoroutinesApi
 class AddFragment : Fragment() {
@@ -35,6 +33,7 @@ class AddFragment : Fragment() {
             )
         )
     }
+
     private val dbPreferences by lazy {
         DatabaseSettingsLiveData(
             PreferenceManager.getDefaultSharedPreferences(
@@ -42,6 +41,7 @@ class AddFragment : Fragment() {
             )
         )
     }
+
     private val viewModel : MainViewModel by activityViewModels {
         MainViewModelFactory(
             (activity?.application as App)
@@ -51,14 +51,14 @@ class AddFragment : Fragment() {
         )
     }
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View =
-        FragmentAddItemBinding.inflate(inflater, container, false).also { _binding = it }.root
-
+    ): View {
+        _binding = FragmentAddItemBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -98,7 +98,7 @@ class AddFragment : Fragment() {
                     experience = inputExperience
                 )
                 viewModel.addNewEmployee(employee)
-                findNavController().navigate(R.id.action_addFragment_to_listFragment)
+                findNavController().popBackStack()
                 Toast.makeText(context, "Employee successful added", Toast.LENGTH_LONG).show()
             } else {
                 Toast.makeText(context, "Please, fill out all fields", Toast.LENGTH_SHORT).show()
@@ -114,7 +114,6 @@ class AddFragment : Fragment() {
         experience: String
     ): Boolean {
         return !(TextUtils.isEmpty(name) || TextUtils.isEmpty(surname) || TextUtils.isEmpty(age) || TextUtils.isEmpty(
-            position
-        ) || TextUtils.isEmpty(experience))
+            position ) || TextUtils.isEmpty(experience))
     }
 }

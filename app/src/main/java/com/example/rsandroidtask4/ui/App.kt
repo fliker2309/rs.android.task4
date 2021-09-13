@@ -13,5 +13,4 @@ class App : Application() {
     private val employeeDatabase by lazy { EmployeeDatabase.getDatabase(this) }
     private val sqLiteDatabase by lazy { EmployeeDatabaseCursor.getSQLDatabase(this) }
     val repository by lazy { EmployeeRepository(employeeDatabase.itemDao(),sqLiteDatabase) }
-
 }

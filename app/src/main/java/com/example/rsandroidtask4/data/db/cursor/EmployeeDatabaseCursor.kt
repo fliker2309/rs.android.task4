@@ -8,26 +8,11 @@ import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.asFlow
 import com.example.rsandroidtask4.data.db.entity.Employee
-import kotlinx.coroutines.flow.Flow
+import com.example.rsandroidtask4.utils.*
 import java.sql.SQLException
 
 private const val TAG = "SQLiteOpenHelper"
-private const val DATABASE_NAME = "employees_database"
-private const val TABLE_NAME = "employees"
-private const val DATABASE_VERSION = 4
-private const val CREATE_TABLE_SQL =
-    "CREATE TABLE IF NOT EXISTS $TABLE_NAME (" +
-            "id INTEGER NOT NULL," +
-            "name TEXT NOT NULL," +
-            "surname TEXT NOT NULL" +
-            "age TEXT NOT NULL" +
-            "position TEXT NOT NULL" +
-            "experience TEXT NOT NULL" +
-            "PRIMARY KEY (id AUTOINCREMENT)" +
-            ");"
-
 
 class EmployeeDatabaseCursor(context: Context) : SQLiteOpenHelper(
     context,
@@ -35,10 +20,11 @@ class EmployeeDatabaseCursor(context: Context) : SQLiteOpenHelper(
     null,
     DATABASE_VERSION
 ) {
-    private val database get() = requireNotNull(INSTANCE)
+    /*private val database get() = requireNotNull(INSTANCE)*/
 
     override fun onCreate(db: SQLiteDatabase?) {
         try {
+            Log.d(TAG, "Creating database by cursor")
             db?.execSQL(CREATE_TABLE_SQL)
         } catch (exception: SQLException) {
             Log.e(TAG, "SQLiteOpenHelper", exception)
@@ -50,70 +36,74 @@ class EmployeeDatabaseCursor(context: Context) : SQLiteOpenHelper(
     }
 
      fun insertEmployee(employee: Employee) {
-        Log.d(TAG, "Cursor insertEmployee($employee)")
-
-        val values = ContentValues()
-        values.put("id", employee.id)
-        values.put("name", employee.name)
-        values.put("surname", employee.surname)
-        values.put("age", employee.age)
-        values.put("position", employee.position)
-        values.put("experience", employee.experience)
-        database.writableDatabase.insert(TABLE_NAME, null, values)
-    }
+         Log.d(TAG, "Cursor insertEmployee($employee)")
+         val db = writableDatabase
+         val values = ContentValues().apply {
+             put(ID_COLUMN, employee.id)
+             put(NAME_COLUMN, employee.name)
+             put(SURNAME_COLUMN, employee.surname)
+             put(AGE_COLUMN, employee.age)
+             put(POSITION_COLUMN, employee.position)
+             put(EXPERIENCE_COLUMN, employee.experience)
+         }
+         db.insert(TABLE_NAME, null, values)
+         db.close()
+     }
 
      fun updateEmployee(employee: Employee) {
-        Log.d(TAG, "Cursor updateEmployee($employee)")
-        val values = ContentValues()
-        values.put("id", employee.id)
-        values.put("name", employee.name)
-        values.put("surname", employee.surname)
-        values.put("age", employee.age)
-        values.put("position", employee.position)
-        values.put("experience", employee.experience)
-        database.writableDatabase.update(
-            TABLE_NAME,
-            values,
-            "id" + "=?",
-            arrayOf(employee.id.toString())
-        )
-    }
+         Log.d(TAG, "Cursor updateEmployee($employee)")
+         val db = writableDatabase
+         val values = ContentValues().apply {
+             put(ID_COLUMN, employee.id)
+             put(NAME_COLUMN, employee.name)
+             put(SURNAME_COLUMN, employee.surname)
+             put(AGE_COLUMN, employee.age)
+             put(POSITION_COLUMN, employee.position)
+             put(EXPERIENCE_COLUMN, employee.experience)
+         }
+         db.update(TABLE_NAME, values, "$ID_COLUMN=?", arrayOf(employee.id.toString()))
+         db.close()
+     }
 
      fun deleteEmployee(employee: Employee) {
-        Log.d(TAG, "Cursor deleteEmployee($employee)")
-        database.writableDatabase.delete(TABLE_NAME, "id" + "=?", arrayOf(employee.id.toString()))
-    }
+         Log.d(TAG, "Cursor deleteEmployee($employee)")
+         val db = writableDatabase
+         db.delete(TABLE_NAME, "$ID_COLUMN=?", arrayOf(employee.id.toString()))
+     }
 
 
     @SuppressLint("Range")
      fun getEmployeeList(): LiveData<List<Employee>> {
-
         val listOfEmployees = mutableListOf<Employee>()
         val liveDataEmployees = MutableLiveData<List<Employee>>()
         val db = readableDatabase
         val selectQuery = "SELECT * FROM $TABLE_NAME"
         val cursor = db.rawQuery(selectQuery, null)
         try {
-            cursor.let {
-                if (cursor.moveToFirst()) {
-                    do {
-                        val id = cursor.getInt(cursor.getColumnIndex("id"))
-                        val name = cursor.getString(cursor.getColumnIndex("name"))
-                        val surname = cursor.getString(cursor.getColumnIndex("surname"))
-                        val age = cursor.getString(cursor.getColumnIndex("age"))
-                        val position = cursor.getString(cursor.getColumnIndex("position"))
-                        val experience = cursor.getString(cursor.getColumnIndex("experience"))
-                        listOfEmployees.add(
-                            Employee(
-                                id,
-                                name,
-                                surname,
-                                age,
-                                position,
-                                experience
+            cursor.use {
+                it.apply {
+                    if (cursor.moveToFirst()) {
+                        do {
+                            val id = cursor.getInt(cursor.getColumnIndex(ID_COLUMN))
+                            val name = cursor.getString(cursor.getColumnIndex(NAME_COLUMN))
+                            val surname = cursor.getString(cursor.getColumnIndex(SURNAME_COLUMN))
+                            val age = cursor.getString(cursor.getColumnIndex(AGE_COLUMN))
+                            val position = cursor.getString(cursor.getColumnIndex(POSITION_COLUMN))
+                            val experience =
+                                cursor.getString(cursor.getColumnIndex(EXPERIENCE_COLUMN))
+                            listOfEmployees.add(
+                                Employee(
+                                    id,
+                                    name,
+                                    surname,
+                                    age,
+                                    position,
+                                    experience
+                                )
                             )
-                        )
                     } while (cursor.moveToNext())
+                }
+
                 }
             }
 
@@ -127,7 +117,7 @@ class EmployeeDatabaseCursor(context: Context) : SQLiteOpenHelper(
         return liveDataEmployees
     }
 
-    companion object{
+    companion object {
 
         @Volatile
         private var INSTANCE: EmployeeDatabaseCursor? = null

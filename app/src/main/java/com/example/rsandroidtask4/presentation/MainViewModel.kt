@@ -1,6 +1,9 @@
 package com.example.rsandroidtask4.presentation
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.map
+import androidx.lifecycle.viewModelScope
 import com.example.rsandroidtask4.data.db.entity.Employee
 import com.example.rsandroidtask4.data.db.repository.EmployeeRepository
 import com.example.rsandroidtask4.ui.settings.DatabaseSettingsLiveData
@@ -21,10 +24,11 @@ class MainViewModel(
 
     private val _allEmployees
         get() = repository.getEmployees(database)
+
     private val allEmployees: LiveData<List<Employee>> get() = _allEmployees
 
     fun updateList() = allEmployees.map { allEmployees ->
-        when (getPreferences().value){
+        when (getPreferences().value) {
             0 -> allEmployees.sortedBy { it.name }
             1 -> allEmployees.sortedBy { it.surname }
             2 -> allEmployees.sortedBy { it.age }
@@ -34,11 +38,17 @@ class MainViewModel(
         }
     }
 
-     fun addNewEmployee(employee: Employee) = viewModelScope.launch { repository.insertEmployee(createEmployee(employee), database) }
+    fun addNewEmployee(employee: Employee) = viewModelScope.launch {
+        repository.insertEmployee(createEmployee(employee), database)
+    }
 
-     fun updateEmployee(employee: Employee) = viewModelScope.launch { repository.updateEmployee(employee, database) }
+    fun updateEmployee(employee: Employee) = viewModelScope.launch {
+        repository.updateEmployee(employee, database)
+    }
 
-     fun deleteEmployee(employee:Employee) = viewModelScope.launch { repository.deleteEmployee(employee, database) }
+    fun deleteEmployee(employee: Employee) = viewModelScope.launch {
+        repository.deleteEmployee(employee, database)
+    }
 
     private fun createEmployee(employee: Employee) = Employee(
         name = employee.name,

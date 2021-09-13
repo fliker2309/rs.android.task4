@@ -7,7 +7,7 @@
     <ListPreference
         android:key="database"
         android:summary="@array/dbms_values"
-        android:title="Current implementation: "
+        android:title="Current implementation "
         app:entries="@array/dbms_entries"
         app:entryValues="@array/dbms_values"
         android:defaultValue="0"
@@ -23,7 +23,7 @@
         <ListPreference
             android:key="sort"
             android:summary="@array/sort_values"
-            android:title="Sort Employees by: "
+            android:title="Sort Employees by "
             android:defaultValue="0"
             app:entries="@array/sort_entries"
             app:entryValues="@array/sort_values"
