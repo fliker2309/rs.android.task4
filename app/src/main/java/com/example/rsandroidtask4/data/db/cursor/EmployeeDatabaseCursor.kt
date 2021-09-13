@@ -85,7 +85,7 @@ class EmployeeDatabaseCursor(context: Context) : SQLiteOpenHelper(
 
 
     @SuppressLint("Range")
-    suspend fun getEmployeeList(): Flow<List<Employee>> {
+     fun getEmployeeList(): Flow<List<Employee>> {
 
         val listOfEmployees = mutableListOf<Employee>()
         val liveDataEmployees = MutableLiveData<List<Employee>>()
