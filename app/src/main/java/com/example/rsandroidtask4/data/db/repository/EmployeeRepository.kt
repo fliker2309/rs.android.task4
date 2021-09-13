@@ -1,15 +1,18 @@
 package com.example.rsandroidtask4.data.db.repository
 
+import com.example.rsandroidtask4.data.db.cursor.EmployeeDatabaseCursor
 import com.example.rsandroidtask4.data.db.dao.EmployeeDao
 import com.example.rsandroidtask4.data.db.database.EmployeeDatabase
 import com.example.rsandroidtask4.data.db.entity.Employee
 import kotlinx.coroutines.flow.Flow
 
 
-class EmployeeRepository(private val employeeDatabase: EmployeeDatabase) {
+class EmployeeRepository(private val employeeDao: EmployeeDao, private val sqLiteDatabase: EmployeeDatabaseCursor) {
 
-    private val roomEmployeeDao: EmployeeDao = employeeDatabase.itemDao()
+   /* private val roomEmployeeDao: EmployeeDao = employeeDatabase.itemDao()*/
 
+    val roomList : Flow<List<Employee>> = employeeDao.roomGetEmployees()
+    val sqLiteList : Flow<List<Employee>> = sqLiteDatabase.getEmployeeList()
     //getByRoom репозиторий умный, сам решает откуда взять буль меньше места
     //GetByCursor
 
@@ -22,9 +25,5 @@ class EmployeeRepository(private val employeeDatabase: EmployeeDatabase) {
 
     suspend fun roomDeleteEmployee(employee: Employee) = roomEmployeeDao.roomDeleteEmployee(employee)
 
-    fun roomSortByName() : Flow<List<Employee>> = roomEmployeeDao.roomSortByName()
-    fun roomSortBySurname() : Flow<List<Employee>> = roomEmployeeDao.roomSortBySurname()
-    fun roomSortByAge() : Flow<List<Employee>> = roomEmployeeDao.roomSortByAge()
-    fun roomSortByPosition() : Flow<List<Employee>> = roomEmployeeDao.roomSortByPosition()
-    fun roomSortByExperience() : Flow<List<Employee>> = roomEmployeeDao.roomSortByExperience()
+
 }

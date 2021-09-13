@@ -126,18 +126,20 @@ class EmployeeDatabaseCursor(context: Context) : SQLiteOpenHelper(
         return liveDataEmployees.asFlow()
     }
 
-    companion object
+    companion object{
 
-    @Volatile
-    private var INSTANCE: EmployeeDatabaseCursor? = null
+        @Volatile
+        private var INSTANCE: EmployeeDatabaseCursor? = null
 
-    fun getSQLDatabase(context: Context): EmployeeDatabaseCursor {
-        Log.d(TAG, "Get SQLDatabase")
-        return INSTANCE ?: synchronized(this) {
-            val instance = EmployeeDatabaseCursor(context)
-            INSTANCE = instance
-            instance
+        fun getSQLDatabase(context: Context): EmployeeDatabaseCursor {
+            Log.d(TAG, "Get SQLDatabase")
+            return INSTANCE ?: synchronized(this) {
+                val instance = EmployeeDatabaseCursor(context)
+                INSTANCE = instance
+                instance
+            }
         }
     }
+
 
 }

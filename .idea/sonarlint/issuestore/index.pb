@@ -1,6 +1,4 @@
 
-{
-Kapp/src/main/java/com/example/rsandroidtask4/data/locator/ServiceLocator.kt,8\c\8c334437c7aa42190dfa612f16c6284031988642
 P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
 :
@@ -18,8 +16,6 @@ L
 Zapp/src/main/java/com/example/rsandroidtask4/ui/fragments/list/swipegesture/SwipeHelper.kt,e\c\ec8c801fc307ea5723d026504078f167d7ccb29b
 <
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
-f
-6app/src/main/java/com/example/rsandroidtask4/ui/App.kt,3\d\3dc7ed8c959e86136015bdbc7cf68d8a6461f0ea
 o
 ?app/src/main/java/com/example/rsandroidtask4/ui/MainActivity.kt,4\4\44635996d4b6978e1c44bd8c574afef4e2ad8b46
 ‰
