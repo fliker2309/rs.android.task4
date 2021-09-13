@@ -2,9 +2,7 @@ package com.example.rsandroidtask4.ui.fragments.update
 
 import android.os.Bundle
 import android.text.TextUtils
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -75,6 +73,7 @@ class UpdateFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        setHasOptionsMenu(true)
         binding.apply {
             updateButton.setOnClickListener {
                 updateEmployee()
@@ -89,6 +88,22 @@ class UpdateFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.update_employee_menu,menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.delete_button ->  {
+                val currentEmployee = args.currentEmployee
+                viewModel.deleteEmployee(currentEmployee)
+                findNavController().popBackStack()
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     private fun updateEmployee() {

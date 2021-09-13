@@ -86,7 +86,7 @@ class ListFragment : Fragment() {
                   SwipeHelper(viewModel::deleteEmployee, requireContext()).attachToRecyclerView(
                       itemListRecycler)
               } */
-            onSwiped()
+          /*  onSwiped()*/
 
 
         }
@@ -102,14 +102,14 @@ class ListFragment : Fragment() {
         _binding = null
     }
 
-    private fun onSwiped() {
+   /* private fun onSwiped() {
         viewModel.updateList().observe(viewLifecycleOwner) { employees ->
             SwipeHelper(viewModel::deleteEmployee, requireContext()).attachToRecyclerView(
                 binding.itemListRecycler
             )
             adapter?.submitList(employees)
         }
-    }
+    }*/
 
     private fun onFloatingButtonClickListener() {
         binding.addNewItemFloatingButton.setOnClickListener {
