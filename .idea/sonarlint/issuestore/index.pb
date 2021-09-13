@@ -16,9 +16,3 @@ L
 Zapp/src/main/java/com/example/rsandroidtask4/ui/fragments/list/swipegesture/SwipeHelper.kt,e\c\ec8c801fc307ea5723d026504078f167d7ccb29b
 <
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
-o
-?app/src/main/java/com/example/rsandroidtask4/ui/MainActivity.kt,4\4\44635996d4b6978e1c44bd8c574afef4e2ad8b46
-‰
-Yapp/src/main/java/com/example/rsandroidtask4/ui/fragments/list/adapter/EmployeeAdapter.kt,1\5\159d2a5d3f4ae615bbd1aae02ae2b175894feda5
-’
-bapp/src/main/java/com/example/rsandroidtask4/ui/fragments/list/adapter/EmployeeDiffUtilCallback.kt,1\6\16e02140a62e12732da81081a2919529fd5e86ac

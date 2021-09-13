@@ -48,7 +48,7 @@ class EmployeeDatabaseCursor(context: Context) : SQLiteOpenHelper(
         Log.d(TAG, "onUpgrade")
     }
 
-    suspend fun insertEmployee(employee: Employee) {
+     fun insertEmployee(employee: Employee) {
         Log.d(TAG, "Cursor insertEmployee($employee)")
 
         val values = ContentValues()
@@ -61,7 +61,7 @@ class EmployeeDatabaseCursor(context: Context) : SQLiteOpenHelper(
         database.writableDatabase.insert(TABLE_NAME, null, values)
     }
 
-    suspend fun updateEmployee(employee: Employee) {
+     fun updateEmployee(employee: Employee) {
         Log.d(TAG, "Cursor updateEmployee($employee)")
         val values = ContentValues()
         values.put("id", employee.id)
@@ -78,7 +78,7 @@ class EmployeeDatabaseCursor(context: Context) : SQLiteOpenHelper(
         )
     }
 
-    suspend fun deleteEmployee(employee: Employee) {
+     fun deleteEmployee(employee: Employee) {
         Log.d(TAG, "Cursor deleteEmployee($employee)")
         database.writableDatabase.delete(TABLE_NAME, "id" + "=?", arrayOf(employee.id.toString()))
     }
@@ -140,6 +140,4 @@ class EmployeeDatabaseCursor(context: Context) : SQLiteOpenHelper(
             }
         }
     }
-
-
 }

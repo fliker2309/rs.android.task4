@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,22 +15,15 @@ import com.example.rsandroidtask4.databinding.ItemListBinding
 import com.example.rsandroidtask4.presentation.MainViewModel
 import com.example.rsandroidtask4.presentation.MainViewModelFactory
 import com.example.rsandroidtask4.ui.App
-
 import com.example.rsandroidtask4.ui.fragments.list.adapter.EmployeeAdapter
 import com.example.rsandroidtask4.ui.fragments.list.swipegesture.SwipeHelper
 import com.example.rsandroidtask4.ui.settings.DatabaseSettingsLiveData
 import com.example.rsandroidtask4.ui.settings.SettingsLiveData
-
 import kotlinx.coroutines.InternalCoroutinesApi
-
-
-
 
 @InternalCoroutinesApi
 class ListFragment : Fragment() {
 
-
-   /* private lateinit var viewModel: MainViewModel    */
     private val preferences by lazy {
         SettingsLiveData(
             PreferenceManager.getDefaultSharedPreferences(
@@ -85,7 +77,6 @@ class ListFragment : Fragment() {
             }
         }
 
-
         Log.d(TAG, "onViewCreated")
         binding.apply {
             itemListRecycler.adapter = EmployeeAdapter()
@@ -94,16 +85,6 @@ class ListFragment : Fragment() {
                 itemListRecycler
             )
         }
-
-        /*viewModel.sortBy(order)
-        viewModel.employeeListLiveData.observe(viewLifecycleOwner, { employees ->
-            employees?.let {
-                updateUI(it)
-            }
-        })*/
-
-
-
 
         onFloatingButtonClickListener()
         onSettingsButtonListener()
@@ -116,10 +97,6 @@ class ListFragment : Fragment() {
         _binding = null
     }
 
-    /*  private fun updateUI(employees: List<Employee>) {
-          adapter?.submitList(employees)
-      }*/
-
     private fun onFloatingButtonClickListener() {
         binding.addNewItemFloatingButton.setOnClickListener {
             findNavController().navigate(R.id.action_ListFragment_to_addFragment)
@@ -131,16 +108,6 @@ class ListFragment : Fragment() {
             findNavController().navigate(R.id.action_listFragment_to_settingsFragment)
         }
     }
-/*
-    private fun updateSort(sortOrder: SortOrder) {
-        return when (sortOrder) {
-            SortOrder.BY_NAME -> viewModel.sortByName()
-            SortOrder.BY_SURNAME -> viewModel.sortBySurname()
-            SortOrder.BY_AGE -> viewModel.sortByAge()
-            SortOrder.BY_POSITION -> viewModel.sortByPosition()
-            SortOrder.BY_EXPERIENCE -> viewModel.sortByExperience()
-        }
-    }*/
 
     private fun <T> views(block: ItemListBinding.() -> T): T? = binding.block()
 

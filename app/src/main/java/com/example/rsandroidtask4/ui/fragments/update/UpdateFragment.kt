@@ -8,8 +8,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.preference.PreferenceManager
@@ -19,7 +17,6 @@ import com.example.rsandroidtask4.databinding.FragmentUpdateItemBinding
 import com.example.rsandroidtask4.presentation.MainViewModel
 import com.example.rsandroidtask4.presentation.MainViewModelFactory
 import com.example.rsandroidtask4.ui.App
-
 import com.example.rsandroidtask4.ui.settings.DatabaseSettingsLiveData
 import com.example.rsandroidtask4.ui.settings.SettingsLiveData
 

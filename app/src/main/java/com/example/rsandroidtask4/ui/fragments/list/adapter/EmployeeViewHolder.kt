@@ -30,7 +30,6 @@ class EmployeeViewHolder(
                 viewHolderItem.findNavController().navigate(action)
             }
         }
-
     }
 
     private fun <T> views(block: ViewHolderItemBinding.() -> T): T? = binding.block()
