@@ -20,7 +20,10 @@ class EmployeeRepository(
     suspend fun insertEmployee(employee: Employee, database: Int) {
         when (database) {
             0 -> employeeDao.roomInsertEmployee(employee)
-            1 -> sqLiteDatabase.insertEmployee(employee)
+            1 -> {
+                sqLiteDatabase.insertEmployee(employee)
+                sqLiteDatabase.getEmployeeList()
+            }
         }
     }
 

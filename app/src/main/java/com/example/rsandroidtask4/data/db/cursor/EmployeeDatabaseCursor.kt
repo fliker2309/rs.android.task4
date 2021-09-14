@@ -20,7 +20,6 @@ class EmployeeDatabaseCursor(context: Context) : SQLiteOpenHelper(
     null,
     DATABASE_VERSION
 ) {
-    /*private val database get() = requireNotNull(INSTANCE)*/
 
     override fun onCreate(db: SQLiteDatabase?) {
         try {
@@ -39,7 +38,6 @@ class EmployeeDatabaseCursor(context: Context) : SQLiteOpenHelper(
          Log.d(TAG, "Cursor insertEmployee($employee)")
          val db = writableDatabase
          val values = ContentValues().apply {
-             put(ID_COLUMN, employee.id)
              put(NAME_COLUMN, employee.name)
              put(SURNAME_COLUMN, employee.surname)
              put(AGE_COLUMN, employee.age)

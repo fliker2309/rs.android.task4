@@ -11,14 +11,13 @@ const val SURNAME_COLUMN = "surname"
 const val AGE_COLUMN = "age"
 const val POSITION_COLUMN = "position"
 const val EXPERIENCE_COLUMN = "experience"
-const val DATABASE_VERSION = 4
+const val DATABASE_VERSION = 1
 const val CREATE_TABLE_SQL =
     "CREATE TABLE IF NOT EXISTS $TABLE_NAME (" +
-            "id INTEGER NOT NULL," +
+            "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
             "name TEXT NOT NULL," +
             "surname TEXT NOT NULL" +
             "age TEXT NOT NULL" +
             "position TEXT NOT NULL" +
             "experience TEXT NOT NULL" +
-            "PRIMARY KEY (id AUTOINCREMENT)" +
             ");"
