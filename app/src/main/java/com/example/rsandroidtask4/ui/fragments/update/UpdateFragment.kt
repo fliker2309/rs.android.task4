@@ -60,7 +60,7 @@ class UpdateFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentUpdateItemBinding.inflate(inflater, container, false)
-        //saveArgs NavComponent
+
         binding.apply {
             textUpdateName.setText(args.currentEmployee.name)
             textUpdateSurname.setText(args.currentEmployee.surname)
@@ -116,7 +116,7 @@ class UpdateFragment : Fragment() {
             if (inputCheck(updateName, updateSurname, updateAge, updatePosition, updateExperience)
             ) {
                 val updatedEmployee = Employee(
-                    id = args.currentEmployee.id, //don't forget about ID!!!
+                    id = args.currentEmployee.id,
                     name = updateName,
                     surname = updateSurname,
                     age = updateAge,
